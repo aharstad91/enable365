@@ -123,7 +123,7 @@ if ( function_exists( 'get_nav_menu_locations' ) ) {
 		</div>
 	</div>-->
 	
-	<!-- Hello World!-->
+	<!-- Hello World via git!-->
 	
 	<header class="primary-header" id="site-header">
 		<div class="container relative">
