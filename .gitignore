@@ -1,6 +1,8 @@
 /*
 !.gitignore
-!/themes/
-themes/*
-!/themes/enable365/
-themes/enable365/node_modules/
+!/wp-content/
+wp-content/*
+!/wp-content/themes/
+wp-content/themes/*
+!/wp-content/themes/enable365/
+wp-content/themes/enable365/node_modules/
