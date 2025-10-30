@@ -1,0 +1,20 @@
+{
+	"name": "acf/video-image-overlay", 
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"title": "Video Image Overlay",
+	"description": "A block with video overlay functionality",
+	"category": "media",
+	"icon": "video-alt3",
+	"keywords": ["video", "overlay", "modal"],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "template.php"
+	},
+	"supports": {
+		"align": true,
+		"anchor": true,
+		"customClassName": true
+	},
+	"style": "style.css",
+	"editorStyle": "style.css"
+}

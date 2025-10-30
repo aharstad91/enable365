@@ -1,0 +1,16 @@
+/* Featured Image Landscape Aspect Ratio - Force 16:9 */
+.top-section-author figure.aspect-video {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    height: auto;
+}
+
+.top-section-author figure.aspect-video img,
+.top-section-author figure.aspect-video .wp-post-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    aspect-ratio: 16 / 9 !important;
+}
+
+/* Frontend styles */

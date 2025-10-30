@@ -1,3 +1,6 @@
-*
+/*
 !.gitignore
-!themes/enable365/**
+!/themes/
+/themes/*
+!/themes/enable365/
+themes/enable365/node_modules/
