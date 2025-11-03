@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom WordPress compatibility layer */
+@layer base {
+  /* Preserve heading styles from Tailwind reset */
+  h1, h2, h3, h4, h5, h6 {
+    font-size: revert;
+    font-weight: revert;
+    margin: revert;
+    line-height: revert;
+  }
+
+  /* Reset any conflicting WordPress styles that Tailwind might override */
+  .alignnone,
+  .alignleft,
+  .alignright,
+  .aligncenter,
+  .wp-caption {
+    @apply max-w-full;
+  }
+
+  /* WordPress image size classes */
+  .size-thumbnail,
+  .size-medium,
+  .size-large,
+  .size-full {
+    width: auto !important;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Add any custom components here */
+@layer components {
+  /* Your custom component classes go here */
+}
+
+/* Add any custom utilities here */
+@layer utilities {
+  /* Your custom utility classes go here */
+}

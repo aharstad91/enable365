@@ -1,0 +1,61 @@
+{
+    "key": "group_689b0d5cc1524",
+    "title": "Custom nav-menu elements",
+    "fields": [
+        {
+            "key": "field_689b0d5d059e4",
+            "label": "Navigation label",
+            "name": "nav_item_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "nav_menu",
+                "operator": "==",
+                "value": "location\/apps-it-admin"
+            }
+        ],
+        [
+            {
+                "param": "nav_menu",
+                "operator": "==",
+                "value": "location\/apps-productivity"
+            }
+        ],
+        [
+            {
+                "param": "nav_menu",
+                "operator": "==",
+                "value": "location\/primary-menu"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfml_field_group_mode": "localization",
+    "modified": 1754992263
+}

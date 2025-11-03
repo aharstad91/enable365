@@ -1,0 +1,1269 @@
+/*
+Theme enable365.ai - 2023
+Author: Konsulent Harstad v/Andreas Harstad // Orgnr. 921 029 438
+*/
+html.sr .ani-h {
+	visibility: hidden;
+}
+body, html, main, .iframe-container{
+	min-height: 100vh;
+}
+.iframe-container iframe{
+	height: 100vh;
+}
+main{
+	display: flex;
+	flex-direction: column;
+}
+footer{
+	margin-top: auto;
+}
+
+a{color: #ac1500}
+
+.editor p img {
+	display: inline-block;
+}
+
+.betterdocs-wrapper{
+	display: flex;
+	flex-direction: column;
+}
+
+
+
+h1 {
+	font-size: 2.75rem!important;
+	line-height: 3rem!important;
+	font-weight: 700!important;
+
+}
+
+h2 {
+	font-size: 2rem!important;
+	line-height: 2.5rem!important;
+	font-weight: 700!important;
+}
+h3, h4{
+	font-size: 1.375rem!important;
+	line-height: 1.875rem!important;
+	font-weight: 700!important;
+
+}
+
+@media only screen and (max-width: 850px) {
+	h1{
+		font-size: 1.8rem!important;
+		line-height: 2.4rem!important;
+		font-weight: 500;
+	}
+	h2 {
+		font-size: 1.5rem!important;
+		line-height: 2rem!important;
+		font-weight: 500;
+	}
+	h3{
+		font-size: 1.375rem!important;
+		line-height: 1.875rem!important;
+		font-weight: 500;
+	}
+	h3,  h4{
+		font-size: 1.2rem!important;
+		line-height: 1.675rem!important;
+		font-weight: 500;
+	}	
+}
+
+form#wpforms-form-1603 {
+	padding: 30px;
+	border-radius: 15px;
+	border-width: 2px;
+	border-color: #ac1500;
+	border-style: solid;
+	}
+	form#wpforms-form-967 {
+	padding: 30px;
+	border-radius: 15px;
+	border-width: 2px;
+	border-color: #ac1500;
+	border-style: solid;
+		}
+form#wpforms-form-2907 {
+	padding: 30px;
+	border-radius: 15px;
+	border-width: 2px;
+	border-color: #ac1500;
+	border-style: solid;
+		}
+form#wpforms-form-3077 {
+	padding: 30px;
+	border-radius: 15px;
+	border-width: 2px;
+	border-color: #ac1500;
+	border-style: solid;
+		}
+form#wpforms-form-3118 {
+	padding: 30px;
+	border-radius: 15px;
+	border-width: 2px;
+	border-color: #ac1500;
+	border-style: solid;
+		}
+/*form#wpforms-form-4614 {
+	padding: 30px;
+	border-radius: 15px;
+	border-width: 2px;
+	border-color: #ac1500;
+	border-style: solid;
+		}*/
+form#wpforms-form-1446 {
+	padding: 30px;
+	border-radius: 15px;
+	border-width: 2px;
+	border-color: #ac1500;
+	border-style: solid;
+		}
+form#wpforms-form-1596 {
+	padding: 30px;
+	border-radius: 15px;
+	border-width: 2px;
+	border-color: #ac1500;
+	border-style: solid;
+		}
+
+.wpforms-container .wpforms-form * {
+	opacity:1 !important;
+	background-color: #ffffff; /* White background */
+	}
+#wpforms-967-field_10-container  {
+	padding-bottom:6% !important;
+}
+#wpforms-1603-field_9-container  {
+	padding-bottom:6% !important;
+}
+
+
+
+@media (max-width: 960px) {	
+	body{
+		padding-top: 60px;
+	}
+}
+
+.border-rounded{
+	border-radius: 4px;
+}
+.rounded-l{
+	border-radius: 8px;
+}
+.rounded-xl{
+	border-radius: 12px;
+}
+
+.border-rounded img{
+	border-radius: 4px;
+}
+.rounded-l img{
+	border-radius: 8px;
+}
+.rounded-xl img{
+	border-radius: 12px;
+}
+
+
+
+
+
+/* WordPress image classes - Override any Tailwind conflicts */
+/* These styles will prevent Tailwind from breaking WordPress image layouts */
+.wp-block-image .size-full,
+.wp-block-image.size-full,
+img.size-full,
+figure.size-full,
+.size-full {
+    width: auto !important; /* Prevent Tailwind from forcing width:100% */
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Fix for other WordPress image classes that might be affected */
+.alignnone,
+.alignleft,
+.alignright,
+.aligncenter,
+.size-thumbnail,
+.size-medium,
+.size-large {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Ensure Gutenberg blocks display properly */
+.wp-block {
+    max-width: none !important;
+}
+
+.gfx-bg {
+	background: #fafafa;
+	text-align: center;
+	padding: 2rem;
+	border-radius: 15px;
+}
+
+.wp-block-button__link, .wp-block-button{
+	font-size: .9rem;
+}
+
+.snackbar{
+	font-size: .9rem!important;
+}
+.snackbar a{
+	padding: 6px 8px!important;
+}
+
+@media only screen and (min-width: 850px) {
+	.wp-block-button__link, .wp-block-button{
+		font-size: 1rem;
+	}
+}
+
+
+/* Hide Gutenberg blocks in front-end */
+
+@media only screen and (max-width: 850px) {
+	.mob-hidden{
+		display: none!important;
+	}	
+}
+
+@media only screen and (min-width: 850px) {
+	.desk-hidden{
+		display: none!important;
+	}
+}
+
+
+
+
+
+.hidden{
+	display: none;
+}
+
+.wp-block-fsb-flexible-spacer, .fsb-flexible-spacer{
+	width: 100%;
+}
+
+
+
+.primary-header a, .primary-footer a{
+	transition: .33s;
+	display: inline-flex;
+}
+.primary-header a:active, .primary-footer a:active{
+	transform: scale(0.97);
+}
+
+/* Set navigation menu color to #0D2538 */
+.primary-header .primary-nav a {
+	color: #0D2538 !important;
+}
+
+.primary-footer ul{list-style: none;}
+
+
+.mm-right-area{
+	display: flex;
+	gap: 1rem;
+}
+
+
+.globalMessageContainer{
+	background: #aa0f11;
+}
+.globalMessage {
+	margin: 0 auto;
+	padding: 1rem;
+	color: #ffffff;
+	font-weight: 500;
+	font-size: 1rem;
+}
+
+@media only screen and (min-width: 850px) {
+	.globalMessage {
+		padding: 1rem 4rem;
+	}
+	
+}
+
+.news-post h2 {
+	font-size: 1.4rem;
+	line-height: 2rem;
+}
+.categories-list{
+	display: flex;
+	list-style: none;
+	gap: 1rem;
+	margin-bottom: 2rem;
+}
+
+.grid-tests{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 4rem;
+}
+.grid-tests img{
+	width: 100%;
+	height: auto;
+}
+
+.width-1000{
+	max-width: 1000px;
+}
+.width-1200{
+	
+}
+.width-1440{
+	
+}
+
+
+
+
+/*@media (min-width: 920px) {
+	.alignwide{
+
+	}
+}*/
+
+
+
+html{
+	scroll-behavior: smooth;
+}
+.iframe-100 iframe{
+	height: 100vh;
+}
+/*html.sr .ani-load {
+	visibility: hidden;
+}*/
+
+.iframe-full-height > div{
+	height: 100vh;
+}
+.wp-block-quote{
+	padding: 0 2rem 0 2rem;
+	border-left: 3px solid red;
+	margin: 2rem 0;
+}
+
+.lang-container{
+
+	position: relative;
+}
+.lang-container .wpml-ls-legacy-dropdown-click a.wpml-ls-item-toggle:after{
+	display: none;
+	content: '';
+}
+.lang-container .wpml-ls{
+	position: absolute;
+	top: 0;
+}
+.wpml-ls-item-toggle .wpml-ls-native{
+	display: none
+}
+.lang-container .wpml-ls-item-toggle{
+	height: 24px;
+	width: 24px
+}
+.lang-container .lang-icon path{
+	stroke: #000000;
+}
+.lang-container:hover .lang-icon path{
+	stroke: #585858;
+}
+.lang-icon{
+	width: 24px;
+	display: flex;
+	position: relative;
+	top: 1px;
+}
+
+.lang-container .wpml-ls-legacy-dropdown-click{
+	width: auto;
+}
+.lang-container .wpml-ls-legacy-dropdown-click a{
+	border: 0;
+	padding: 0;
+}
+.lang-container .wpml-ls-legacy-dropdown-click a, .wpml-ls-legacy-dropdown-click a:hover{
+	background: transparent;
+}
+.lang-container .wpml-ls-legacy-dropdown-click .wpml-ls-current-language:hover>a, .wpml-ls-legacy-dropdown-click a:focus, .wpml-ls-legacy-dropdown-click a:hover{
+	background: none;
+	opacity: 1;
+}
+
+.lang-container .wpml-ls-legacy-dropdown-click a span{
+	font-size: 1rem;
+	font-weight: 700;
+}
+.wp-block-embed__wrapper{
+	position: initial!important;
+}
+.lang-container .wpml-ls-sub-menu{
+	background: #ffffff;
+	padding: 1rem;
+	width: 150px;
+	position: absolute;
+	top: -11px;
+	left: 0;
+}
+@media screen and (max-width: 850px) {
+	.lang-container .wpml-ls-sub-menu{
+		left: -160px;
+	}
+}
+
+.lang-container .wpml-ls-sub-menu span.wpml-ls-native{display: block;}
+.lang-container .wpml-ls-legacy-dropdown-click .wpml-ls-sub-menu{
+	box-shadow: 0px 1px 11px #0000002e;
+	border-radius: 4px;
+}
+.wpforms-submit-container .form-element-submit{
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	float: right;
+	background: #AA1010!important;
+	border: 2px solid #AA1010;
+	border-radius: 9px;
+	font-size: 1rem;
+	font-weight: 600;
+	margin-top: 1rem;
+}
+
+.single-register .wpforms-submit-container .form-element-submit{
+	width: 100%!important;
+}
+
+.hero-top-inner{
+	margin: 0 auto;
+	max-width: 1280px;
+}
+.wpforms-container .wpforms-field{
+	padding: 4px 0;
+}
+a{
+	text-decoration: none;
+	color: #ab2023;
+	font-weight: 500;
+}
+.align-center{
+	text-align: center;
+}
+
+
+.has-medium-font-size{
+	line-height: 2rem;
+}
+
+.wp-block-post-date {
+	font-weight: 700;
+}
+
+@media only screen and (min-width: 0px) {
+	body{
+		font-family: 'Noto Sans', sans-serif;
+		font-size: 1.125rem;
+		line-height: 1.625rem;
+		color: #0D2538;
+		background: #ffffff;
+		font-weight: 300;
+	}
+	@media only screen and (min-width: 850px) {
+		body{
+			font-size: 1.125rem;
+			line-height: 1.825rem;
+		}
+	}
+	.container{
+		padding: 0 1rem;
+		max-width: 1280px!important;
+	}
+	
+	.container-s{
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	.container-m{
+		max-width: 1024px;
+		margin: 0 auto;
+	}
+	.container-l{
+		max-width: 1280px!important;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+	.container-xl{
+		max-width: 1640px;
+		margin: 0 auto;
+	}
+	/*.alignwide {
+		max-width: 1440px;
+		margin: 0 auto;
+	}*/
+	.small-wrap, #small-wrap{
+		max-width: 740px;
+		margin: 0 auto;
+	}
+	.mid-wrap, #mid-wrap{
+		max-width: 960px;
+		margin: 0 auto;
+	}
+	.medium-wrap, #medium-wrap{
+		max-width: 1180px;
+		margin: 0 auto;
+	}
+	.home .container{
+		padding-top: 0;
+	}
+	/* main.container {
+		padding-top: 4rem;
+	} */
+	
+	.landingpage-top { margin-top: -4rem;
+		
+	}
+	
+	.landingpage-h2 {
+    margin-top: -15px;
+    margin-bottom: 24px;
+	}
+	
+	.contact-form-landing {
+    border-radius: 22px;
+    max-width: 1000px;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+    padding: 2rem 4rem;
+	margin: 0 auto;
+}
+	.landing-page-form-button button {
+    width: 100%;
+}
+	
+	img .wp-image-4473 {
+		width: 20px!important;
+   		 margin-bottom: -3px;
+	}
+	
+	.max-landing-page-hero{
+    max-width: 1440px!important;
+    margin: 0em auto!important;
+    padding: 7rem 2rem!important;	
+	
+}
+	
+	.hero-logo-column {
+		max-width: 400px;
+	}
+	
+	@media screen and (max-width: 850px) {
+   .landing-hero-button {
+			justify-content: center!important;
+		}
+		
+		.hero-image-landing {
+			display: none;
+		}
+		
+		.hero-logo-column {
+		max-width: 100%;
+			justify-content: center!important;
+	}
+		
+		.contact-form-landing {
+  
+    padding: 2rem 2rem;
+	
+}
+		
+		
+}
+	
+	@media only screen and (min-width: 850px) {
+			/*.container{
+				padding: 0 4rem;
+			}*/
+		
+		
+		
+		.landingpage-top { margin-top: -4rem;
+	}
+	}
+	.no-link-color a{
+		color: #000;
+	}
+	input, select, textarea{
+		font-size: 16px!important;
+		padding: 12px 8px;
+	}
+	input[type=text], input[type='email'], select, textarea {
+	  width: 100%;
+	  padding: 12px;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  resize: vertical;
+	}
+	
+	label {
+	  padding: 12px 12px 12px 0;
+	  display: inline-block;
+	}
+	
+	input[type=submit] {
+	  background-color: #04AA6D;
+	  color: white;
+	  padding: 12px 20px;
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+	  float: right;
+	  
+	  background: #AA1010;
+	  border: 2px solid #AA1010;
+	  border-radius: 9px;
+	}
+	
+	input[type=submit]:hover {
+	  background-color: #45a049;
+	}
+	
+	
+	
+	.single-demo{
+		background: #f4f4f4;
+	}
+	.single-demo > header
+	.single-register > header {display: none;}
+	.single-demo .iframe-container{
+		height: 100vh;
+		padding-top: 4rem;
+	}
+	
+	.try-now-container{
+		background: #f4f4f4;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.try-now{
+		max-width: 680px;
+		background: #FFF;
+		padding: 2rem;
+		border-radius: 20px;
+		text-align: center;
+	}
+	.try-now .form-element{
+		text-align: left;
+	}
+	.try-now a {
+			color: #aa1010;
+			font-weight: 500;
+			text-decoration: none;
+		}
+	@media only screen and (min-width: 850px) {
+		.try-now-container{
+			height: 95vh;
+		}
+		.try-now{
+			padding: 2rem 4rem;
+		}
+	}
+	
+	
+	.hero-top > div{
+		max-width: 1280px;
+		margin: 0 auto;
+	}
+	
+	
+
+	
+	.hero-top{
+		display: flex;
+		align-items: center;
+		position: relative;
+		padding: 3rem 1.5rem 0rem 1.5rem;
+		
+	}
+	
+	@media only screen and (min-width: 850px) {
+		.hero-top{
+			padding: 6rem 2rem 0rem 2rem;
+		}
+	}
+	
+	.agenda-wrap{
+		position: relative;
+		top: -100px;
+	}
+	.front-feat-app{
+		position: relative;
+		top: -50px;
+	}
+	.blob-lines{
+		position: absolute;
+		left: -40px;
+		width: 400px;
+		bottom: -100px;
+	}
+	
+	.about-section {
+		padding: 2rem;
+		padding-bottom: 200px;
+	}
+	.about-section-image img {
+		position: relative;
+		top: -100px;
+	}
+
+}
+
+
+@media only screen and (max-width: 850px) {
+
+	.blob-lines{
+		display: none;visibility: hidden;
+	}
+	.col-reverse div div{
+		flex-direction: column-reverse;
+	}
+	.app-logo img {
+		height: 40px;
+	}
+	.flex-center{
+		display: flex;
+		justify-content: center;
+	}
+}
+
+
+
+@media only screen and (min-width: 850px) {
+	
+	.hero-top-mobile{
+		display: none;visibility: hidden;
+	}
+	.about-section {
+		padding: 4rem;
+		padding-bottom: 200px;
+	}
+}
+
+
+
+@media only screen and (min-width: 1300px) {	
+
+	}
+	
+	
+	
+	
+	
+	.wp-block-list{
+		list-style-position: inside;
+		  padding-left: 0;
+	}
+	.wp-block-list li{
+		text-indent: -1.5em;
+		padding-left: 1.5em;
+		margin-bottom: 0.5em;
+	}
+	
+	
+	
+@media only screen and (max-width: 850px) {	
+	.column-reverse{
+		flex-direction: column-reverse;
+	}	
+}
+		
+
+
+.text-column {
+}
+
+.image-column {
+  position: relative;
+}
+
+#sticky-image {
+  position: sticky;
+  top: 300px;
+  width: 100%;
+}
+
+
+/* Megamenu Styles */
+.primary-nav ul li.has-megamenu {
+    position: relative;
+    cursor: pointer;
+}
+
+.primary-nav ul li.has-megamenu:hover .megamenu,
+.primary-nav ul li.has-megamenu:focus-within .megamenu {
+    /* Don't override display property, let opacity/visibility handle fade */
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.megamenu {
+    position: fixed;
+    /* Match the top position of regular dropdowns */
+    top: calc(80px + 24px); /* Header height + same spacing as dropdowns */
+    left: 50vw; /* Center in viewport */
+    width: 100%;
+    max-width: 920px; /* Fixed max-width as requested */
+    min-width: 300px;
+    min-height: 200px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    z-index: 1005; /* Just below the header but above other content */
+    transform: translateX(-50%); /* Center the megamenu */
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.15s ease, visibility 0.15s ease;
+}
+
+/* Add pseudo-element to maintain hover between menu item and dropdown */
+.primary-nav ul li.has-megamenu::after {
+    content: "";
+    position: absolute;
+    height: 24px;
+    width: 100%;
+    left: 0;
+    top: 100%;
+    z-index: 999;
+}
+
+/* Add pseudo-element to properly connect menu item to the megamenu */
+.primary-nav ul li.has-megamenu:hover::before,
+.primary-nav ul li.has-megamenu:focus-within::before {
+    content: "";
+    position: fixed;
+    height: 24px;
+    width: 100px; /* Width to create sufficient hover area */
+    left: 50%;
+    transform: translateX(-50%);
+    top: 80px; /* Match header height */
+    z-index: 998;
+}
+
+.primary-nav ul li.has-megamenu:focus-within .megamenu {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.megamenu > ul {
+  display: flex;
+  flex-direction: column;
+  width: 33.333%; /* Equal width for each column in a three-column layout */
+  padding: 0 0.5rem; /* Add some horizontal padding between columns */
+}
+
+/* Remove flex row from all megamenu ul (li's should stack vertically) */
+.megamenu ul {
+  display: block;
+  width: 100%;
+}
+
+/* Improved hover effect for menu items with better contrast */
+.megamenu a:hover, .dropdown-menu a:hover {
+  background-color: #edf2f7; /* Slightly darker blue-gray for better contrast */
+}
+
+/* Ensure text remains visible with improved contrast on hover */
+.megamenu a:hover .text-gray-500, .dropdown-menu a:hover .text-gray-500 {
+  color: #4b5563;
+}
+
+/* Mobile styles for megamenu */
+@media (max-width: 768px) {
+    .megamenu {
+        position: absolute; /* Change back to absolute for mobile */
+        width: 100%;
+        max-width: 100%;
+        left: 0;
+        top: calc(100% + 24px); /* Match standard dropdown spacing */
+        transform: none;
+        box-shadow: none;
+        display: flex;
+        flex-direction: column; /* Stack columns vertically on mobile */
+        padding: 1rem;
+    }
+    
+    .megamenu > ul {
+        width: 100%; /* Full width for each column on mobile */
+        margin-bottom: 1.5rem;
+    }
+    
+    .megamenu ul li {
+        width: 100%;
+    }
+    
+    /* Remove the fixed positioning for mobile */
+    .primary-nav ul li.has-megamenu:hover::before,
+    .primary-nav ul li.has-megamenu:focus-within::before {
+        display: none;
+    }
+}
+
+/* Show megamenu when .active is present for development */
+.has-megamenu .megamenu.active {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+@media (max-width: 768px) {
+  .has-megamenu .megamenu.active {
+    display: block !important;
+  }
+}
+
+/* Regular dropdown styling */
+.primary-nav ul li.has-dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.primary-nav ul li.has-dropdown:hover .dropdown-menu,
+.primary-nav ul li.has-dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 24px);
+  left: 0;
+  width: 320px;
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  z-index: 1000;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* Add pseudo-element to maintain hover between menu item and dropdown */
+.primary-nav ul li.has-dropdown::after {
+  content: "";
+  position: absolute;
+  height: 24px;
+  width: 100%;
+  left: 0;
+  top: 100%;
+  z-index: 999;
+}
+
+.dropdown-menu li {
+  list-style-type: none;
+}
+
+.sub-dropdown-menu {
+  padding-left: 1rem;
+  list-style-type: none;
+  margin-top: 0.5rem;
+}
+
+.primary-nav ul li.has-dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Mobile styles for dropdown menu */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+  }
+}
+
+/* Show dropdown menu when .active is present */
+.has-dropdown.active .dropdown-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Show sub-dropdown menu when .active is present */
+.has-sub-dropdown.active .sub-dropdown-menu {
+  display: block !important;
+}
+
+/* Headroom animations */
+.headroom {
+  will-change: transform;
+  transition: transform 300ms ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: white;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.headroom--pinned {
+  transform: translateY(0%);
+}
+
+.headroom--unpinned {
+  transform: translateY(-100%);
+}
+
+/* Animation classes */
+.animated {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.slideDown {
+  animation-name: slideDown;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.slideUp {
+  animation-name: slideUp;
+}
+
+/* Fixed positioning for both header types */
+.primary-header.headroom {
+  width: 100%;
+}
+
+.mobile-header.mobile-headroom {
+  width: 100%;
+}
+
+
+/* Header height and styling */
+.primary-header {
+  height: 80px; /* Set the exact height of the header */
+  display: flex;
+  align-items: center;
+}
+
+.primary-header .container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-header {
+  height: 70px; /* Mobile header may be slightly smaller */
+  display: flex;
+  align-items: center;
+}
+
+/* Megamenu positioning improvements */
+.primary-nav ul li.has-megamenu {
+  position: relative; /* Keep as relative for proper dropdown positioning */
+}
+
+/* Update megamenu positioning for better centering */
+.primary-nav ul li.has_megamenu .megamenu {
+  left: 50vw; /* Center based on viewport width */
+  transform: translateX(-50%);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Equal spacing between columns */
+.megamenu.flex {
+  column-gap: 1rem;
+}
+
+/* Responsive adjustments for megamenu */
+@media (max-width: 1200px) {
+  .megamenu {
+    max-width: 90vw;
+  }
+}
+
+@media (max-width: 900px) {
+  .megamenu.flex {
+    flex-wrap: wrap;
+  }
+  
+  .megamenu > ul {
+    width: 50%;
+    margin-bottom: 1.5rem;
+  }
+  
+  .megamenu > ul:last-child {
+    width: 100%;
+  }
+}
+
+/* Container positioning for megamenu */
+.primary-header .container.relative {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Megamenu width adjustment */
+.megamenu {
+  max-width: 920px !important;
+  width: 920px !important;
+}
+
+/* Ensure the parent header has position relative for proper layering */
+.primary-header {
+  position: relative;
+  z-index: 1010; /* Higher than megamenu to ensure dropdown visibility */
+}
+
+/* Adjust megamenu position when headroom is active */
+.headroom--pinned .has-megamenu .megamenu, 
+.headroom--unpinned .has-megamenu .megamenu {
+  top: calc(80px + 24px); /* Match header height + consistent spacing */
+}
+
+.headroom--unpinned .has-megamenu .megamenu {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Fix for pseudo-element with headroom */
+.headroom--pinned .has-megamenu:hover::before,
+.headroom--pinned .has-megamenu:focus-within::before {
+  top: 80px;
+}
+
+/* Adjust for screen size */
+@media (max-width: 1024px) {
+  .megamenu {
+    width: 90vw !important;
+    max-width: 920px !important;
+  }
+}
+
+/* Megamenu container positioning */
+.container {
+    position: relative;
+    z-index: 1010; /* Higher than megamenu to ensure links stay clickable */
+}
+
+.primary-header {
+    position: relative;
+    z-index: 1010;
+}
+
+/* Ensure the megamenu remains properly layered */
+.megamenu {
+    z-index: 1000; /* Just below the header for proper layering */
+}
+
+
+
+/* Fix for WordPress block galleries - Add after line 42 */
+.wp-block-gallery {
+	display: flex !important;
+	flex-wrap: wrap !important;
+	gap: 0.5rem !important;
+	width: 100% !important;
+	max-width: 100% !important;
+}
+
+.wp-block-gallery .wp-block-image,
+.wp-block-gallery figure {
+	flex: 1 1 auto !important;
+	width: auto !important;
+	max-width: 200px !important; /* Limit individual logo size */
+	height: auto !important;
+	margin: 0 !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+.wp-block-gallery .wp-block-image img,
+.wp-block-gallery figure img {
+	width: auto !important;
+	height: auto !important;
+	max-width: 100% !important;
+	max-height: 80px !important; /* Limit logo height */
+	object-fit: contain !important;
+}
+
+/* Override for specific gallery layouts */
+.wp-block-gallery.is-cropped .wp-block-image img {
+	object-fit: contain !important; /* Change from cover to contain for logos */
+	max-height: 80px !important;
+}
+
+/* Responsive gallery behavior */
+@media (max-width: 768px) {
+	.wp-block-gallery {
+		flex-direction: column !important;
+		align-items: center !important;
+	}
+	
+	.wp-block-gallery .wp-block-image,
+	.wp-block-gallery figure {
+		width: 100% !important;
+		max-width: 200px !important;
+		margin-bottom: 1rem !important;
+	}
+}
+
+/* Ensure Gutenberg blocks display properly - MODIFY existing rule around line 42 */
+.wp-block {
+	max-width: none !important;
+}
+
+/* Override the above rule specifically for gallery blocks */
+.wp-block-gallery.wp-block {
+	max-width: 100% !important;
+}

@@ -1,0 +1,19 @@
+{
+  "name": "enable365-theme",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./style.tailwind.css",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./style.tailwind.css --watch",
+    "build": "npm run build:css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Enable365 WordPress Theme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17"
+  }
+}

@@ -1,0 +1,320 @@
+
+.wp-block-gallery {
+	display: flex !important;
+	flex-wrap: nowrap !important;
+	overflow-x: auto;
+}
+
+
+
+
+
+
+
+.editor-styles-wrapper{		font-family: 'Inter', sans-serif!important;font-weight: 400;font-style: normal;}
+
+.editor-styles-wrapper p{
+	font-size: calc(1rem + .1vw);
+	line-height: calc(1.2rem + .8vw);
+	color: #353535;
+	font-weight: normal;
+}
+
+.editor-styles-wrapper a{text-decoration: none!important;color: #303332!important;}
+
+.editor-styles-wrapper h2{
+	font-size: 1.75rem;
+	line-height: 2.2rem;
+	font-weight: 200;
+}
+
+
+p{
+	margin-bottom: 1rem;
+}
+
+
+
+.getstarted-block{
+	display: flex;
+	gap: 4rem;
+}
+
+.getstarted-block > div:first-child, .getstarted-block > div:last-child{
+	background: #F9FAFB;
+	padding: 2rem 4rem;
+}
+.getstarted-block > div:first-child{
+	width: 60%;
+}
+.getstarted-block > div:last-child{
+	flex: 1;
+}
+.getstarted-block .title{	
+	font-size: 30px;
+	line-height: 48px;
+	display: block;
+	margin-bottom: 16px;
+}
+.getstarted-block .text{
+	margin-bottom: 16px;
+}
+
+.getstarted-block .button{
+	border-radius: 8px;
+	background-color: rgb(170, 16, 16);
+	padding: 10px 16px;
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.6s cubic-bezier(0.5, 0, 0, 1) 0s;
+	
+	text-decoration: none;
+	color: #fff;
+	display: inline-flex;
+}
+
+.staff-card a{
+	color: #AA1010;
+	font-weight: 600;
+	display: block;
+	text-decoration: underline;
+}
+.staff-card figure{
+	display: flex;
+	gap: 1.5rem;
+}
+.staff-card figure figcaption{
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+.staff-card figure img{
+	align-self: baseline;
+}
+
+
+
+
+
+.wp-block{max-width: 1440px!important;}
+
+
+
+
+.medium-bredde{max-width: 1200px;margin: 0 auto;}
+
+
+
+.services-card > a{	
+	height: 300px;
+	width: 100%;
+	display: block;
+	background-size: cover;
+	background-position: 50% 50%;
+}	
+.services-card .image-card-cont img {
+	width: 50px;
+	display: block;
+	margin: 0 auto 1rem;
+}
+
+.services-card .image-card-cont{
+	text-align: center;
+	padding: 2rem 4rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.figures-row img{object-fit: cover;height: 300px!important;}
+
+.figures-row {
+	display: grid!important;
+	grid-template-columns: 2fr 1fr 1fr;
+	grid-gap: 0 1rem;
+	margin: 4rem 0 6rem;
+}
+.figures-row .wp-block-column:not(:first-child) {
+	margin: 0;
+}
+@media only screen and (max-width: 850px) {
+	.figures-row{display: none;}
+}
+
+
+
+
+
+
+
+.testimonial{
+	background-color: #f9fafb;
+	padding: 3rem 2rem 4rem;
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+}
+.testimonial .logo{
+	width: 200px;
+}
+.testimonial a{
+	color: #aa1010;
+}
+.testimonial .text{
+	margin-bottom: 2rem;
+}
+.testimonial .text >*{
+	font-size: 1.2rem;
+	line-height: 1.8rem;
+	margin: 0;
+}
+.testimonial .avatar{
+	border-radius: 100px;
+	height: 72px;
+	widows: 72px;
+}
+@media only screen and (min-width: 850px) {
+	.testimonial .text >*{
+		font-size: 1.875rem;
+		line-height: 2.8rem;
+		margin: 0;
+	}
+	.testimonial{
+		padding: 3rem 8rem 4rem;
+	}
+}
+
+
+.usp-grid{
+	gap: 1rem;
+}
+@media only screen and (min-width: 850px) {
+	.usp-grid{
+		gap: 8rem;
+	}
+}
+.usp-grid h3 {
+	font-size: 24px;
+	line-height: 36px;
+	color: #AA1010;
+	margin-bottom: 1.5rem;
+}
+
+
+
+
+.post-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 4rem;
+	align-items: flex-start;
+}
+.post-grid figure a{
+	height: 100%;
+	display: block;
+}
+.post-grid figure img{
+	object-fit: cover;
+	width: 100%;
+	height: auto;
+	height: 240px;
+}
+
+
+.bullet-list-item-with-checkmark{
+	display: flex;
+	gap: 1rem;
+
+}
+.bullet-list-item-with-checkmark aside{
+	min-width: 24px;
+	position: relative;
+	top: 3px;
+}
+.bullet-list-item-with-checkmark img{
+	width: 24px;
+	height: 24px;
+}
+
+
+
+.border-gray {
+	border: 2px solid #F1F1F1;
+	border-radius: 8px;
+}
+.border-red {
+	border: 2px solid #ac1500;
+	border-radius: 8px;
+}
+
+@media only screen and (min-width: 850px) {
+	
+	.gap-1{
+		gap: 1rem;
+	}
+	.gap-3{
+		gap: 3rem;
+	}
+	.gap-6{
+		gap: 6rem!important; /* Deprecate this later with tailwind instead */
+	}
+}
+
+
+
+figure{
+	margin-bottom: 1rem;
+}
+h1, h2, h3, h4, h5{
+	margin-bottom: 1rem!important;
+	margin-top: .6rem!important;
+	display: block;
+	width: 100%;
+}
+.padding-2 {
+	padding: 2rem;
+}
+.padding-4 {
+	padding: 4rem;
+}
+
+
+@media only screen and (max-width: 850px) {
+	.mobile-center{
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+}
+
+
+.sub-title{
+	font-size: 1.1rem;
+	line-height: 1rem;
+	color: #aa1010;
+	font-weight: 600;
+}
+
+
+.intro-text{
+	font-size: 1.125rem !important;
+	line-height: 1.725rem !important;
+	font-weight: 300!important;
+}
+@media only screen and (min-width: 850px) {
+	.intro-text{
+		font-size: 1.375rem!important;
+		line-height: 2rem!important;
+	}
+}
+

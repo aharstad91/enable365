@@ -1,0 +1,147 @@
+.apps-by-category-block {
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+
+.apps-by-category-block .category-heading {
+  margin-bottom: 1.5rem;
+}
+
+.apps-by-category-block .apps-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .apps-by-category-block .apps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .apps-by-category-block .apps-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.apps-by-category-block .app-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.apps-by-category-block .app-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.apps-by-category-block .app-card a.learn-more {
+  color: #AA1010;
+}
+
+.apps-by-category-block .app-card a.learn-more:hover {
+  text-decoration: underline;
+}
+
+/* Tab Navigation Styles */
+.apps-by-category-block button {
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Tab indicator responsive behavior */
+.tab-indicator {
+  display: none !important; /* Hide on mobile by default */
+}
+
+@media (min-width: 1024px) {
+  .tab-indicator {
+    display: flex !important; /* Show on large screens */
+  }
+}
+
+/* Styles for active and hidden tab indicators */
+.active-tab-indicator {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.hidden-tab-indicator {
+  display: none !important;
+}
+
+/* Override for lg screens */
+@media (min-width: 1024px) {
+  .active-tab-indicator {
+    display: flex !important;
+  }
+}
+
+/* Ensure ScrollReveal doesn't interfere with visibility */
+.ani-clean {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure border displays on the content wrapper at large screens */
+@media (min-width: 1024px) {
+  .app-links .max-w-\[1280px\].bg-white.rounded-xl {
+    border: 1px solid #e5e7eb !important;
+    padding: 2rem !important;
+  }
+  
+  /* More specific selector to ensure it applies */
+  .app-links > div > .max-w-\[1280px\].bg-white.rounded-xl {
+    border: 1px solid #e5e7eb !important;
+  }
+  
+  /* Ensure all child card elements also have borders */
+  .app-links .bg-white.border.border-gray-200.rounded-xl,
+  .app-links .sr-exclude-cards > div,
+  .app-links .sr-exclude-cards > a {
+    border: 1px solid #e5e7eb !important;
+  }
+}
+
+/* Alpine.js utilities */
+[x-cloak] { 
+  display: none !important; 
+}
+
+.transition {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.ease-out {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+/* Ensure Alpine.js transition classes work properly */
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-100 {
+  opacity: 1;
+}
+
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-95 {
+  --tw-scale-x: 0.95;
+  --tw-scale-y: 0.95;
+}
+
+.scale-100 {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+}
