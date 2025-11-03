@@ -18,7 +18,7 @@ $video_container_id = 'video-container-' . uniqid();
 $video_embed = str_replace('youtube.com', 'youtube-nocookie.com', $video_embed);
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="ani-clean <?php echo esc_attr($className); ?>">
-	<div class="hero-container">
+	<div class="hero-container relative">
 		<div class="hero-grid">
 			<div class="hero-content">
 				<InnerBlocks />
