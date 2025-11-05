@@ -1,32 +1,56 @@
-<!-- Google Tag Manager (Optimized User Interaction Loading) -->
+<!-- Google Tag Manager & LinkedIn Pixel (Optimized User Interaction Loading) -->
 <script>
+// Initialize dataLayer and LinkedIn config
 window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({'gtm.start': new Date().getTime(), 'event':'gtm.js'});
 
-let gtmLoaded = false;
+_linkedin_partner_id = "2539348";
+window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+window._linkedin_data_partner_ids.push(_linkedin_partner_id);
 
-function loadGTM() {
-  if (gtmLoaded) return;
-  gtmLoaded = true;
+let trackingLoaded = false;
+
+function loadTracking() {
+  if (trackingLoaded) return;
+  trackingLoaded = true;
   
-  console.log('🚀 GTM Loading triggered!');
+  console.log('🚀 Loading tracking scripts...');
   
-  var script = document.createElement('script');
-  script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-M3TGPXJK';
-  script.async = true;
-  document.body.appendChild(script);
+  // Load GTM
+  var gtmScript = document.createElement('script');
+  gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-M3TGPXJK';
+  gtmScript.async = true;
+  document.body.appendChild(gtmScript);
   
-  // Push event to dataLayer when GTM loads
-  window.dataLayer.push({'event': 'gtm.loaded'});
-  console.log('✅ GTM Loaded successfully!');
+  // Initialize LinkedIn tracking
+  if (!window.lintrk) {
+    window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+    window.lintrk.q = [];
+  }
+  
+  // Load LinkedIn Pixel
+  var linkedinScript = document.createElement('script');
+  linkedinScript.type = 'text/javascript';
+  linkedinScript.async = true;
+  linkedinScript.src = 'https://snap.licdn.com/li.lms-analytics/insight.min.js';
+  document.body.appendChild(linkedinScript);
+  
+  // Push event to dataLayer when everything loads
+  window.dataLayer.push({'event': 'tracking.loaded'});
+  console.log('✅ GTM & LinkedIn Pixel loaded successfully!');
 }
 
-// Load GTM on first user interaction (scroll, click, touch, or mouse movement)
+// Load tracking on first user interaction (scroll, click, touch, or mouse movement)
 ['scroll', 'click', 'mousemove', 'touchstart', 'keydown'].forEach(function(event) {
-  window.addEventListener(event, loadGTM, { once: true, passive: true });
+  window.addEventListener(event, loadTracking, { once: true, passive: true });
 });
 
 // Fallback: Load after 10 seconds if no interaction (for bounce rate tracking)
-setTimeout(loadGTM, 10000);
+setTimeout(loadTracking, 10000);
 </script>
-<!-- End Google Tag Manager -->
+
+<!-- LinkedIn noscript fallback -->
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=2539348&fmt=gif" />
+</noscript>
+<!-- End Google Tag Manager & LinkedIn Pixel -->
