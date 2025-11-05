@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script>document.createElement('main'); /* IE-Fix */</script>
-	<?php get_template_part( '/assets/scripts/analytics' ); ?>
+	<?php get_template_part( '/assets/scripts/gtm' ); ?>
 	<?php get_template_part( '/assets/favicons' ); ?>
 
 
@@ -48,6 +48,11 @@
 	</style>
 </head>
 <body <?php body_class(); ?>>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3TGPXJK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <?php
 // Resolve ACF-driven navigation labels per menu location
