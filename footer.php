@@ -146,6 +146,8 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
 	  
 </script>
 
+<?php get_template_part( '/assets/scripts/gtm' ); ?>
+
 	
 </body>
 </html>

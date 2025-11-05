@@ -5,7 +5,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script>document.createElement('main'); /* IE-Fix */</script>
-	<?php get_template_part( '/assets/scripts/gtm' ); ?>
 	<?php get_template_part( '/assets/favicons' ); ?>
 
 
