@@ -58,7 +58,8 @@ $enable365_nav_labels = [
 	'apps_it_admin'  => 'IT admin & governance',
 ];
 
-if ( function_exists( 'get_nav_menu_locations' ) ) {
+// Only load ACF fields if ACF is fully initialized
+if ( function_exists( 'get_nav_menu_locations' ) && did_action( 'acf/init' ) ) {
 	$locations = get_nav_menu_locations();
 	
 	// Get current language for WPML compatibility
@@ -169,9 +170,9 @@ if ( function_exists( 'get_nav_menu_locations' ) ) {
 						<path d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22M12 2C9.49872 4.73835 8.07725 8.29203 8 12C8.07725 15.708 9.49872 19.2616 12 22M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22M2.50002 9H21.5M2.5 15H21.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 						</svg>
 					</div>
-					<?php do_action('wpml_add_language_selector');?>
-				</div>
-				<a class="bg-[#AA1010] border-2 border-[#AA1010] rounded-lg px-3 py-[6px] text-white text-[15px] font-bold text-center" href="<?php bloginfo('url'); ?>/talk-to-sales/"><?php the_field('talk_to_sales', 'option');?></a>
+				<?php do_action('wpml_add_language_selector');?>
+			</div>
+			<a class="bg-[#AA1010] border-2 border-[#AA1010] rounded-lg px-3 py-[6px] text-white text-[15px] font-bold text-center" href="<?php bloginfo('url'); ?>/talk-to-sales/"><?php if ( did_action( 'acf/init' ) && function_exists( 'the_field' ) ) { the_field('talk_to_sales', 'option'); } else { echo 'Contact sales'; } ?></a>
 			</div>
 		</div>
 	</header>
@@ -207,7 +208,7 @@ if ( function_exists( 'get_nav_menu_locations' ) ) {
 					<?php wp_nav_menu( array( 'container' => '', 'items_wrap' => '%3$s',  'theme_location' => 'mobile-menu', 'walker' => new Description_Walker_Nav_Menu() ) ); ?>
 				</ul>
 			</nav>
-			<a class="bg-[#AA1010] border-2 border-[#AA1010] rounded-lg px-3 py-[6px] text-white text-[15px] font-bold text-center" href="<?php bloginfo('url'); ?>/talk-to-sales/"><?php echo esc_html( get_field('talk_to_sales', 'option') ?: 'Contact sales' ); ?></a>
+			<a class="bg-[#AA1010] border-2 border-[#AA1010] rounded-lg px-3 py-[6px] text-white text-[15px] font-bold text-center" href="<?php bloginfo('url'); ?>/talk-to-sales/"><?php echo esc_html( ( did_action( 'acf/init' ) && function_exists( 'get_field' ) ? get_field('talk_to_sales', 'option') : '' ) ?: 'Contact sales' ); ?></a>
 
 		</div>
 	</header>
