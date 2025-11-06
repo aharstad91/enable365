@@ -48,11 +48,6 @@
 </head>
 <body <?php body_class(); ?>>
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3TGPXJK"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
 <?php
 // Resolve ACF-driven navigation labels per menu location
 // Each label is stored on the nav_menu term as 'nav_item_label'
