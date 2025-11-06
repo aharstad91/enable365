@@ -1,6 +1,29 @@
-<!-- Google Tag Manager & LinkedIn Pixel (Optimized User Interaction Loading) -->
+<!-- Google Tag Manager & LinkedIn Pixel (Optimized User Interaction Loading with Bot Detection) -->
 <script>
-// Initialize dataLayer and LinkedIn config
+// Bot detection function
+function isBot() {
+  // Check user agent for common bot patterns
+  var botPatterns = /bot|crawler|spider|scraper|curl|wget|python|java(?!script)|perl|ruby|go-http-client|request|axios|httpclient|okhttp|node|phantomjs|headless|selenium|puppeteer|playwright|webdriver|ghost|applebot|googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|sogoubot|exabot|facebookexternalhit|twitterbot|linkedinbot|whatsapp|telegram|skype|viber|iphone os 5|nokia|blackberry|windows phone|windows ce|palm|avantgo|blazer|elaine|hiptop|kindle|midp|mmp|netfront|opwv|pda|plucker|pocket|psp|treo|up\.browser|up\.link|vodafone|wap|opera mini/i;
+  
+  if (botPatterns.test(navigator.userAgent)) {
+    console.log('⛔ Bot detected, skipping tracking');
+    return true;
+  }
+  
+  // Check if JavaScript is disabled (common in bots)
+  if (typeof window === 'undefined') {
+    return true;
+  }
+  
+  // Check for headless browser indicators
+  if (!window.chrome && !window.navigator.vendor) {
+    return true;
+  }
+  
+  return false;
+}
+
+// Initialize dataLayer and LinkedIn config only if not a bot
 window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({'gtm.start': new Date().getTime(), 'event':'gtm.js'});
 
@@ -11,7 +34,8 @@ window._linkedin_data_partner_ids.push(_linkedin_partner_id);
 let trackingLoaded = false;
 
 function loadTracking() {
-  if (trackingLoaded) return;
+  // Skip if already loaded or if bot detected
+  if (trackingLoaded || isBot()) return;
   trackingLoaded = true;
   
   console.log('🚀 Loading tracking scripts...');
@@ -41,12 +65,17 @@ function loadTracking() {
 }
 
 // Load tracking on first user interaction (scroll, click, touch, or mouse movement)
-['scroll', 'click', 'mousemove', 'touchstart', 'keydown'].forEach(function(event) {
-  window.addEventListener(event, loadTracking, { once: true, passive: true });
-});
-
-// Fallback: Load after 10 seconds if no interaction (for bounce rate tracking)
-setTimeout(loadTracking, 10000);
+// Only attach listeners if not a bot
+if (!isBot()) {
+  ['scroll', 'click', 'mousemove', 'touchstart', 'keydown'].forEach(function(event) {
+    window.addEventListener(event, loadTracking, { once: true, passive: true });
+  });
+  
+  // Fallback: Load after 10 seconds if no interaction (for bounce rate tracking)
+  setTimeout(loadTracking, 10000);
+} else {
+  console.log('⛔ Bot detected on pageload, tracking disabled');
+}
 </script>
 
 <!-- LinkedIn noscript fallback -->
