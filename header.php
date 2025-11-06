@@ -7,26 +7,10 @@
 	<script>document.createElement('main'); /* IE-Fix */</script>
 	<?php get_template_part( '/assets/favicons' ); ?>
 
-
-<!-- Hjelper nettleseren å åpne forbindelser tidlig -->
+	<!-- Preconnect to Google Fonts for better performance -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	
-	<!-- Last font-CSS asynkront -->
-	<link rel="preload"
-		  href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap"
-		  as="style"
-		  onload="this.onload=null;this.rel='stylesheet'">
-	
-	<!-- Fallback hvis JS er av -->
-	<noscript>
-	  <link rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
-	</noscript>
 
-
-
-	
 	<link rel="apple-touch-icon" sizes="180x180" href="<?php bloginfo('template_directory'); ?>/assets/gfx/favicon/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="<?php bloginfo('template_directory'); ?>/assets/gfx/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="<?php bloginfo('template_directory'); ?>/assets/gfx/favicon/favicon-16x16.png">
