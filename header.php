@@ -49,75 +49,18 @@
 <body <?php body_class(); ?>>
 
 <?php
-// Resolve ACF-driven navigation labels per menu location
-// Each label is stored on the nav_menu term as 'nav_item_label'
-// Usage: get_field( 'nav_item_label', 'nav_menu_{term_id}' )
+// ACF navigation labels will be set via wp_head hook in functions.php
+// This prevents loading ACF too early
 $enable365_nav_labels = [
 	'products'       => 'Products',
 	'apps_productivity' => 'Productivity & management',
 	'apps_it_admin'  => 'IT admin & governance',
 ];
 
-// Only load ACF fields if ACF is fully initialized
-if ( function_exists( 'get_nav_menu_locations' ) && did_action( 'acf/init' ) ) {
-	$locations = get_nav_menu_locations();
-	
-	// Get current language for WPML compatibility
-	$current_lang = function_exists('icl_get_current_language') ? icl_get_current_language() : null;
-
-	// Primary menu (top-level Products trigger)
-	if ( isset( $locations['primary-menu'] ) && function_exists( 'get_field' ) ) {
-		$menu_id = $locations['primary-menu'];
-		
-		// Get translated menu ID for current language
-		if ($current_lang && function_exists('icl_object_id')) {
-			$translated_menu_id = icl_object_id($menu_id, 'nav_menu', false, $current_lang);
-			if ($translated_menu_id) {
-				$menu_id = $translated_menu_id;
-			}
-		}
-		
-		$label = get_field( 'nav_item_label', 'nav_menu_' . $menu_id );
-		if ( ! empty( $label ) ) {
-			$enable365_nav_labels['products'] = $label;
-		}
-	}
-
-	// Megamenu left column: apps-productivity
-	if ( isset( $locations['apps-productivity'] ) && function_exists( 'get_field' ) ) {
-		$menu_id = $locations['apps-productivity'];
-		
-		// Get translated menu ID for current language
-		if ($current_lang && function_exists('icl_object_id')) {
-			$translated_menu_id = icl_object_id($menu_id, 'nav_menu', false, $current_lang);
-			if ($translated_menu_id) {
-				$menu_id = $translated_menu_id;
-			}
-		}
-		
-		$label = get_field( 'nav_item_label', 'nav_menu_' . $menu_id );
-		if ( ! empty( $label ) ) {
-			$enable365_nav_labels['apps_productivity'] = $label;
-		}
-	}
-
-	// Megamenu right column: apps-it-admin
-	if ( isset( $locations['apps-it-admin'] ) && function_exists( 'get_field' ) ) {
-		$menu_id = $locations['apps-it-admin'];
-		
-		// Get translated menu ID for current language
-		if ($current_lang && function_exists('icl_object_id')) {
-			$translated_menu_id = icl_object_id($menu_id, 'nav_menu', false, $current_lang);
-			if ($translated_menu_id) {
-				$menu_id = $translated_menu_id;
-			}
-		}
-		
-		$label = get_field( 'nav_item_label', 'nav_menu_' . $menu_id );
-		if ( ! empty( $label ) ) {
-			$enable365_nav_labels['apps_it_admin'] = $label;
-		}
-	}
+// Check if labels were set from functions.php
+global $enable365_nav_labels_from_acf;
+if ( ! empty( $enable365_nav_labels_from_acf ) ) {
+	$enable365_nav_labels = array_merge( $enable365_nav_labels, $enable365_nav_labels_from_acf );
 }
 ?>
 	

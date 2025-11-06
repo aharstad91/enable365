@@ -262,24 +262,95 @@ add_action('init', function(){					//Kjør stuff når WP er startet opp
 });
 
 
-if( function_exists('acf_add_options_page') ) {
-		
-		acf_add_options_page(array(
-			'page_title' 	=> 'Dynamiske felter',
-			'menu_title'	=> 'Dynamiske felter',
-			'menu_slug' 	=> 'theme-general-settings',
-			'capability'	=> 'edit_posts',
-			'redirect'		=> false
-		));
-		
-	}	
+/**
+ * Register ACF Options Page at the correct hook
+ * This prevents the "textdomain loaded too early" notice in WordPress 6.7.0+
+ */
+function enable365_acf_add_options_page() {
+	// No need to check function_exists here - we're in acf/init hook
+	acf_add_options_page(array(
+		'page_title' 	=> 'Dynamiske felter',
+		'menu_title'	=> 'Dynamiske felter',
+		'menu_slug' 	=> 'theme-general-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+}
+add_action('acf/init', 'enable365_acf_add_options_page');	
 
 
+
+/**
+ * Load ACF navigation labels at the correct WordPress hook
+ * This prevents the "textdomain loaded too early" notice in WordPress 6.7.0+
+ * 
+ * @return void
+ */
+function enable365_load_acf_nav_labels() {
+	// No need to check function_exists here - we're in acf/init hook
+	// ACF and WordPress functions are guaranteed to be loaded at this point
+	
+	$labels = [];
+	$locations = get_nav_menu_locations();
+	$current_lang = function_exists('icl_get_current_language') ? icl_get_current_language() : null;
+	
+	// Get primary menu label
+	if ( isset( $locations['primary-menu'] ) ) {
+		$menu_id = $locations['primary-menu'];
+		if ( $current_lang && function_exists('icl_object_id') ) {
+			$translated_menu_id = icl_object_id($menu_id, 'nav_menu', false, $current_lang);
+			if ( $translated_menu_id ) {
+				$menu_id = $translated_menu_id;
+			}
+		}
+		$label = get_field( 'nav_item_label', 'nav_menu_' . $menu_id );
+		if ( ! empty( $label ) ) {
+			$labels['products'] = $label;
+		}
+	}
+	
+	// Get apps-productivity label
+	if ( isset( $locations['apps-productivity'] ) ) {
+		$menu_id = $locations['apps-productivity'];
+		if ( $current_lang && function_exists('icl_object_id') ) {
+			$translated_menu_id = icl_object_id($menu_id, 'nav_menu', false, $current_lang);
+			if ( $translated_menu_id ) {
+				$menu_id = $translated_menu_id;
+			}
+		}
+		$label = get_field( 'nav_item_label', 'nav_menu_' . $menu_id );
+		if ( ! empty( $label ) ) {
+			$labels['apps_productivity'] = $label;
+		}
+	}
+	
+	// Get apps-it-admin label
+	if ( isset( $locations['apps-it-admin'] ) ) {
+		$menu_id = $locations['apps-it-admin'];
+		if ( $current_lang && function_exists('icl_object_id') ) {
+			$translated_menu_id = icl_object_id($menu_id, 'nav_menu', false, $current_lang);
+			if ( $translated_menu_id ) {
+				$menu_id = $translated_menu_id;
+			}
+		}
+		$label = get_field( 'nav_item_label', 'nav_menu_' . $menu_id );
+		if ( ! empty( $label ) ) {
+			$labels['apps_it_admin'] = $label;
+		}
+	}
+	
+	// Store in global for header.php to use
+	if ( ! empty( $labels ) ) {
+		$GLOBALS['enable365_nav_labels_from_acf'] = $labels;
+	}
+}
 
 add_action('acf/init', 'my_acf_init');
 function my_acf_init() {
-	// check function exists
-	if( function_exists('acf_register_block') ) {
+	// Load ACF navigation labels at the correct time
+	enable365_load_acf_nav_labels();
+	
+	// No need to check function_exists here - we're in acf/init hook
 		
 		
 		// register a intro-section block
@@ -353,7 +424,6 @@ function my_acf_init() {
 		// 	'icon'				=> 'admin-comments',
 		// 	'keywords'			=> array( 'list' ),
 		// ));
-	}
 }
 
 
