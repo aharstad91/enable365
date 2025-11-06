@@ -43,7 +43,8 @@ $postTermsSlug = get_queried_object()->slug;
  			),
 		);
 		$newstwo = new WP_Query( $argstwo );
-		while ( $newstwo->have_posts() ) : $newstwo->the_post();?>
+		if ( $newstwo->have_posts() ) :
+			while ( $newstwo->have_posts() ) : $newstwo->the_post();?>
 			
 			<div class="news-post">
 				<?php if ( has_post_thumbnail() ) : ?>
@@ -55,6 +56,8 @@ $postTermsSlug = get_queried_object()->slug;
 				<div><?php the_date( 'j F Y', '<span>', '</span>' ); ?></div>	
 			</div>
 		<?php endwhile; ?>
+		<?php wp_reset_postdata(); ?>
+		<?php endif; ?>
 		
 	</div>
 </main>

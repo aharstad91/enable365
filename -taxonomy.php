@@ -40,6 +40,7 @@ $terms = get_terms( array(
 	<div class="grid-tests">
 			<?php
 			$news = new WP_Query( $args );
+			if ( $news->have_posts() ) :
 				while ( $news->have_posts() ) : $news->the_post();?>
 				
 				<div>
@@ -52,6 +53,8 @@ $terms = get_terms( array(
 					<?php endif; ?>					
 				</div>
 			<?php endwhile; ?>
+			<?php wp_reset_postdata(); ?>
+			<?php endif; ?>
 	</div>
 </main>
 

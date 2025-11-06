@@ -36,6 +36,7 @@ $terms = get_terms( array(
 	<div class="grid-tests p-b-8">
 		<?php
 		$news = new WP_Query( $args );
+		if ( $news->have_posts() ) :
 			while ( $news->have_posts() ) : $news->the_post();?>
 			
 			<div class="news-post">
@@ -48,6 +49,8 @@ $terms = get_terms( array(
 				<div><?php the_date( 'j F Y', '<span>', '</span>' ); ?></div>	
 			</div>
 		<?php endwhile; ?>
+		<?php wp_reset_postdata(); ?>
+		<?php endif; ?>
 	</div>
 </main>
 

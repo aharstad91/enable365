@@ -13,6 +13,8 @@
 		'posts_per_page' => 3 );
 		
 	$news = new WP_Query( $args );
+	
+	if ( $news->have_posts() ) :
 		while ( $news->have_posts() ) : $news->the_post();?>
 		<?php $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full'); ?>
 		
@@ -30,6 +32,8 @@
 					<?php the_excerpt();?>
 				</div>
 			</div>
-						
+					
 		<?php endwhile; ?>
+		<?php wp_reset_postdata(); ?>
+	<?php endif; ?>
 </section>

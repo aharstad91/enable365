@@ -20,10 +20,13 @@ $title = get_field('testimonial_title');
 
 <div class="testimonial">
 	<div class="medium-wrap">
+		<?php if ( $logo && is_array( $logo ) ) : ?>
 		<figure class="flex justify-center mb-6">
 			<img class="logo" src="<?php echo $logo['url'];?>" alt="<?php echo $logo['alt']; ?>">
 		</figure>
+		<?php endif; ?>
 		<div class="text text-center"><?php echo $text; ?></div>
+		<?php if ( $avatar && is_array( $avatar ) ) : ?>
 		<figure class="flex justify-center gap-4">
 			<img class="avatar" src="<?php echo $avatar['url'];?>" alt="<?php echo $avatar['alt']; ?>">
 			<figcaption>
@@ -31,5 +34,6 @@ $title = get_field('testimonial_title');
 				<p><?php echo $title; ?></p>
 			</figcaption>
 		</figure>
+		<?php endif; ?>
 	</div>
 </div>
