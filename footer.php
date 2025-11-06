@@ -124,7 +124,7 @@
 	  
 	  
 </script>
-
+<!-- Google Tag Manager & LinkedIn Pixel Integration -->
 <?php get_template_part( '/assets/scripts/gtm' ); ?>
 
 	
