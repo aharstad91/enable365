@@ -4,6 +4,9 @@
 	add_editor_style('editor-style.css');
 	add_image_size( 'ansatte-thumb', 25, 25, array( 'left', 'top' ) );
 
+	// Include Videos CPT functionality
+	require_once get_template_directory() . '/inc/videos-cpt.php';
+
 	function gutenbergtheme_editor_styles() { wp_enqueue_style( 'gutenbergthemeblocks-style', get_template_directory_uri() . '/blocks.css'); }
 	
 	add_action( 'enqueue_block_editor_assets', 'gutenbergtheme_editor_styles' );

@@ -44,31 +44,37 @@ $avatar_url = $author_id ? get_avatar_url($author_id, ['size' => 80]) : '';
 
 // Published date and reading time
 $published = $post_id ? get_the_date('j. M Y', $post_id) : '';
+$modified = $post_id ? get_the_modified_date('j. M Y', $post_id) : '';
+$show_modified = $post_id && ($published !== $modified); // Only show if different from published
 $content = $post_id ? get_post_field('post_content', $post_id) : '';
 $word_count = $content ? str_word_count( wp_strip_all_tags( $content ) ) : 0;
 $reading_minutes = $word_count ? max(1, round($word_count / 200)) : '';
 
-// Prepare featured image output using the post's featured image (Gutenberg core block)
+// Prepare featured image output using core/image block with lightbox enabled
 $featured_img_html = '';
 if ($post_id && has_post_thumbnail($post_id)) {
-    // Prefer rendering the core/post-featured-image block so it behaves like the native block
-    if (function_exists('render_block')) {
-        $block_to_render = array(
-            'blockName'   => 'core/post-featured-image',
-            'attrs'       => array(
-                'sizeSlug'  => 'full',
-                'className' => 'w-full aspect-video object-cover wp-post-image',
-                'isLink'    => false,
-            ),
-            'innerHTML'   => '',
-            'innerBlocks' => array(),
+    $thumbnail_id = get_post_thumbnail_id($post_id);
+    $thumbnail_url = wp_get_attachment_image_url($thumbnail_id, 'full');
+    $thumbnail_alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) ?: get_the_title($thumbnail_id);
+    
+    if ($thumbnail_url) {
+        // Use do_blocks() to properly render the core/image block with lightbox
+        // This ensures the full WordPress block rendering pipeline is used,
+        // including the lightbox Interactivity API directives
+        $block_markup = sprintf(
+            '<!-- wp:image {"id":%d,"sizeSlug":"full","linkDestination":"none","lightbox":{"enabled":true},"className":"featured-image-lightbox"} -->
+<figure class="wp-block-image size-full featured-image-lightbox"><img src="%s" alt="%s" class="wp-image-%d"/></figure>
+<!-- /wp:image -->',
+            $thumbnail_id,
+            esc_url($thumbnail_url),
+            esc_attr($thumbnail_alt),
+            $thumbnail_id
         );
-
-        // render_block accepts either a block object or a string; provide object for clarity
-        $featured_img_html = render_block($block_to_render);
+        
+        $featured_img_html = do_blocks($block_markup);
     }
 
-    // fallback: direct thumbnail if render_block not available or returned empty
+    // Fallback: direct thumbnail if do_blocks not available or returned empty
     if (empty($featured_img_html)) {
         $featured_img_html = get_the_post_thumbnail($post_id, 'full', array('class' => 'w-full aspect-video object-cover wp-post-image'));
     }
@@ -111,15 +117,13 @@ if ($post_id && has_post_thumbnail($post_id)) {
 
         </div>
 
-        <!-- Featured image column -->
-        <div class="flex-1 max-w-lg lg:max-w-none lg:order-last">
-            <?php if ($featured_img_html): ?>
-                <figure class="overflow-hidden rounded-2xl aspect-video">
-                    <div class="w-full h-full">
-                        <?php echo $featured_img_html; // already escaped by WP functions ?>
-                    </div>
-                </figure>
-            <?php endif; ?>
+        <!-- Featured image column with lightbox support -->
+        <div class="flex-1 max-w-lg lg:max-w-none lg:order-last featured-image-wrapper overflow-hidden rounded-2xl aspect-video">
+            <?php 
+            if ($featured_img_html): 
+                echo $featured_img_html; // Outputs core/image block with lightbox directives
+            endif; 
+            ?>
         </div>
     </div>
 
@@ -148,11 +152,17 @@ if ($post_id && has_post_thumbnail($post_id)) {
                 </div>
             </div>
             
-            <dl class="text-slate-500 text-sm">
+            <dl class="text-slate-500 text-sm flex gap-6">
                 <div class="flex flex-col gap-1">
                     <dt class="text-red-800 font-medium">Published on</dt>
                     <dd><?php echo esc_html($published); ?></dd>
                 </div>
+                <?php if ($show_modified): ?>
+                <div class="flex flex-col gap-1">
+                    <dt class="text-red-800 font-medium">Updated on</dt>
+                    <dd><?php echo esc_html($modified); ?></dd>
+                </div>
+                <?php endif; ?>
             </dl>
         </div>
     <div>
@@ -213,6 +223,9 @@ if ($post_id && has_post_thumbnail($post_id)) {
             </div>
 
 </div>
+
+<!-- Divider line at full container width (1216px) -->
+<div class="top-section-author-divider w-full border-b border-slate-200 mt-8 lg:mt-12"></div>
 
 <script>
 function copyToClipboard(button, text) {

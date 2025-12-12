@@ -1,4 +1,31 @@
-/* Featured Image Landscape Aspect Ratio - Force 16:9 */
+/* Featured Image Lightbox Container Styling */
+.top-section-author .featured-image-wrapper {
+    position: relative;
+}
+
+/* Force aspect-video on the wrapper and image */
+.top-section-author .featured-image-wrapper,
+.top-section-author .featured-image-wrapper figure.featured-image-lightbox {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 1rem; /* rounded-2xl equivalent */
+}
+
+.top-section-author .featured-image-wrapper figure.featured-image-lightbox {
+    margin: 0; /* Remove default figure margins */
+}
+
+.top-section-author .featured-image-wrapper figure.featured-image-lightbox img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    aspect-ratio: 16 / 9 !important;
+    cursor: zoom-in;
+}
+
+/* Legacy support for old structure */
 .top-section-author figure.aspect-video {
     aspect-ratio: 16 / 9;
     width: 100%;
@@ -11,6 +38,21 @@
     height: 100% !important;
     object-fit: cover !important;
     aspect-ratio: 16 / 9 !important;
+}
+
+/* Divider line - full container width */
+.top-section-author-divider {
+    max-width: 1216px;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 1px solid #e2e8f0; /* slate-200 */
+    margin-top: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .top-section-author-divider {
+        margin-top: 3rem;
+    }
 }
 
 /* Frontend styles */
