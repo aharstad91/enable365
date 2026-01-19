@@ -93,14 +93,15 @@ $page_excerpt = $videos_page ? $videos_page->post_excerpt : '';
         
         <!-- All Videos -->
         <a href="<?php echo get_post_type_archive_link('videos'); ?>" 
-           class="inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors border <?php echo !$is_tax_page ? 'bg-red-800 text-white border-red-800' : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50 hover:border-slate-400'; ?>">
+           class="inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors <?php echo !$is_tax_page ? 'bg-red-800 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'; ?>">
           Alle
         </a>
         
         <?php foreach ($app_terms as $term): ?>
           <a href="<?php echo get_term_link($term); ?>" 
-             class="inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors border <?php echo ($is_tax_page && $current_app->term_id === $term->term_id) ? 'bg-red-800 text-white border-red-800' : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50 hover:border-slate-400'; ?>">
-            <?php echo esc_html($term->name); ?> <span class="text-xs opacity-70">(<?php echo $term->count; ?>)</span>
+             class="inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors <?php echo ($is_tax_page && $current_app->term_id === $term->term_id) ? 'bg-red-800 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'; ?>">
+            <?php echo esc_html($term->name); ?>
+            <span class="ml-1.5 text-xs opacity-70">(<?php echo $term->count; ?>)</span>
           </a>
         <?php endforeach; ?>
       </div>

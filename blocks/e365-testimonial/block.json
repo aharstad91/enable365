@@ -1,0 +1,16 @@
+{
+    "name": "acf/e365-testimonial",
+    "title": "E365 Testimonial",
+    "description": "Display customer testimonials with logo, quote, and author info",
+    "category": "e365-blocks",
+    "icon": "format-quote",
+    "keywords": ["testimonial", "quote", "review", "customer", "sitat"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "blocks/e365-testimonial/template.php"
+    },
+    "supports": {
+        "align": ["wide", "full"],
+        "anchor": true
+    }
+}

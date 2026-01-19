@@ -1,0 +1,17 @@
+{
+    "name": "acf/e365-logo-grid",
+    "title": "E365 Logo Grid",
+    "description": "Display a grid of logos for clients, partners, or sponsors",
+    "category": "e365-blocks",
+    "icon": "grid-view",
+    "keywords": ["logo", "client", "partner", "sponsor", "grid", "carousel"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "blocks/e365-logo-grid/template.php"
+    },
+    "supports": {
+        "align": ["wide", "full"],
+        "anchor": true,
+        "jsx": true
+    }
+}

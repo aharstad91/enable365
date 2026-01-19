@@ -1,0 +1,34 @@
+{
+    "key": "group_e365_column",
+    "title": "E365 Column Settings",
+    "fields": [
+        {
+            "key": "field_e365_column_width_class",
+            "label": "Bredde-klasse",
+            "name": "column_width_class",
+            "type": "text",
+            "instructions": "Settes automatisk av parent grid. Ikke endre manuelt.",
+            "default_value": "",
+            "readonly": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/e365-column"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Innstillinger for E365 Column-blokken (child av Grid)",
+    "show_in_rest": 0,
+    "modified": 1736985600
+}

@@ -1,0 +1,175 @@
+{
+    "key": "group_e365_testimonial",
+    "title": "E365 Testimonial Settings",
+    "fields": [
+        {
+            "key": "field_e365_testimonial_tab_content",
+            "label": "Innhold",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_e365_testimonial_logo",
+            "label": "Logo",
+            "name": "logo",
+            "type": "image",
+            "instructions": "Kundens/organisasjonens logo (valgfritt)",
+            "return_format": "array",
+            "preview_size": "thumbnail"
+        },
+        {
+            "key": "field_e365_testimonial_quote",
+            "label": "Sitat",
+            "name": "quote",
+            "type": "wysiwyg",
+            "instructions": "Hovedsitatet. Bruk lenker for CTA i teksten hvis ønskelig.",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0
+        },
+        {
+            "key": "field_e365_testimonial_cta_text",
+            "label": "CTA-tekst",
+            "name": "cta_text",
+            "type": "text",
+            "instructions": "Valgfri lenketekst under sitatet",
+            "placeholder": "F.eks. Les hele historien",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_e365_testimonial_cta_link",
+            "label": "CTA-lenke",
+            "name": "cta_link",
+            "type": "url",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_e365_testimonial_tab_author",
+            "label": "Forfatter",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_e365_testimonial_avatar",
+            "label": "Profilbilde",
+            "name": "avatar",
+            "type": "image",
+            "instructions": "Rundt profilbilde av personen",
+            "return_format": "array",
+            "preview_size": "thumbnail"
+        },
+        {
+            "key": "field_e365_testimonial_author_name",
+            "label": "Navn",
+            "name": "author_name",
+            "type": "text",
+            "placeholder": "F.eks. Marie Edin Solheim",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_e365_testimonial_author_title",
+            "label": "Tittel/Rolle",
+            "name": "author_title",
+            "type": "text",
+            "placeholder": "F.eks. Senior Teacher, Learning Technology",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_e365_testimonial_tab_style",
+            "label": "Stil",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_e365_testimonial_layout",
+            "label": "Layout",
+            "name": "layout",
+            "type": "button_group",
+            "choices": {
+                "centered": "Sentrert",
+                "left": "Venstrejustert"
+            },
+            "default_value": "centered",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_e365_testimonial_background",
+            "label": "Bakgrunn",
+            "name": "background_style",
+            "type": "select",
+            "choices": {
+                "light": "Lys grå",
+                "white": "Hvit med ramme",
+                "dark": "Mørk",
+                "brand": "Brand (rød)",
+                "none": "Ingen (transparent)"
+            },
+            "default_value": "light",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_e365_testimonial_container",
+            "label": "Innholdsbredde",
+            "name": "container_width",
+            "type": "select",
+            "instructions": "Maks bredde på innholdet",
+            "choices": {
+                "content": "Smal (720px)",
+                "narrow": "Medium (960px)",
+                "standard": "Standard (1280px)",
+                "wide": "Bred (1440px)",
+                "full": "Full bredde"
+            },
+            "default_value": "narrow",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_e365_testimonial_quote_marks",
+            "label": "Vis anførselstegn",
+            "name": "show_quote_marks",
+            "type": "true_false",
+            "instructions": "Vis dekorative anførselstegn rundt sitatet",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "50"
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/e365-testimonial"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Innstillinger for E365 Testimonial-blokken",
+    "show_in_rest": 0,
+    "modified": 1737302400
+}

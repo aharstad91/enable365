@@ -1,0 +1,16 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/e365-video",
+  "title": "E365 Video",
+  "description": "Video med thumbnail og play-knapp. Åpner video i modal/lightbox.",
+  "category": "e365-components",
+  "icon": "video-alt3",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "template.php"
+  },
+  "supports": {
+    "anchor": true
+  }
+}

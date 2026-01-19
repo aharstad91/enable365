@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/e365-grid",
+  "title": "E365 Grid",
+  "description": "Universell kolonne-layout med 1-4 kolonner. Responsiv med konfigurerbar ratio og stacking.",
+  "category": "e365-layout",
+  "icon": "grid-view",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "template.php"
+  },
+  "supports": {
+    "anchor": true,
+    "jsx": true
+  }
+}

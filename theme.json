@@ -2,12 +2,26 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 2,
 	"settings": {
+		"layout": {
+			"contentSize": "1200px",
+			"wideSize": "1440px"
+		},
+		"appearanceTools": true,
+		"useRootPaddingAwareAlignments": true,
 		"blocks": {
 			"core/image": {
 				"lightbox": {
 					"enabled": true,
 					"allowEditing": true
 				}
+			}
+		}
+	},
+	"styles": {
+		"spacing": {
+			"padding": {
+				"left": "20px",
+				"right": "20px"
 			}
 		}
 	}

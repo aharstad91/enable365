@@ -1,11 +1,14 @@
 <?php
 	add_theme_support('title-tag');
 	add_theme_support('post-thumbnails');
-	add_editor_style('editor-style.css');
 	add_image_size( 'ansatte-thumb', 25, 25, array( 'left', 'top' ) );
 
 	// Include Videos CPT functionality
 	require_once get_template_directory() . '/inc/videos-cpt.php';
+
+	// Include E365 Block System helpers
+	require_once get_template_directory() . '/inc/block-helpers.php';
+	require_once get_template_directory() . '/inc/responsive-helpers.php';
 
 	function gutenbergtheme_editor_styles() { wp_enqueue_style( 'gutenbergthemeblocks-style', get_template_directory_uri() . '/blocks.css'); }
 	
@@ -36,7 +39,7 @@
 	
 	
 	function wd_admin_enqueues() {
-		
+
 			 // custom block styles
 			 wp_enqueue_script(
 				  'wd-editor',
@@ -45,6 +48,18 @@
 				  filemtime( get_stylesheet_directory() . '/assets/scripts/editor-min.js' ),
 				  true
 			 );
+
+			 // E365 Grid editor script for column sync
+			 $grid_editor_path = get_stylesheet_directory() . '/blocks/e365-grid/editor.js';
+			 if (file_exists($grid_editor_path)) {
+				 wp_enqueue_script(
+					 'e365-grid-editor',
+					 get_stylesheet_directory_uri() . '/blocks/e365-grid/editor.js',
+					 ['wp-blocks', 'wp-data', 'wp-hooks'],
+					 filemtime($grid_editor_path),
+					 true
+				 );
+			 }
 		}
 		add_action( 'enqueue_block_editor_assets', 'wd_admin_enqueues' );
 		
@@ -69,6 +84,8 @@ function enable365_enqueue_tailwind() {
 	}
 }
 add_action('wp_enqueue_scripts', 'enable365_enqueue_tailwind', 20); // Priority 20 to load after WordPress core styles
+// NOTE: Do NOT load Tailwind in block editor - it breaks WordPress admin UI
+// Block previews use iframe which loads frontend styles automatically
 
 /**
  * Ensure block editor styles don't conflict with Tailwind
@@ -97,6 +114,23 @@ function enable365_block_editor_styles() {
 	wp_add_inline_style('wp-edit-blocks', $custom_editor_css);
 }
 add_action('enqueue_block_editor_assets', 'enable365_block_editor_styles');
+
+/**
+ * Enqueue scoped Tailwind CSS for block editor previews
+ * This CSS is scoped to .acf-block-preview to avoid conflicts with WordPress admin UI
+ */
+function enable365_enqueue_editor_tailwind() {
+	$editor_css_path = get_template_directory() . '/style.editor.css';
+	if (file_exists($editor_css_path)) {
+		wp_enqueue_style(
+			'enable365-editor-tailwind',
+			get_template_directory_uri() . '/style.editor.css',
+			array(),
+			filemtime($editor_css_path)
+		);
+	}
+}
+add_action('enqueue_block_editor_assets', 'enable365_enqueue_editor_tailwind');
 
 
 	//Resize av bilder som har for lav størrelse
@@ -460,17 +494,55 @@ function my_acf_block_render_callback( $block ) {
 
 
 
+/**
+ * Register E365 custom block categories
+ * Places new categories at the top of the block inserter
+ */
+add_filter('block_categories_all', function($categories) {
+	// Add E365 categories at the top of the list
+	array_unshift($categories,
+		[
+			'slug'  => 'e365-layout',
+			'title' => __('E365 Layout', 'enable365'),
+			'icon'  => 'layout',
+		],
+		[
+			'slug'  => 'e365-components',
+			'title' => __('E365 Komponenter', 'enable365'),
+			'icon'  => 'screenoptions',
+		]
+	);
+	return $categories;
+}, 10, 2);
+
 // Make sure ACF is loaded before registering blocks
 add_action('acf/init', 'register_acf_blocks');
 function register_acf_blocks() {
 	if( function_exists('acf_register_block_type') ) {
-		$blocks = [
+		// Legacy blocks (do not modify)
+		$legacy_blocks = [
 			'video-image-overlay' => '/blocks/video-image-overlay/block.json',
 			'application-by-category' => '/blocks/application-by-category/block.json',
 			'top-section-author' => '/blocks/top-section-author/block.json',
 		];
-		foreach ($blocks as $block_name => $json_path) {
+		foreach ($legacy_blocks as $block_name => $json_path) {
 			register_block_type(__DIR__ . $json_path);
+		}
+
+		// E365 new block system
+		$e365_blocks = [
+			'e365-section' => '/blocks/e365-section/block.json',
+			'e365-grid' => '/blocks/e365-grid/block.json',
+			'e365-column' => '/blocks/e365-column/block.json',
+			'e365-video' => '/blocks/e365-video/block.json',
+			'e365-logo-grid' => '/blocks/e365-logo-grid/block.json',
+			'e365-testimonial' => '/blocks/e365-testimonial/block.json',
+		];
+		foreach ($e365_blocks as $block_name => $json_path) {
+			$block_path = __DIR__ . $json_path;
+			if (file_exists($block_path)) {
+				register_block_type($block_path);
+			}
 		}
 	}
 }

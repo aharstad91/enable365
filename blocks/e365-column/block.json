@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/e365-column",
+  "title": "E365 Kolonne",
+  "description": "En enkelt kolonne i E365 Grid. Kun til bruk inne i E365 Grid-blokken.",
+  "category": "e365-layout",
+  "icon": "columns",
+  "parent": ["acf/e365-grid"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "template.php"
+  },
+  "supports": {
+    "anchor": true,
+    "jsx": true,
+    "reusable": false,
+    "html": false
+  }
+}

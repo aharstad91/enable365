@@ -1,0 +1,190 @@
+{
+    "key": "group_e365_logo_grid",
+    "title": "E365 Logo Grid Settings",
+    "fields": [
+        {
+            "key": "field_e365_logo_grid_heading",
+            "label": "Overskrift",
+            "name": "heading",
+            "type": "text",
+            "placeholder": "F.eks. Våre kunder",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_e365_logo_grid_subheading",
+            "label": "Underoverskrift",
+            "name": "subheading",
+            "type": "text",
+            "placeholder": "F.eks. Betrodd av ledende organisasjoner",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_e365_logo_grid_logos",
+            "label": "Logoer",
+            "name": "logos",
+            "type": "repeater",
+            "instructions": "Legg til logoer. Anbefalt: Bruk PNG eller SVG med transparent bakgrunn.",
+            "min": 0,
+            "max": 20,
+            "layout": "block",
+            "button_label": "Legg til logo",
+            "sub_fields": [
+                {
+                    "key": "field_e365_logo_grid_logo_image",
+                    "label": "Logo",
+                    "name": "logo_image",
+                    "type": "image",
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "wrapper": {
+                        "width": "40"
+                    }
+                },
+                {
+                    "key": "field_e365_logo_grid_logo_name",
+                    "label": "Navn",
+                    "name": "logo_name",
+                    "type": "text",
+                    "instructions": "For tilgjengelighet (alt-tekst)",
+                    "wrapper": {
+                        "width": "30"
+                    }
+                },
+                {
+                    "key": "field_e365_logo_grid_logo_link",
+                    "label": "Lenke (valgfritt)",
+                    "name": "logo_link",
+                    "type": "url",
+                    "wrapper": {
+                        "width": "30"
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_e365_logo_grid_tab_layout",
+            "label": "Layout",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_e365_logo_grid_columns",
+            "label": "Kolonner",
+            "name": "columns",
+            "type": "button_group",
+            "choices": {
+                "3": "3",
+                "4": "4",
+                "5": "5",
+                "6": "6"
+            },
+            "default_value": "5",
+            "wrapper": {
+                "width": "33"
+            }
+        },
+        {
+            "key": "field_e365_logo_grid_logo_size",
+            "label": "Logo-størrelse",
+            "name": "logo_size",
+            "type": "button_group",
+            "choices": {
+                "sm": "Liten",
+                "md": "Medium",
+                "lg": "Stor"
+            },
+            "default_value": "md",
+            "wrapper": {
+                "width": "33"
+            }
+        },
+        {
+            "key": "field_e365_logo_grid_alignment",
+            "label": "Justering",
+            "name": "alignment",
+            "type": "button_group",
+            "choices": {
+                "left": "Venstre",
+                "center": "Midtstilt",
+                "right": "Høyre"
+            },
+            "default_value": "center",
+            "wrapper": {
+                "width": "33"
+            }
+        },
+        {
+            "key": "field_e365_logo_grid_tab_style",
+            "label": "Stil",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_e365_logo_grid_style",
+            "label": "Logo-stil",
+            "name": "logo_style",
+            "type": "button_group",
+            "choices": {
+                "default": "Standard",
+                "bordered": "Med ramme"
+            },
+            "default_value": "default",
+            "wrapper": {
+                "width": "33"
+            }
+        },
+        {
+            "key": "field_e365_logo_grid_grayscale",
+            "label": "Gråtone",
+            "name": "grayscale",
+            "type": "true_false",
+            "instructions": "Vis logoer i gråtoner",
+            "default_value": 0,
+            "ui": 1,
+            "wrapper": {
+                "width": "33"
+            }
+        },
+        {
+            "key": "field_e365_logo_grid_hover",
+            "label": "Hover-effekt",
+            "name": "hover_effect",
+            "type": "select",
+            "choices": {
+                "none": "Ingen",
+                "scale": "Forstørr",
+                "opacity": "Opacity",
+                "color": "Vis farger (kun med gråtone)"
+            },
+            "default_value": "none",
+            "wrapper": {
+                "width": "33"
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/e365-logo-grid"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Innstillinger for E365 Logo Grid-blokken",
+    "show_in_rest": 0,
+    "modified": 1737302400
+}

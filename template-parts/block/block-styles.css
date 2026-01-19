@@ -96,9 +96,8 @@ p{
 
 
 
-.wp-block{max-width: 1440px!important;}
-
-
+/* Block width - uses theme.json contentSize/wideSize for proper centering */
+/* Removed: .wp-block{max-width: 1440px!important;} - was preventing proper centering */
 
 
 .medium-bredde{max-width: 1200px;margin: 0 auto;}

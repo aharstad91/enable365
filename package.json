@@ -4,8 +4,9 @@
   "main": "index.js",
   "scripts": {
     "build:css": "tailwindcss -i ./src/input.css -o ./style.tailwind.css",
+    "build:editor": "tailwindcss -c ./tailwind.config.editor.js -i ./src/editor.css -o ./style.editor.css",
     "watch:css": "tailwindcss -i ./src/input.css -o ./style.tailwind.css --watch",
-    "build": "npm run build:css"
+    "build": "npm run build:css && npm run build:editor"
   },
   "keywords": [],
   "author": "",

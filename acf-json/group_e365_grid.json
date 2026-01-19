@@ -1,0 +1,160 @@
+{
+    "key": "group_e365_grid",
+    "title": "E365 Grid Settings",
+    "fields": [
+        {
+            "key": "field_e365_grid_columns",
+            "label": "Antall kolonner",
+            "name": "columns",
+            "type": "button_group",
+            "choices": {
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4"
+            },
+            "default_value": "2",
+            "return_format": "value",
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_e365_grid_ratio",
+            "label": "Kolonne-ratio",
+            "name": "column_ratio",
+            "type": "select",
+            "instructions": "Kun for 2-kolonne layout",
+            "choices": {
+                "50-50": "50/50 (lik)",
+                "60-40": "60/40",
+                "40-60": "40/60",
+                "70-30": "70/30",
+                "30-70": "30/70",
+                "66-33": "66/33 (2/3 - 1/3)",
+                "33-66": "33/66 (1/3 - 2/3)"
+            },
+            "default_value": "50-50",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_e365_grid_columns",
+                        "operator": "==",
+                        "value": "2"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_e365_grid_gap",
+            "label": "Mellomrom",
+            "name": "gap_size",
+            "type": "select",
+            "choices": {
+                "none": "Ingen",
+                "sm": "Lite",
+                "md": "Medium",
+                "lg": "Stort",
+                "xl": "Ekstra stort"
+            },
+            "default_value": "md",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_e365_grid_valign",
+            "label": "Vertikal justering",
+            "name": "vertical_align",
+            "type": "select",
+            "choices": {
+                "top": "Topp",
+                "center": "Midten",
+                "bottom": "Bunn",
+                "stretch": "Strekk"
+            },
+            "default_value": "top",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_e365_grid_stack",
+            "label": "Stables på mobil",
+            "name": "stack_on_mobile",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Ja",
+            "ui_off_text": "Nei",
+            "wrapper": {
+                "width": "33"
+            }
+        },
+        {
+            "key": "field_e365_grid_breakpoint",
+            "label": "Stables ved",
+            "name": "stack_breakpoint",
+            "type": "select",
+            "instructions": "Når skal kolonnene stackes?",
+            "choices": {
+                "sm": "Liten skjerm (640px)",
+                "md": "Medium skjerm (768px)",
+                "lg": "Stor skjerm (1024px)"
+            },
+            "default_value": "lg",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_e365_grid_stack",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33"
+            }
+        },
+        {
+            "key": "field_e365_grid_reverse",
+            "label": "Bytt rekkefølge på mobil",
+            "name": "reverse_on_mobile",
+            "type": "true_false",
+            "instructions": "Viser siste kolonne først på mobil",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Ja",
+            "ui_off_text": "Nei",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_e365_grid_columns",
+                        "operator": "==",
+                        "value": "2"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33"
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/e365-grid"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Innstillinger for E365 Grid-blokken",
+    "show_in_rest": 0,
+    "modified": 1736899200
+}
