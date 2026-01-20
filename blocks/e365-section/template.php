@@ -51,8 +51,8 @@ $inner_template = [];
 <div class="<?php echo esc_attr($block_class); ?>__inner <?php echo esc_attr($inner_classes); ?>">
     <?php if ($is_preview && empty($block['data'])): ?>
         <div class="e365-block-placeholder bg-slate-100 border-2 border-dashed border-slate-300 rounded-lg p-8 text-center text-slate-500">
-            <p class="m-0 text-lg font-medium">E365 Seksjon</p>
-            <p class="m-0 mt-2 text-sm">Legg til innhold her, og konfigurer bakgrunn, spacing og farger i sidefeltene.</p>
+            <p class="m-0 text-lg font-medium">E365 Section</p>
+            <p class="m-0 mt-2 text-sm">Add content here, and configure background, spacing, and colors in the sidebar.</p>
         </div>
     <?php endif; ?>
 

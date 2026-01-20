@@ -4,10 +4,10 @@
     "fields": [
         {
             "key": "field_e365_video_image",
-            "label": "Thumbnail-bilde",
+            "label": "Thumbnail image",
             "name": "image",
             "type": "image",
-            "instructions": "Bildet som vises før video startes",
+            "instructions": "Image displayed before video starts",
             "required": 1,
             "return_format": "array",
             "preview_size": "medium",
@@ -15,25 +15,25 @@
         },
         {
             "key": "field_e365_video_url",
-            "label": "Video-URL",
+            "label": "Video URL",
             "name": "video_url",
             "type": "url",
-            "instructions": "YouTube eller Vimeo URL",
+            "instructions": "YouTube or Vimeo URL",
             "required": 1,
             "placeholder": "https://www.youtube.com/watch?v=..."
         },
         {
             "key": "field_e365_video_aspect",
-            "label": "Størrelsesforhold",
+            "label": "Aspect ratio",
             "name": "aspect_ratio",
             "type": "select",
             "choices": {
                 "16/9": "16:9 (Widescreen)",
                 "4/3": "4:3 (Standard)",
-                "1/1": "1:1 (Kvadrat)",
-                "9/16": "9:16 (Vertikal)",
+                "1/1": "1:1 (Square)",
+                "9/16": "9:16 (Vertical)",
                 "3/2": "3:2",
-                "2/3": "2:3 (Portrett)"
+                "2/3": "2:3 (Portrait)"
             },
             "default_value": "16/9"
         }
@@ -54,7 +54,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Innstillinger for E365 Video-blokken",
+    "description": "Settings for E365 Video block",
     "show_in_rest": 0,
-    "modified": 1736899200
+    "modified": 1737388800
 }

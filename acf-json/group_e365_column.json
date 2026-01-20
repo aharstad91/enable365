@@ -4,10 +4,10 @@
     "fields": [
         {
             "key": "field_e365_column_width_class",
-            "label": "Bredde-klasse",
+            "label": "Width class",
             "name": "column_width_class",
             "type": "text",
-            "instructions": "Settes automatisk av parent grid. Ikke endre manuelt.",
+            "instructions": "Set automatically by parent grid. Do not change manually.",
             "default_value": "",
             "readonly": 1
         }
@@ -28,7 +28,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Innstillinger for E365 Column-blokken (child av Grid)",
+    "description": "Settings for E365 Column block (child of Grid)",
     "show_in_rest": 0,
-    "modified": 1736985600
+    "modified": 1737388800
 }

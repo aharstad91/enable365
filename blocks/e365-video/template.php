@@ -44,7 +44,7 @@ $has_content = $image_url && $video_url;
 
 <div id="<?php echo esc_attr($block_id); ?>" class="<?php echo esc_attr($block_class); ?> w-full">
     <?php if ($is_preview && !$has_content): ?>
-        <?php echo e365_block_placeholder('E365 Video', 'Legg til bilde og video-URL i sidefeltene.'); ?>
+        <?php echo e365_block_placeholder('E365 Video', 'Add thumbnail image and video URL in the sidebar.'); ?>
     <?php elseif ($has_content): ?>
         <div class="<?php echo esc_attr($block_class); ?>__wrapper relative rounded-xl overflow-hidden cursor-pointer group"
              data-video-url="<?php echo esc_attr($video_url); ?>">
@@ -55,7 +55,7 @@ $has_content = $image_url && $video_url;
                  class="w-full h-auto block object-cover object-center" />
 
             <!-- Play Button -->
-            <button class="<?php echo esc_attr($block_class); ?>__play absolute inset-0 flex items-center justify-center" aria-label="Spill av video">
+            <button class="<?php echo esc_attr($block_class); ?>__play absolute inset-0 flex items-center justify-center" aria-label="Play video">
                 <div class="e365-video__play-icon ani-clean">
                     <svg viewBox="0 0 24 24" width="48" height="48" fill="white" class="ani-clean">
                         <path d="M8 5v14l11-7z" class="ani-clean"></path>
@@ -67,7 +67,7 @@ $has_content = $image_url && $video_url;
         <!-- Video Modal -->
         <div class="e365-video__modal fixed inset-0 z-[9999] hidden items-center justify-center bg-black/90 p-4"
              id="<?php echo esc_attr($block_id); ?>-modal">
-            <button class="absolute top-4 right-4 text-white hover:text-gray-300 z-10" aria-label="Lukk video">
+            <button class="absolute top-4 right-4 text-white hover:text-gray-300 z-10" aria-label="Close video">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
@@ -81,7 +81,7 @@ $has_content = $image_url && $video_url;
     <?php else: ?>
         <!-- Frontend: Show placeholder if no content -->
         <div class="<?php echo esc_attr($aspect_class); ?> bg-slate-100 rounded-xl flex items-center justify-center">
-            <span class="text-slate-400">Video ikke konfigurert</span>
+            <span class="text-slate-400">Video not configured</span>
         </div>
     <?php endif; ?>
 </div>

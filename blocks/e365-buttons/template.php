@@ -166,7 +166,7 @@ function e365_get_button_classes($style, $size, $full_width_mobile) {
     <?php if ($has_buttons): ?>
         <div class="<?php echo esc_attr(implode(' ', $container_classes)); ?>">
             <?php foreach (array_slice($valid_buttons, 0, 2) as $index => $button):
-                $text = $button['text'] ?? 'Klikk her';
+                $text = $button['text'] ?? 'Click here';
                 $link = $button['link'];
                 $style = $button['style'] ?? 'primary';
                 $size = $button['size'] ?? 'md';
@@ -196,7 +196,7 @@ function e365_get_button_classes($style, $size, $full_width_mobile) {
     <?php elseif ($is_preview): ?>
         <div class="e365-block-placeholder bg-slate-100 border-2 border-dashed border-slate-300 rounded-lg p-6 text-center text-slate-500">
             <p class="m-0 text-base font-medium">E365 Buttons</p>
-            <p class="m-0 mt-2 text-sm">Legg til en lenke for å vise knappen.</p>
+            <p class="m-0 mt-2 text-sm">Add a link to display the button.</p>
         </div>
     <?php endif; ?>
 </div>

@@ -11,11 +11,11 @@
         },
         {
             "key": "field_e365_mc_media_type",
-            "label": "Media Type",
+            "label": "Media type",
             "name": "media_type",
             "type": "button_group",
             "choices": {
-                "image": "Bilde",
+                "image": "Image",
                 "video": "Video"
             },
             "default_value": "image",
@@ -24,7 +24,7 @@
         },
         {
             "key": "field_e365_mc_media_image",
-            "label": "Bilde",
+            "label": "Image",
             "name": "media_image",
             "type": "image",
             "return_format": "array",
@@ -45,7 +45,7 @@
             "label": "Video URL",
             "name": "media_video_url",
             "type": "url",
-            "instructions": "YouTube eller Vimeo URL",
+            "instructions": "YouTube or Vimeo URL",
             "conditional_logic": [
                 [
                     {
@@ -65,13 +65,13 @@
         },
         {
             "key": "field_e365_mc_media_position",
-            "label": "Media posisjon",
+            "label": "Media position",
             "name": "media_position",
             "type": "button_group",
-            "instructions": "Hvilken side skal media vises på (desktop)?",
+            "instructions": "Which side should media appear on (desktop)?",
             "choices": {
-                "left": "Venstre",
-                "right": "Hoyre"
+                "left": "Left",
+                "right": "Right"
             },
             "default_value": "left",
             "layout": "horizontal",
@@ -79,13 +79,13 @@
         },
         {
             "key": "field_e365_mc_mobile_order",
-            "label": "Mobil rekkefølge",
+            "label": "Mobile order",
             "name": "mobile_order",
             "type": "button_group",
-            "instructions": "Hva vises først på mobil?",
+            "instructions": "What appears first on mobile?",
             "choices": {
-                "media-first": "Media først",
-                "content-first": "Innhold først"
+                "media-first": "Media first",
+                "content-first": "Content first"
             },
             "default_value": "media-first",
             "layout": "horizontal",
@@ -93,70 +93,70 @@
         },
         {
             "key": "field_e365_mc_ratio",
-            "label": "Kolonne-ratio",
+            "label": "Column ratio",
             "name": "ratio",
             "type": "select",
             "choices": {
-                "50-50": "50/50 - Like bredder",
-                "60-40": "60/40 - Media bredere",
-                "40-60": "40/60 - Innhold bredere",
-                "55-45": "55/45 - Media litt bredere",
-                "45-55": "45/55 - Innhold litt bredere"
+                "50-50": "50/50 - Equal widths",
+                "60-40": "60/40 - Media wider",
+                "40-60": "40/60 - Content wider",
+                "55-45": "55/45 - Media slightly wider",
+                "45-55": "45/55 - Content slightly wider"
             },
             "default_value": "50-50",
             "return_format": "value"
         },
         {
             "key": "field_e365_mc_gap",
-            "label": "Mellomrom",
+            "label": "Gap",
             "name": "gap",
             "type": "select",
             "choices": {
-                "none": "Ingen",
-                "sm": "Liten",
+                "none": "None",
+                "sm": "Small",
                 "md": "Medium",
-                "lg": "Stor",
-                "xl": "Ekstra stor"
+                "lg": "Large",
+                "xl": "Extra large"
             },
             "default_value": "lg",
             "return_format": "value"
         },
         {
             "key": "field_e365_mc_vertical_align",
-            "label": "Vertikal justering",
+            "label": "Vertical alignment",
             "name": "vertical_align",
             "type": "select",
             "choices": {
-                "top": "Topp",
-                "center": "Midtstilt",
-                "bottom": "Bunn",
-                "stretch": "Strekk"
+                "top": "Top",
+                "center": "Center",
+                "bottom": "Bottom",
+                "stretch": "Stretch"
             },
             "default_value": "center",
             "return_format": "value"
         },
         {
             "key": "field_e365_mc_style_tab",
-            "label": "Stil",
+            "label": "Style",
             "name": "",
             "type": "tab",
             "placement": "top"
         },
         {
             "key": "field_e365_mc_image_rounded",
-            "label": "Avrundede hjørner",
+            "label": "Rounded corners",
             "name": "image_rounded",
             "type": "true_false",
-            "instructions": "Legg til avrundede hjørner på media",
+            "instructions": "Add rounded corners to media",
             "default_value": 1,
             "ui": 1
         },
         {
             "key": "field_e365_mc_image_shadow",
-            "label": "Skygge",
+            "label": "Shadow",
             "name": "image_shadow",
             "type": "true_false",
-            "instructions": "Legg til skygge på media",
+            "instructions": "Add shadow to media",
             "default_value": 0,
             "ui": 1
         }
@@ -177,6 +177,6 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Innstillinger for E365 Media + Content blokk",
+    "description": "Settings for E365 Media + Content block",
     "show_in_rest": true
 }

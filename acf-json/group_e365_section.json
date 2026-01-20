@@ -4,21 +4,21 @@
     "fields": [
         {
             "key": "field_e365_section_tab_bg",
-            "label": "Bakgrunn",
+            "label": "Background",
             "name": "",
             "type": "tab",
             "placement": "top"
         },
         {
             "key": "field_e365_section_bg_type",
-            "label": "Bakgrunnstype",
+            "label": "Background type",
             "name": "background_type",
             "type": "button_group",
             "choices": {
-                "none": "Ingen",
-                "color": "Farge",
+                "none": "None",
+                "color": "Color",
                 "gradient": "Gradient",
-                "image": "Bilde"
+                "image": "Image"
             },
             "default_value": "none",
             "return_format": "value",
@@ -26,7 +26,7 @@
         },
         {
             "key": "field_e365_section_bg_color",
-            "label": "Bakgrunnsfarge",
+            "label": "Background color",
             "name": "background_color",
             "type": "color_picker",
             "default_value": "#ffffff",
@@ -57,49 +57,40 @@
             "sub_fields": [
                 {
                     "key": "field_e365_section_gradient_start",
-                    "label": "Startfarge",
+                    "label": "Start color",
                     "name": "gradient_start",
                     "type": "color_picker",
-                    "default_value": "#ffffff",
-                    "wrapper": {
-                        "width": "33"
-                    }
+                    "default_value": "#ffffff"
                 },
                 {
                     "key": "field_e365_section_gradient_end",
-                    "label": "Sluttfarge",
+                    "label": "End color",
                     "name": "gradient_end",
                     "type": "color_picker",
-                    "default_value": "#f9fafb",
-                    "wrapper": {
-                        "width": "33"
-                    }
+                    "default_value": "#f9fafb"
                 },
                 {
                     "key": "field_e365_section_gradient_dir",
-                    "label": "Retning",
+                    "label": "Direction",
                     "name": "gradient_direction",
                     "type": "select",
                     "choices": {
-                        "to-b": "Ned",
-                        "to-t": "Opp",
-                        "to-r": "Høyre",
-                        "to-l": "Venstre",
-                        "to-br": "Ned-høyre",
-                        "to-bl": "Ned-venstre",
-                        "to-tr": "Opp-høyre",
-                        "to-tl": "Opp-venstre"
+                        "to-b": "Down",
+                        "to-t": "Up",
+                        "to-r": "Right",
+                        "to-l": "Left",
+                        "to-br": "Down-right",
+                        "to-bl": "Down-left",
+                        "to-tr": "Up-right",
+                        "to-tl": "Up-left"
                     },
-                    "default_value": "to-b",
-                    "wrapper": {
-                        "width": "33"
-                    }
+                    "default_value": "to-b"
                 }
             ]
         },
         {
             "key": "field_e365_section_bg_image",
-            "label": "Bakgrunnsbilde",
+            "label": "Background image",
             "name": "background_image",
             "type": "image",
             "return_format": "array",
@@ -123,109 +114,91 @@
         },
         {
             "key": "field_e365_section_pt",
-            "label": "Padding topp",
+            "label": "Padding top",
             "name": "padding_top",
             "type": "select",
             "choices": {
-                "none": "Ingen",
-                "sm": "Liten",
+                "none": "None",
+                "sm": "Small",
                 "md": "Medium",
-                "lg": "Stor",
-                "xl": "Ekstra stor",
-                "2xl": "Dobbelt stor"
+                "lg": "Large",
+                "xl": "Extra large",
+                "2xl": "Double large"
             },
-            "default_value": "md",
-            "wrapper": {
-                "width": "50"
-            }
+            "default_value": "md"
         },
         {
             "key": "field_e365_section_pb",
-            "label": "Padding bunn",
+            "label": "Padding bottom",
             "name": "padding_bottom",
             "type": "select",
             "choices": {
-                "none": "Ingen",
-                "sm": "Liten",
+                "none": "None",
+                "sm": "Small",
                 "md": "Medium",
-                "lg": "Stor",
-                "xl": "Ekstra stor",
-                "2xl": "Dobbelt stor"
+                "lg": "Large",
+                "xl": "Extra large",
+                "2xl": "Double large"
             },
-            "default_value": "md",
-            "wrapper": {
-                "width": "50"
-            }
+            "default_value": "md"
         },
         {
             "key": "field_e365_section_mt",
-            "label": "Margin topp",
+            "label": "Margin top",
             "name": "margin_top",
             "type": "select",
             "choices": {
-                "none": "Ingen",
-                "sm": "Liten",
+                "none": "None",
+                "sm": "Small",
                 "md": "Medium",
-                "lg": "Stor",
-                "xl": "Ekstra stor",
-                "2xl": "Dobbelt stor"
+                "lg": "Large",
+                "xl": "Extra large",
+                "2xl": "Double large"
             },
-            "default_value": "none",
-            "wrapper": {
-                "width": "50"
-            }
+            "default_value": "none"
         },
         {
             "key": "field_e365_section_mb",
-            "label": "Margin bunn",
+            "label": "Margin bottom",
             "name": "margin_bottom",
             "type": "select",
             "choices": {
-                "none": "Ingen",
-                "sm": "Liten",
+                "none": "None",
+                "sm": "Small",
                 "md": "Medium",
-                "lg": "Stor",
-                "xl": "Ekstra stor",
-                "2xl": "Dobbelt stor"
+                "lg": "Large",
+                "xl": "Extra large",
+                "2xl": "Double large"
             },
-            "default_value": "none",
-            "wrapper": {
-                "width": "50"
-            }
+            "default_value": "none"
         },
         {
             "key": "field_e365_section_tab_colors",
-            "label": "Farger",
+            "label": "Colors",
             "name": "",
             "type": "tab",
             "placement": "top"
         },
         {
             "key": "field_e365_section_text_color",
-            "label": "Tekstfarge",
+            "label": "Text color",
             "name": "text_color",
             "type": "select",
             "choices": {
-                "default": "Standard",
-                "light": "Lys (hvit)",
-                "dark": "Mørk",
-                "muted": "Dempet"
+                "default": "Default",
+                "light": "Light (white)",
+                "dark": "Dark",
+                "muted": "Muted"
             },
-            "default_value": "default",
-            "wrapper": {
-                "width": "50"
-            }
+            "default_value": "default"
         },
         {
             "key": "field_e365_section_accent",
-            "label": "Aksentfarge",
+            "label": "Accent color",
             "name": "accent_color",
             "type": "color_picker",
             "default_value": "#AA1010",
-            "instructions": "Brukes til knapper og lenker",
-            "wrapper": {
-                "width": "50"
-            }
+            "instructions": "Used for buttons and links"
         },
         {
             "key": "field_e365_section_tab_layout",
@@ -236,35 +209,29 @@
         },
         {
             "key": "field_e365_section_container",
-            "label": "Containerbredde",
+            "label": "Container width",
             "name": "container_width",
             "type": "select",
             "choices": {
-                "full": "Full bredde",
-                "wide": "Bred (1440px)",
+                "full": "Full width",
+                "wide": "Wide (1440px)",
                 "standard": "Standard (1280px)",
-                "narrow": "Smal (960px)",
-                "content": "Innhold (720px)"
+                "narrow": "Narrow (960px)",
+                "content": "Content (720px)"
             },
-            "default_value": "standard",
-            "wrapper": {
-                "width": "50"
-            }
+            "default_value": "standard"
         },
         {
             "key": "field_e365_section_align",
-            "label": "Innholdsjustering",
+            "label": "Content alignment",
             "name": "content_alignment",
             "type": "button_group",
             "choices": {
-                "left": "Venstre",
-                "center": "Midtstilt",
-                "right": "Høyre"
+                "left": "Left",
+                "center": "Center",
+                "right": "Right"
             },
-            "default_value": "left",
-            "wrapper": {
-                "width": "50"
-            }
+            "default_value": "left"
         }
     ],
     "location": [
@@ -283,7 +250,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Innstillinger for E365 Section-blokken",
+    "description": "Settings for E365 Section block",
     "show_in_rest": 0,
-    "modified": 1736899200
+    "modified": 1737388800
 }

@@ -4,34 +4,28 @@
     "fields": [
         {
             "key": "field_e365_logo_grid_heading",
-            "label": "Overskrift",
+            "label": "Heading",
             "name": "heading",
             "type": "text",
-            "placeholder": "F.eks. Våre kunder",
-            "wrapper": {
-                "width": "50"
-            }
+            "placeholder": "E.g. Our customers"
         },
         {
             "key": "field_e365_logo_grid_subheading",
-            "label": "Underoverskrift",
+            "label": "Subheading",
             "name": "subheading",
             "type": "text",
-            "placeholder": "F.eks. Betrodd av ledende organisasjoner",
-            "wrapper": {
-                "width": "50"
-            }
+            "placeholder": "E.g. Trusted by leading organizations"
         },
         {
             "key": "field_e365_logo_grid_logos",
-            "label": "Logoer",
+            "label": "Logos",
             "name": "logos",
             "type": "repeater",
-            "instructions": "Legg til logoer. Anbefalt: Bruk PNG eller SVG med transparent bakgrunn.",
+            "instructions": "Add logos. Recommended: Use PNG or SVG with transparent background.",
             "min": 0,
             "max": 20,
             "layout": "block",
-            "button_label": "Legg til logo",
+            "button_label": "Add logo",
             "sub_fields": [
                 {
                     "key": "field_e365_logo_grid_logo_image",
@@ -39,29 +33,20 @@
                     "name": "logo_image",
                     "type": "image",
                     "return_format": "array",
-                    "preview_size": "thumbnail",
-                    "wrapper": {
-                        "width": "40"
-                    }
+                    "preview_size": "thumbnail"
                 },
                 {
                     "key": "field_e365_logo_grid_logo_name",
-                    "label": "Navn",
+                    "label": "Name",
                     "name": "logo_name",
                     "type": "text",
-                    "instructions": "For tilgjengelighet (alt-tekst)",
-                    "wrapper": {
-                        "width": "30"
-                    }
+                    "instructions": "For accessibility (alt text)"
                 },
                 {
                     "key": "field_e365_logo_grid_logo_link",
-                    "label": "Lenke (valgfritt)",
+                    "label": "Link (optional)",
                     "name": "logo_link",
-                    "type": "url",
-                    "wrapper": {
-                        "width": "30"
-                    }
+                    "type": "url"
                 }
             ]
         },
@@ -74,115 +59,94 @@
         },
         {
             "key": "field_e365_logo_grid_columns",
-            "label": "Kolonner (desktop)",
+            "label": "Columns (desktop)",
             "name": "columns",
             "type": "button_group",
-            "instructions": "Antall kolonner på store skjermer",
+            "instructions": "Number of columns on large screens",
             "choices": {
                 "3": "3",
                 "4": "4",
                 "5": "5",
                 "6": "6"
             },
-            "default_value": "5",
-            "wrapper": {
-                "width": "33"
-            }
+            "default_value": "5"
         },
         {
             "key": "field_e365_logo_grid_columns_mobile",
-            "label": "Kolonner (mobil)",
+            "label": "Columns (mobile)",
             "name": "columns_mobile",
             "type": "button_group",
-            "instructions": "Antall kolonner på små skjermer",
+            "instructions": "Number of columns on small screens",
             "choices": {
                 "1": "1",
                 "2": "2",
                 "3": "3"
             },
-            "default_value": "2",
-            "wrapper": {
-                "width": "33"
-            }
+            "default_value": "2"
         },
         {
             "key": "field_e365_logo_grid_logo_size",
-            "label": "Logo-størrelse",
+            "label": "Logo size",
             "name": "logo_size",
             "type": "button_group",
             "choices": {
-                "sm": "Liten",
+                "sm": "Small",
                 "md": "Medium",
-                "lg": "Stor"
+                "lg": "Large"
             },
-            "default_value": "md",
-            "wrapper": {
-                "width": "33"
-            }
+            "default_value": "md"
         },
         {
             "key": "field_e365_logo_grid_alignment",
-            "label": "Justering",
+            "label": "Alignment",
             "name": "alignment",
             "type": "button_group",
             "choices": {
-                "left": "Venstre",
-                "center": "Midtstilt",
-                "right": "Høyre"
+                "left": "Left",
+                "center": "Center",
+                "right": "Right"
             },
-            "default_value": "center",
-            "wrapper": {
-                "width": "33"
-            }
+            "default_value": "center"
         },
         {
             "key": "field_e365_logo_grid_tab_style",
-            "label": "Stil",
+            "label": "Style",
             "name": "",
             "type": "tab",
             "placement": "top"
         },
         {
             "key": "field_e365_logo_grid_style",
-            "label": "Logo-stil",
+            "label": "Logo style",
             "name": "logo_style",
             "type": "button_group",
             "choices": {
-                "default": "Standard",
-                "bordered": "Med ramme"
+                "default": "Default",
+                "bordered": "With border"
             },
-            "default_value": "default",
-            "wrapper": {
-                "width": "33"
-            }
+            "default_value": "default"
         },
         {
             "key": "field_e365_logo_grid_grayscale",
-            "label": "Gråtone",
+            "label": "Grayscale",
             "name": "grayscale",
             "type": "true_false",
-            "instructions": "Vis logoer i gråtoner",
+            "instructions": "Display logos in grayscale",
             "default_value": 0,
-            "ui": 1,
-            "wrapper": {
-                "width": "33"
-            }
+            "ui": 1
         },
         {
             "key": "field_e365_logo_grid_hover",
-            "label": "Hover-effekt",
+            "label": "Hover effect",
             "name": "hover_effect",
             "type": "select",
             "choices": {
-                "none": "Ingen",
-                "scale": "Forstørr",
+                "none": "None",
+                "scale": "Enlarge",
                 "opacity": "Opacity",
-                "color": "Vis farger (kun med gråtone)"
+                "color": "Show colors (only with grayscale)"
             },
-            "default_value": "none",
-            "wrapper": {
-                "width": "33"
-            }
+            "default_value": "none"
         }
     ],
     "location": [
@@ -201,7 +165,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Innstillinger for E365 Logo Grid-blokken",
+    "description": "Settings for E365 Logo Grid block",
     "show_in_rest": 0,
-    "modified": 1737302400
+    "modified": 1737388800
 }

@@ -168,7 +168,7 @@ $alignment_class = 'text-' . $alignment;
     <?php elseif ($is_preview): ?>
         <div class="e365-block-placeholder bg-slate-100 border-2 border-dashed border-slate-300 rounded-lg p-8 text-center text-slate-500">
             <p class="m-0 text-lg font-medium">E365 Logo Grid</p>
-            <p class="m-0 mt-2 text-sm">Legg til logoer via sidefeltene til høyre.</p>
+            <p class="m-0 mt-2 text-sm">Add logos via the sidebar on the right.</p>
         </div>
     <?php endif; ?>
 </div>

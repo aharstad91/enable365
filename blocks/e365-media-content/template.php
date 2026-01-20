@@ -107,7 +107,7 @@ if ($media_type === 'image' && is_array($image) && !empty($image['mime_type'])) 
         <div class="<?php echo esc_attr($block_class); ?>__media w-full <?php echo esc_attr($ratios['media']); ?> <?php echo esc_attr(trim($media_order)); ?>">
             <?php if ($is_preview && !$has_media): ?>
                 <div class="e365-block-placeholder bg-slate-100 border-2 border-dashed border-slate-300 rounded-xl aspect-video flex items-center justify-center text-slate-500">
-                    <span>Velg bilde eller video i sidefeltene</span>
+                    <span>Select image or video in the sidebar</span>
                 </div>
             <?php elseif ($media_type === 'image' && !empty($image)): ?>
                 <?php
