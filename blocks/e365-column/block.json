@@ -14,6 +14,7 @@
   "supports": {
     "anchor": true,
     "jsx": true,
+    "innerBlocks": true,
     "reusable": false,
     "html": false
   }

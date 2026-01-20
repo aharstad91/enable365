@@ -1,0 +1,201 @@
+{
+    "key": "group_e365_buttons",
+    "title": "E365 Buttons Settings",
+    "fields": [
+        {
+            "key": "field_e365_buttons_repeater",
+            "label": "Knapper",
+            "name": "buttons",
+            "type": "repeater",
+            "instructions": "Legg til opptil 2 knapper",
+            "min": 0,
+            "max": 2,
+            "layout": "block",
+            "button_label": "Legg til knapp",
+            "sub_fields": [
+                {
+                    "key": "field_e365_btn_text",
+                    "label": "Tekst",
+                    "name": "text",
+                    "type": "text",
+                    "instructions": "",
+                    "placeholder": "F.eks. Les mer",
+                    "wrapper": {
+                        "width": "50"
+                    }
+                },
+                {
+                    "key": "field_e365_btn_link",
+                    "label": "Lenke",
+                    "name": "link",
+                    "type": "url",
+                    "instructions": "",
+                    "placeholder": "https://",
+                    "wrapper": {
+                        "width": "50"
+                    }
+                },
+                {
+                    "key": "field_e365_btn_style",
+                    "label": "Stil",
+                    "name": "style",
+                    "type": "select",
+                    "instructions": "",
+                    "choices": {
+                        "primary": "Primary (rød)",
+                        "secondary": "Secondary (hvit med rød ramme)",
+                        "outline": "Outline (mørk)",
+                        "outline-light": "Outline Light (hvit - for mørk bakgrunn)",
+                        "ghost": "Ghost (kun tekst)",
+                        "dark": "Dark (mørk)"
+                    },
+                    "default_value": "primary",
+                    "wrapper": {
+                        "width": "33"
+                    }
+                },
+                {
+                    "key": "field_e365_btn_size",
+                    "label": "Størrelse",
+                    "name": "size",
+                    "type": "button_group",
+                    "instructions": "",
+                    "choices": {
+                        "sm": "Liten",
+                        "md": "Medium",
+                        "lg": "Stor"
+                    },
+                    "default_value": "md",
+                    "wrapper": {
+                        "width": "33"
+                    }
+                },
+                {
+                    "key": "field_e365_btn_new_tab",
+                    "label": "Åpne i ny fane",
+                    "name": "new_tab",
+                    "type": "true_false",
+                    "instructions": "",
+                    "default_value": 0,
+                    "ui": 1,
+                    "wrapper": {
+                        "width": "34"
+                    }
+                },
+                {
+                    "key": "field_e365_btn_full_width",
+                    "label": "Full bredde på mobil",
+                    "name": "full_width_mobile",
+                    "type": "true_false",
+                    "instructions": "Knappen fyller hele bredden på små skjermer",
+                    "default_value": 0,
+                    "ui": 1,
+                    "wrapper": {
+                        "width": "50"
+                    }
+                },
+                {
+                    "key": "field_e365_btn_icon",
+                    "label": "Ikon (valgfritt)",
+                    "name": "icon",
+                    "type": "text",
+                    "instructions": "SVG-kode eller emoji",
+                    "placeholder": "→ eller SVG",
+                    "wrapper": {
+                        "width": "25"
+                    }
+                },
+                {
+                    "key": "field_e365_btn_icon_pos",
+                    "label": "Ikon-posisjon",
+                    "name": "icon_position",
+                    "type": "button_group",
+                    "instructions": "",
+                    "choices": {
+                        "left": "Venstre",
+                        "right": "Høyre"
+                    },
+                    "default_value": "right",
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_e365_btn_icon",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "25"
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_e365_buttons_tab_layout",
+            "label": "Layout",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_e365_buttons_alignment",
+            "label": "Justering",
+            "name": "alignment",
+            "type": "button_group",
+            "instructions": "",
+            "choices": {
+                "left": "Venstre",
+                "center": "Midtstilt",
+                "right": "Høyre"
+            },
+            "default_value": "left",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_e365_buttons_gap",
+            "label": "Avstand mellom knapper",
+            "name": "gap",
+            "type": "button_group",
+            "instructions": "",
+            "choices": {
+                "sm": "Liten",
+                "md": "Medium",
+                "lg": "Stor"
+            },
+            "default_value": "md",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_e365_buttons_stack",
+            "label": "Stables på mobil",
+            "name": "stack_on_mobile",
+            "type": "true_false",
+            "instructions": "Knappene vises under hverandre på små skjermer",
+            "default_value": 1,
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/e365-buttons"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Innstillinger for E365 Buttons-blokken",
+    "show_in_rest": 0,
+    "modified": 1737388800
+}

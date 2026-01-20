@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/e365-media-content",
+  "title": "E365 Media + Content",
+  "description": "Two-column layout with media (image/video) on one side and content blocks on the other. Supports responsive reordering.",
+  "category": "e365-layout",
+  "icon": "columns",
+  "keywords": ["media", "image", "video", "columns", "split", "layout"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "template.php"
+  },
+  "supports": {
+    "align": ["full", "wide"],
+    "anchor": true,
+    "jsx": true
+  }
+}

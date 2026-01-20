@@ -537,6 +537,7 @@ function register_acf_blocks() {
 			'e365-video' => '/blocks/e365-video/block.json',
 			'e365-logo-grid' => '/blocks/e365-logo-grid/block.json',
 			'e365-testimonial' => '/blocks/e365-testimonial/block.json',
+			'e365-media-content' => '/blocks/e365-media-content/block.json',
 		];
 		foreach ($e365_blocks as $block_name => $json_path) {
 			$block_path = __DIR__ . $json_path;

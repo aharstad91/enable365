@@ -40,13 +40,5 @@ $allowed_blocks = [
 ?>
 
 <div id="<?php echo esc_attr($block_id); ?>" class="<?php echo esc_attr($block_class); ?> <?php echo esc_attr($width_class); ?>">
-    <?php if ($is_preview): ?>
-        <InnerBlocks
-            allowedBlocks="<?php echo esc_attr(wp_json_encode($allowed_blocks)); ?>"
-            template="[]"
-            templateLock="false"
-        />
-    <?php else: ?>
-        <InnerBlocks />
-    <?php endif; ?>
+    <InnerBlocks />
 </div>

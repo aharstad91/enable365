@@ -14,10 +14,23 @@ defined('ABSPATH') || exit;
 $block_class = 'e365-section';
 $is_preview = e365_is_block_editor();
 
+// Debug background - remove after testing
+$debug_bg_type = get_field('background_type');
+$debug_bg_color = get_field('background_color');
+$debug_all_fields = get_fields();
+if ($is_preview) {
+    echo '<!-- E365 Section Debug: bg_type=' . esc_html($debug_bg_type) . ', bg_color=' . esc_html($debug_bg_color) . ' -->';
+    echo '<!-- All fields: ' . esc_html(print_r($debug_all_fields, true)) . ' -->';
+    echo '<!-- Block data: ' . esc_html(print_r($block['data'] ?? 'no data', true)) . ' -->';
+}
+
 // Get allowed inner blocks - all layout and component blocks
 $allowed_blocks = [
     'acf/e365-grid',
+    'acf/e365-media-content',
     'acf/e365-video',
+    'acf/e365-logo-grid',
+    'acf/e365-testimonial',
     'core/paragraph',
     'core/heading',
     'core/image',
@@ -25,6 +38,7 @@ $allowed_blocks = [
     'core/buttons',
     'core/group',
     'core/columns',
+    'core/spacer',
 ];
 
 // InnerBlocks template - empty by default

@@ -219,6 +219,8 @@ function e365_get_background_style($bg_type) {
     switch ($bg_type) {
         case 'color':
             $color = get_field('background_color');
+            // Debug: uncomment to see what's happening
+            // error_log('E365 Section BG Type: ' . $bg_type . ', Color: ' . print_r($color, true));
             if ($color) {
                 $styles[] = 'background-color: ' . esc_attr($color);
             }

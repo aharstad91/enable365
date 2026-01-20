@@ -161,6 +161,64 @@
   .e365-testimonial__quote p + p {
     @apply mt-4;
   }
+
+  /* E365 Video - image establishes height, play button overlays */
+  .e365-video__wrapper {
+    @apply relative;
+    isolation: isolate;
+  }
+  .e365-video__wrapper > img {
+    @apply w-full h-auto block;
+  }
+  .e365-video__wrapper .e365-video__play {
+    @apply absolute inset-0;
+    z-index: 10;
+    background: transparent;
+  }
+
+  /* E365 Media + Content - InnerBlocks container handling */
+  .e365-media-content__content > .acf-innerblocks-container {
+    @apply contents;
+  }
+
+  /* Style for content area - make text flow nicely */
+  .e365-media-content__content h1,
+  .e365-media-content__content h2,
+  .e365-media-content__content h3,
+  .e365-media-content__content h4 {
+    @apply mt-0;
+  }
+  .e365-media-content__content h1:first-child,
+  .e365-media-content__content h2:first-child,
+  .e365-media-content__content h3:first-child,
+  .e365-media-content__content h4:first-child {
+    @apply mt-0;
+  }
+  .e365-media-content__content p:last-child {
+    @apply mb-0;
+  }
+
+  /* Video wrapper in media-content */
+  .e365-media-content__video-wrapper {
+    @apply aspect-video;
+  }
+
+  /* E365 Buttons - responsive button component */
+  .e365-btn {
+    @apply inline-flex items-center justify-center;
+    @apply font-semibold rounded-lg;
+    @apply transition-all duration-200;
+    @apply no-underline cursor-pointer border-2;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#AA1010];
+  }
+
+  /* Button icon spacing */
+  .e365-btn__icon {
+    @apply flex-shrink-0;
+  }
+  .e365-btn__icon svg {
+    @apply w-4 h-4;
+  }
 }
 
 /* Add any custom utilities here */

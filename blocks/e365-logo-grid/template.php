@@ -20,6 +20,8 @@ $heading = get_field('heading') ?: '';
 $subheading = get_field('subheading') ?: '';
 $columns = get_field('columns') ?: 5;
 $columns = intval($columns);
+$columns_mobile = get_field('columns_mobile') ?: 2;
+$columns_mobile = intval($columns_mobile);
 $logo_style = get_field('logo_style') ?: 'default';
 $logo_size = get_field('logo_size') ?: 'md';
 $alignment = get_field('alignment') ?: 'center';
@@ -48,22 +50,25 @@ $grid_classes = [
     'lg:gap-8',
 ];
 
-// Responsive column classes
+// Mobile column class
+$mobile_col_class = 'grid-cols-' . $columns_mobile;
+
+// Responsive column classes based on desktop setting
 switch ($columns) {
     case 3:
-        $grid_classes[] = 'grid-cols-2 md:grid-cols-3';
+        $grid_classes[] = $mobile_col_class . ' md:grid-cols-3';
         break;
     case 4:
-        $grid_classes[] = 'grid-cols-2 md:grid-cols-4';
+        $grid_classes[] = $mobile_col_class . ' md:grid-cols-4';
         break;
     case 5:
-        $grid_classes[] = 'grid-cols-2 md:grid-cols-3 lg:grid-cols-5';
+        $grid_classes[] = $mobile_col_class . ' md:grid-cols-3 lg:grid-cols-5';
         break;
     case 6:
-        $grid_classes[] = 'grid-cols-2 md:grid-cols-3 lg:grid-cols-6';
+        $grid_classes[] = $mobile_col_class . ' md:grid-cols-3 lg:grid-cols-6';
         break;
     default:
-        $grid_classes[] = 'grid-cols-2 md:grid-cols-3 lg:grid-cols-5';
+        $grid_classes[] = $mobile_col_class . ' md:grid-cols-3 lg:grid-cols-5';
 }
 
 // Logo item classes
@@ -75,17 +80,19 @@ $logo_classes = [
     'p-4',
 ];
 
-// Logo size
+// Logo size - using max-height for flexible scaling
 switch ($logo_size) {
     case 'sm':
-        $logo_classes[] = 'h-12 lg:h-16';
+        $max_height = 'max-h-20 sm:max-h-24 lg:max-h-28';
         break;
     case 'md':
-        $logo_classes[] = 'h-16 lg:h-20';
+        $max_height = 'max-h-24 sm:max-h-28 lg:max-h-32';
         break;
     case 'lg':
-        $logo_classes[] = 'h-20 lg:h-24';
+        $max_height = 'max-h-28 sm:max-h-32 lg:max-h-36';
         break;
+    default:
+        $max_height = 'max-h-24 sm:max-h-28 lg:max-h-32';
 }
 
 // Style variations
@@ -138,7 +145,7 @@ $alignment_class = 'text-' . $alignment;
                     'medium',
                     false,
                     [
-                        'class' => 'max-h-full w-auto object-contain',
+                        'class' => $max_height . ' w-auto object-contain',
                         'alt' => $name ?: ($image['alt'] ?? ''),
                     ]
                 );

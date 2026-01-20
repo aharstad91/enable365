@@ -1,0 +1,182 @@
+{
+    "key": "group_e365_media_content",
+    "title": "E365 Media + Content",
+    "fields": [
+        {
+            "key": "field_e365_mc_media_tab",
+            "label": "Media",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_e365_mc_media_type",
+            "label": "Media Type",
+            "name": "media_type",
+            "type": "button_group",
+            "choices": {
+                "image": "Bilde",
+                "video": "Video"
+            },
+            "default_value": "image",
+            "layout": "horizontal",
+            "return_format": "value"
+        },
+        {
+            "key": "field_e365_mc_media_image",
+            "label": "Bilde",
+            "name": "media_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_e365_mc_media_type",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_e365_mc_media_video_url",
+            "label": "Video URL",
+            "name": "media_video_url",
+            "type": "url",
+            "instructions": "YouTube eller Vimeo URL",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_e365_mc_media_type",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_e365_mc_layout_tab",
+            "label": "Layout",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_e365_mc_media_position",
+            "label": "Media posisjon",
+            "name": "media_position",
+            "type": "button_group",
+            "instructions": "Hvilken side skal media vises på (desktop)?",
+            "choices": {
+                "left": "Venstre",
+                "right": "Hoyre"
+            },
+            "default_value": "left",
+            "layout": "horizontal",
+            "return_format": "value"
+        },
+        {
+            "key": "field_e365_mc_mobile_order",
+            "label": "Mobil rekkefølge",
+            "name": "mobile_order",
+            "type": "button_group",
+            "instructions": "Hva vises først på mobil?",
+            "choices": {
+                "media-first": "Media først",
+                "content-first": "Innhold først"
+            },
+            "default_value": "media-first",
+            "layout": "horizontal",
+            "return_format": "value"
+        },
+        {
+            "key": "field_e365_mc_ratio",
+            "label": "Kolonne-ratio",
+            "name": "ratio",
+            "type": "select",
+            "choices": {
+                "50-50": "50/50 - Like bredder",
+                "60-40": "60/40 - Media bredere",
+                "40-60": "40/60 - Innhold bredere",
+                "55-45": "55/45 - Media litt bredere",
+                "45-55": "45/55 - Innhold litt bredere"
+            },
+            "default_value": "50-50",
+            "return_format": "value"
+        },
+        {
+            "key": "field_e365_mc_gap",
+            "label": "Mellomrom",
+            "name": "gap",
+            "type": "select",
+            "choices": {
+                "none": "Ingen",
+                "sm": "Liten",
+                "md": "Medium",
+                "lg": "Stor",
+                "xl": "Ekstra stor"
+            },
+            "default_value": "lg",
+            "return_format": "value"
+        },
+        {
+            "key": "field_e365_mc_vertical_align",
+            "label": "Vertikal justering",
+            "name": "vertical_align",
+            "type": "select",
+            "choices": {
+                "top": "Topp",
+                "center": "Midtstilt",
+                "bottom": "Bunn",
+                "stretch": "Strekk"
+            },
+            "default_value": "center",
+            "return_format": "value"
+        },
+        {
+            "key": "field_e365_mc_style_tab",
+            "label": "Stil",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_e365_mc_image_rounded",
+            "label": "Avrundede hjørner",
+            "name": "image_rounded",
+            "type": "true_false",
+            "instructions": "Legg til avrundede hjørner på media",
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_e365_mc_image_shadow",
+            "label": "Skygge",
+            "name": "image_shadow",
+            "type": "true_false",
+            "instructions": "Legg til skygge på media",
+            "default_value": 0,
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/e365-media-content"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Innstillinger for E365 Media + Content blokk",
+    "show_in_rest": true
+}

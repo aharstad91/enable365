@@ -74,9 +74,10 @@
         },
         {
             "key": "field_e365_logo_grid_columns",
-            "label": "Kolonner",
+            "label": "Kolonner (desktop)",
             "name": "columns",
             "type": "button_group",
+            "instructions": "Antall kolonner på store skjermer",
             "choices": {
                 "3": "3",
                 "4": "4",
@@ -84,6 +85,22 @@
                 "6": "6"
             },
             "default_value": "5",
+            "wrapper": {
+                "width": "33"
+            }
+        },
+        {
+            "key": "field_e365_logo_grid_columns_mobile",
+            "label": "Kolonner (mobil)",
+            "name": "columns_mobile",
+            "type": "button_group",
+            "instructions": "Antall kolonner på små skjermer",
+            "choices": {
+                "1": "1",
+                "2": "2",
+                "3": "3"
+            },
+            "default_value": "2",
             "wrapper": {
                 "width": "33"
             }

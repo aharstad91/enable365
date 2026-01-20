@@ -1,0 +1,16 @@
+{
+    "name": "acf/e365-buttons",
+    "title": "E365 Buttons",
+    "description": "Display up to 2 customizable buttons with responsive sizing",
+    "category": "e365-blocks",
+    "icon": "button",
+    "keywords": ["button", "buttons", "cta", "link", "knapp"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "blocks/e365-buttons/template.php"
+    },
+    "supports": {
+        "align": ["left", "center", "right", "wide", "full"],
+        "anchor": true
+    }
+}

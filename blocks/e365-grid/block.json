@@ -12,6 +12,8 @@
   },
   "supports": {
     "anchor": true,
-    "jsx": true
-  }
+    "jsx": true,
+    "innerBlocks": true
+  },
+  "allowedBlocks": ["acf/e365-column"]
 }

@@ -57,17 +57,5 @@ $allowed_blocks = ['acf/e365-column'];
      data-breakpoint="<?php echo esc_attr($breakpoint); ?>"
      data-ratio="<?php echo esc_attr($ratio); ?>"
      data-reverse="<?php echo esc_attr($reverse ? 'true' : 'false'); ?>">
-    <?php if ($is_preview): ?>
-        <InnerBlocks
-            allowedBlocks="<?php echo esc_attr(wp_json_encode($allowed_blocks)); ?>"
-            template="<?php echo esc_attr(wp_json_encode($column_template)); ?>"
-        />
-        <?php if ($columns > 0): ?>
-            <div class="e365-grid-hint text-xs text-slate-400 mt-2 text-center">
-                Maks <?php echo $columns; ?> kolonner. Legg til innhold i hver kolonne.
-            </div>
-        <?php endif; ?>
-    <?php else: ?>
-        <InnerBlocks />
-    <?php endif; ?>
+<InnerBlocks />
 </div>
