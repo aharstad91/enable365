@@ -524,17 +524,12 @@ h1, h2, h3, h4, h5, h6 {
   visibility: visible;
 }
 
+/* Video content - always 16:9 aspect ratio */
+
 .e365-video__modal-content {
   position: relative;
   width: 100%;
-  height: 100%;
   aspect-ratio: 16 / 9;
-}
-
-@media (min-width: 768px) {
-  .e365-video__modal {
-    background: rgba(0, 0, 0, 0.95);
-  }
 }
 
 .e365-video__iframe {
@@ -543,21 +538,27 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
 }
 
+/* Desktop: constrained max-width */
+
+@media (min-width: 768px) {
+  .e365-video__modal {
+    background: rgba(0, 0, 0, 0.95);
+    padding: 2rem;
+  }
+
+  .e365-video__modal-content {
+    max-width: 1200px;
+  }
+}
+
 .e365-video__close-wrapper {
   width: 100%;
-  margin: 0 auto;
-  position: absolute;
-  bottom: 80px;
+  position: fixed;
+  bottom: 40px;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
-}
-
-@media (min-width: 768px) {
-  .e365-video__close-wrapper {
-    bottom: 40px;
-  }
 }
 
 .e365-video__close {
