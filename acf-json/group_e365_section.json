@@ -118,12 +118,14 @@
             "name": "padding_top",
             "type": "select",
             "choices": {
-                "none": "None",
-                "sm": "Small",
-                "md": "Medium",
-                "lg": "Large",
-                "xl": "Extra large",
-                "2xl": "Double large"
+                "none": "None (0)",
+                "xs": "XS (8px)",
+                "sm": "SM (16px)",
+                "md": "MD (32px)",
+                "lg": "LG (48px)",
+                "xl": "XL (64px)",
+                "2xl": "2XL (96px)",
+                "3xl": "3XL (128px)"
             },
             "default_value": "md"
         },
@@ -133,12 +135,14 @@
             "name": "padding_bottom",
             "type": "select",
             "choices": {
-                "none": "None",
-                "sm": "Small",
-                "md": "Medium",
-                "lg": "Large",
-                "xl": "Extra large",
-                "2xl": "Double large"
+                "none": "None (0)",
+                "xs": "XS (8px)",
+                "sm": "SM (16px)",
+                "md": "MD (32px)",
+                "lg": "LG (48px)",
+                "xl": "XL (64px)",
+                "2xl": "2XL (96px)",
+                "3xl": "3XL (128px)"
             },
             "default_value": "md"
         },
@@ -148,12 +152,14 @@
             "name": "margin_top",
             "type": "select",
             "choices": {
-                "none": "None",
-                "sm": "Small",
-                "md": "Medium",
-                "lg": "Large",
-                "xl": "Extra large",
-                "2xl": "Double large"
+                "none": "None (0)",
+                "xs": "XS (8px)",
+                "sm": "SM (16px)",
+                "md": "MD (32px)",
+                "lg": "LG (48px)",
+                "xl": "XL (64px)",
+                "2xl": "2XL (96px)",
+                "3xl": "3XL (128px)"
             },
             "default_value": "none"
         },
@@ -163,12 +169,14 @@
             "name": "margin_bottom",
             "type": "select",
             "choices": {
-                "none": "None",
-                "sm": "Small",
-                "md": "Medium",
-                "lg": "Large",
-                "xl": "Extra large",
-                "2xl": "Double large"
+                "none": "None (0)",
+                "xs": "XS (8px)",
+                "sm": "SM (16px)",
+                "md": "MD (32px)",
+                "lg": "LG (48px)",
+                "xl": "XL (64px)",
+                "2xl": "2XL (96px)",
+                "3xl": "3XL (128px)"
             },
             "default_value": "none"
         },

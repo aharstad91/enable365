@@ -29,11 +29,11 @@ module.exports = {
       variants: ['lg'],
     },
 
-    // Grid columns - base
-    { pattern: /^grid-cols-(1|2|3|4)$/ },
+    // Grid columns - base (1-6 for logo grid)
+    { pattern: /^grid-cols-(1|2|3|4|5|6)$/ },
     // Grid columns - responsive
     {
-      pattern: /^grid-cols-(1|2|3|4)$/,
+      pattern: /^grid-cols-(1|2|3|4|5|6)$/,
       variants: ['sm', 'md', 'lg'],
     },
 
@@ -95,6 +95,21 @@ module.exports = {
     'max-w-[1440px]',
     'max-w-full',
     'max-w-4xl',
+
+    // Logo grid sizes (mobile)
+    'max-w-[120px]',
+    'max-w-[140px]',
+    'max-w-[180px]',
+    'max-w-[200px]',
+    'max-w-[220px]',
+    'max-w-[260px]',
+    // Logo grid sizes (desktop)
+    'lg:max-w-[120px]',
+    'lg:max-w-[140px]',
+    'lg:max-w-[180px]',
+    'lg:max-w-[200px]',
+    'lg:max-w-[220px]',
+    'lg:max-w-[260px]',
 
     // Common utility classes used in blocks
     'w-full',

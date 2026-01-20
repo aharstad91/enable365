@@ -3,20 +3,6 @@
     "title": "E365 Logo Grid Settings",
     "fields": [
         {
-            "key": "field_e365_logo_grid_heading",
-            "label": "Heading",
-            "name": "heading",
-            "type": "text",
-            "placeholder": "E.g. Our customers"
-        },
-        {
-            "key": "field_e365_logo_grid_subheading",
-            "label": "Subheading",
-            "name": "subheading",
-            "type": "text",
-            "placeholder": "E.g. Trusted by leading organizations"
-        },
-        {
             "key": "field_e365_logo_grid_logos",
             "label": "Logos",
             "name": "logos",

@@ -113,26 +113,41 @@ function e365_get_inner_classes() {
 /**
  * Get spacing Tailwind classes from ACF fields
  *
+ * Spacing scale (mobile → desktop):
+ * - none: 0 → 0
+ * - xs:   8px → 8px
+ * - sm:   16px → 16px
+ * - md:   24px → 32px
+ * - lg:   32px → 48px
+ * - xl:   40px → 64px
+ * - 2xl:  48px → 96px
+ * - 3xl:  64px → 128px
+ *
  * @return string Space-separated CSS classes
  */
 function e365_get_spacing_classes() {
+    // Mobile spacing - scaled down for smaller screens (Tailwind units: 1 unit = 4px)
     $spacing_map = [
         'none' => '0',
-        'sm'   => '4',
-        'md'   => '8',
-        'lg'   => '12',
-        'xl'   => '16',
-        '2xl'  => '24',
+        'xs'   => '2',    // 8px
+        'sm'   => '4',    // 16px
+        'md'   => '6',    // 24px (desktop: 32px)
+        'lg'   => '8',    // 32px (desktop: 48px)
+        'xl'   => '10',   // 40px (desktop: 64px)
+        '2xl'  => '12',   // 48px (desktop: 96px)
+        '3xl'  => '16',   // 64px (desktop: 128px)
     ];
 
-    // Responsive multipliers for desktop
+    // Desktop spacing (full values)
     $desktop_map = [
         'none' => '0',
-        'sm'   => '6',
-        'md'   => '12',
-        'lg'   => '16',
-        'xl'   => '20',
-        '2xl'  => '32',
+        'xs'   => '2',    // 8px
+        'sm'   => '4',    // 16px
+        'md'   => '8',    // 32px
+        'lg'   => '12',   // 48px
+        'xl'   => '16',   // 64px
+        '2xl'  => '24',   // 96px
+        '3xl'  => '32',   // 128px
     ];
 
     $classes = [];
@@ -141,14 +156,14 @@ function e365_get_spacing_classes() {
     $pt = get_field('padding_top') ?: 'md';
     if ($pt !== 'none') {
         $classes[] = 'pt-' . ($spacing_map[$pt] ?? '8');
-        $classes[] = 'lg:pt-' . ($desktop_map[$pt] ?? '12');
+        $classes[] = 'lg:pt-' . ($desktop_map[$pt] ?? '8');
     }
 
     // Padding bottom
     $pb = get_field('padding_bottom') ?: 'md';
     if ($pb !== 'none') {
         $classes[] = 'pb-' . ($spacing_map[$pb] ?? '8');
-        $classes[] = 'lg:pb-' . ($desktop_map[$pb] ?? '12');
+        $classes[] = 'lg:pb-' . ($desktop_map[$pb] ?? '8');
     }
 
     // Margin top
@@ -194,10 +209,10 @@ function e365_get_text_color_class($color) {
 function e365_get_container_class($width) {
     $width_map = [
         'full'     => 'w-full',
-        'wide'     => 'max-w-[1440px] mx-auto px-4 lg:px-8',
-        'standard' => 'max-w-[1280px] mx-auto px-4 lg:px-8',
-        'narrow'   => 'max-w-[960px] mx-auto px-4 lg:px-8',
-        'content'  => 'max-w-[720px] mx-auto px-4 lg:px-8',
+        'wide'     => 'max-w-[1440px] mx-auto px-4',
+        'standard' => 'max-w-[1280px] mx-auto px-4',
+        'narrow'   => 'max-w-[960px] mx-auto px-4',
+        'content'  => 'max-w-[720px] mx-auto px-4',
     ];
 
     return $width_map[$width] ?? $width_map['standard'];
@@ -313,4 +328,80 @@ function e365_block_placeholder($block_name, $message = '') {
         </div>',
         esc_html($message ?: $default_message)
     );
+}
+
+/**
+ * Get button classes based on style and size
+ *
+ * Styles:
+ * - primary: Brand red filled button (default)
+ * - secondary: White with red border, inverts on hover
+ * - outline-light: For dark backgrounds - white border/text
+ *
+ * @param string $style Button style (primary, secondary, outline-light)
+ * @param string $size Button size (sm, md, lg)
+ * @param bool $full_width_mobile Whether button should be full width on mobile
+ * @return string Space-separated CSS classes
+ */
+function e365_get_button_classes($style, $size, $full_width_mobile) {
+    $classes = [
+        'e365-btn',
+        'inline-flex',
+        'items-center',
+        'justify-center',
+        'font-semibold',
+        'rounded-lg',
+        'transition-all',
+        'duration-200',
+        'no-underline',
+        'cursor-pointer',
+        'border-2',
+        // Focus state for accessibility
+        'focus:outline-none',
+        'focus:ring-2',
+        'focus:ring-offset-2',
+    ];
+
+    // Size classes - responsive scaling
+    $size_classes = [
+        'sm' => 'text-sm px-4 py-2 lg:px-5 lg:py-2.5',
+        'md' => 'text-sm lg:text-base px-5 py-2.5 lg:px-6 lg:py-3',
+        'lg' => 'text-base lg:text-lg px-6 py-3 lg:px-8 lg:py-4',
+    ];
+    $classes[] = $size_classes[$size] ?? $size_classes['md'];
+
+    // Style classes - simplified to 3 core styles
+    switch ($style) {
+        case 'primary':
+        default:
+            $classes[] = 'e365-btn--primary';
+            $classes[] = 'bg-[#AA1010] border-[#AA1010] text-white';
+            $classes[] = 'hover:bg-[#8a0d0d] hover:border-[#8a0d0d]';
+            $classes[] = 'active:bg-[#6d0a0a] active:border-[#6d0a0a]';
+            $classes[] = 'focus:ring-[#AA1010]/50';
+            break;
+
+        case 'secondary':
+            $classes[] = 'e365-btn--secondary';
+            $classes[] = 'bg-white border-[#AA1010] text-[#AA1010]';
+            $classes[] = 'hover:bg-[#AA1010] hover:text-white';
+            $classes[] = 'active:bg-[#8a0d0d] active:border-[#8a0d0d]';
+            $classes[] = 'focus:ring-[#AA1010]/50';
+            break;
+
+        case 'outline-light':
+            $classes[] = 'e365-btn--outline-light';
+            $classes[] = 'bg-transparent border-white text-white';
+            $classes[] = 'hover:bg-white hover:text-slate-900';
+            $classes[] = 'active:bg-slate-100';
+            $classes[] = 'focus:ring-white/50';
+            break;
+    }
+
+    // Full width on mobile
+    if ($full_width_mobile) {
+        $classes[] = 'w-full sm:w-auto';
+    }
+
+    return implode(' ', $classes);
 }

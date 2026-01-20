@@ -6,27 +6,27 @@
 ---
 
 ## Last Updated
-- **When:** 2026-01-19
+- **When:** 2026-01-20
 - **By:** Claude Code
-- **What:** Implemented Scoped Tailwind CSS for WordPress block editor
+- **What:** Debugging Logo Grid hover effects - ikke fungerende ennå
 
 ---
 
 ## Active Context
 
 ### Current Focus
-- E365 Block System - Tailwind styling in editor working
+- E365 Logo Grid - Feilsøking av hover-effekter (grayscale, scale, lift)
 
 ### Latest Changes
-- **IMPLEMENTED** Scoped Tailwind CSS for block editor - admin UI stable, blocks styled
-- Created E365 Logo Grid block for client/partner logos
-- Created E365 Testimonial v2 block with improved centering, mobile layout, and styling options
-- Added container width option to testimonial block
-- Added CSS for quote marks styling
-- Fixed 3/4-column grid layouts
+- Undersøkte Logo Grid template - hover-klasser genereres korrekt i PHP
+- Problem: Hover-effektene vises ikke på frontend
+- Mulig årsak: Tailwind-klasser ikke kompilert, eller CSS-spesifisitet-problemer
 
 ### Open Questions / Blockers
-- None currently
+- **Logo Grid hover ikke fungerer** - trenger å verifisere:
+  1. Er hover-klassene i kompilert CSS (`style.tailwind.css`)?
+  2. Er det CSS-konflikter som overstyrer?
+  3. Fungerer grayscale-filteret i det hele tatt?
 
 ### Important to Remember
 - Enable365 is a WordPress theme for Microsoft 365 productivity apps
@@ -38,6 +38,21 @@
 ---
 
 ## Changelog
+
+### 2026-01-20
+
+#### [Code] Logo Grid hover debugging (pågående)
+- **Problem:** Hover-effekter (grayscale, scale, lift) fungerer ikke på Logo Grid
+- **Undersøkt:**
+  - Template.php genererer korrekte Tailwind-klasser basert på ACF-felt
+  - Klasser inkluderer: `grayscale hover:grayscale-0`, `hover:scale-105`, `hover:shadow-lg hover:-translate-y-1`
+- **Ikke løst ennå** - trenger videre debugging i neste sesjon
+- **Neste steg:**
+  1. Sjekk om klassene finnes i `style.tailwind.css`
+  2. Kjør `npm run build` for å sikre kompilering
+  3. Inspiser elementet i DevTools for å se hvilke CSS-regler som gjelder
+
+---
 
 ### 2026-01-19
 
@@ -141,11 +156,13 @@
 
 ## Next Steps (Prioritized)
 
-1. [x] ~~E365 Logo Grid block~~ - Created
-2. [x] ~~E365 Testimonial v2 block~~ - Created
-3. [ ] Test new blocks in browser
-4. [ ] Debug E365 Section background color issue (reported earlier)
-5. [ ] Review uncommitted changes and consider committing
+1. [ ] **Logo Grid hover fix** - Feilsøk hvorfor hover-effekter ikke fungerer
+   - Sjekk kompilert CSS for hover-klasser
+   - Kjør `npm run build`
+   - Test i DevTools
+2. [ ] Debug E365 Section background color issue (reported earlier)
+3. [ ] Review uncommitted changes and consider committing
+4. [ ] Test alle nye blokker grundig i browser
 
 ---
 

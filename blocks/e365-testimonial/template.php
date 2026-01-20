@@ -104,8 +104,10 @@ $quote_classes = [
 
 if ($background === 'dark' || $background === 'brand') {
     $quote_classes[] = 'text-white';
+    $quote_classes[] = '[&_a]:text-white/90 [&_a]:underline [&_a]:hover:text-white';
 } else {
     $quote_classes[] = 'text-slate-800';
+    $quote_classes[] = '[&_a]:text-[#AA1010] [&_a]:underline [&_a]:hover:text-[#8a0d0d]';
 }
 
 // CTA link classes
@@ -179,7 +181,7 @@ if ($background === 'dark' || $background === 'brand') {
 
             <?php // Author section ?>
             <?php if ($has_author): ?>
-                <div class="e365-testimonial__author mt-6 lg:mt-8 <?php echo $layout === 'centered' ? 'flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4' : 'flex items-center gap-4'; ?>">
+                <div class="e365-testimonial__author mt-6 lg:mt-8 <?php echo $layout === 'centered' ? 'flex flex-col items-center text-center gap-3' : 'flex items-center gap-4'; ?>">
                     <?php if ($has_avatar): ?>
                         <img
                             src="<?php echo esc_url($avatar['url']); ?>"
@@ -188,7 +190,7 @@ if ($background === 'dark' || $background === 'brand') {
                             loading="lazy"
                         >
                     <?php endif; ?>
-                    <div class="e365-testimonial__author-info <?php echo $layout === 'centered' && !$has_avatar ? '' : ($layout === 'centered' ? 'text-left' : ''); ?>">
+                    <div class="e365-testimonial__author-info">
                         <p class="<?php echo esc_attr(implode(' ', $author_name_classes)); ?> m-0">
                             <?php echo esc_html($author_name); ?>
                         </p>
