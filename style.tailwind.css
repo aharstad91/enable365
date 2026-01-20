@@ -492,11 +492,11 @@ h1, h2, h3, h4, h5, h6 {
 /* E365 Video Modal - iOS Safari compatible (uses opacity/visibility, not display) */
 
 .e365-video__modal.active {
-  opacity: 1;
-  visibility: visible;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-/* Video content - always 16:9 aspect ratio */
+/* Video content container - use viewport units for reliable sizing */
 
 /* Desktop: constrained max-width */
 
