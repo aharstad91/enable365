@@ -463,6 +463,24 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1rem;
 }
 
+/* E365 Logo Grid - ensure grid works on iOS Safari */
+
+.e365-logo-grid__grid {
+  display: grid !important;
+}
+
+.e365-logo-grid__grid.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.e365-logo-grid__grid.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.e365-logo-grid__grid.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 /* E365 Video - image establishes height, play button overlays */
 
 /* Play icon button styling */
@@ -2348,6 +2366,48 @@ h1, h2, h3, h4, h5, h6 {
 .hover\:bg-\[\#AA1010\]:hover
   .e365-testimonial .e365-testimonial__quote-text::before {
   color: rgb(255 255 255 / 0.2);
+}
+
+@media (min-width: 640px) {
+  .sm\:grid-cols-1.e365-logo-grid__grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .sm\:grid-cols-2.e365-logo-grid__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sm\:grid-cols-3.e365-logo-grid__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-1.e365-logo-grid__grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-2.e365-logo-grid__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-3.e365-logo-grid__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-1.e365-logo-grid__grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-2.e365-logo-grid__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-3.e365-logo-grid__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .marker\:text-slate-600 *::marker {

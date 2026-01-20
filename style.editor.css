@@ -892,10 +892,6 @@
   max-width: 80rem;
 }
 
-.acf-block-preview .max-w-\[100px\] {
-  max-width: 100px;
-}
-
 .acf-block-preview .max-w-\[120px\] {
   max-width: 120px;
 }
@@ -904,16 +900,32 @@
   max-width: 1280px;
 }
 
+.acf-block-preview .max-w-\[140px\] {
+  max-width: 140px;
+}
+
 .acf-block-preview .max-w-\[1440px\] {
   max-width: 1440px;
 }
 
-.acf-block-preview .max-w-\[720px\] {
-  max-width: 720px;
+.acf-block-preview .max-w-\[180px\] {
+  max-width: 180px;
 }
 
-.acf-block-preview .max-w-\[80px\] {
-  max-width: 80px;
+.acf-block-preview .max-w-\[200px\] {
+  max-width: 200px;
+}
+
+.acf-block-preview .max-w-\[220px\] {
+  max-width: 220px;
+}
+
+.acf-block-preview .max-w-\[260px\] {
+  max-width: 260px;
+}
+
+.acf-block-preview .max-w-\[720px\] {
+  max-width: 720px;
 }
 
 .acf-block-preview .max-w-\[960px\] {
@@ -983,6 +995,14 @@
 
 .acf-block-preview .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.acf-block-preview .grid-cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.acf-block-preview .grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .acf-block-preview .flex-row {
@@ -2283,6 +2303,14 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  .acf-block-preview .sm\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .acf-block-preview .sm\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
   .acf-block-preview .sm\:flex-row {
     flex-direction: row;
   }
@@ -2357,6 +2385,14 @@
 
   .acf-block-preview .md\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .acf-block-preview .md\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .acf-block-preview .md\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }
 
@@ -2717,8 +2753,8 @@
     width: calc(70% - 1rem);
   }
 
-  .acf-block-preview .lg\:max-w-\[100px\] {
-    max-width: 100px;
+  .acf-block-preview .lg\:max-w-\[120px\] {
+    max-width: 120px;
   }
 
   .acf-block-preview .lg\:max-w-\[140px\] {
@@ -2727,6 +2763,18 @@
 
   .acf-block-preview .lg\:max-w-\[180px\] {
     max-width: 180px;
+  }
+
+  .acf-block-preview .lg\:max-w-\[200px\] {
+    max-width: 200px;
+  }
+
+  .acf-block-preview .lg\:max-w-\[220px\] {
+    max-width: 220px;
+  }
+
+  .acf-block-preview .lg\:max-w-\[260px\] {
+    max-width: 260px;
   }
 
   .acf-block-preview .lg\:max-w-none {
