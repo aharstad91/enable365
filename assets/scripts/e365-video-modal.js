@@ -1,25 +1,44 @@
 /**
  * E365 Video Modal Handler
  *
- * Handles all e365-video blocks on the page with a single set of event listeners.
- * Uses opacity/visibility for iOS Safari compatibility (not display: none).
+ * Creates a single shared modal overlay appended to body (iOS Safari compatible).
+ * This approach avoids position:fixed issues when modal is nested in scrollable containers.
  */
 (function() {
     'use strict';
 
-    let currentModal = null;
-    let currentIframe = null;
+    let overlay = null;
+    let iframe = null;
     let scrollPosition = 0;
 
     /**
-     * Open a video modal
+     * Create the shared modal overlay (once)
+     */
+    function createOverlay() {
+        if (overlay) return;
+
+        overlay = document.createElement('div');
+        overlay.className = 'e365-video__modal';
+        overlay.innerHTML = `
+            <div class="e365-video__modal-content">
+                <iframe class="e365-video__iframe" src="" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                <div class="e365-video__close-wrapper">
+                    <button class="e365-video__close" aria-label="Close video">Close Video</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+        iframe = overlay.querySelector('iframe');
+    }
+
+    /**
+     * Open the video modal
      */
     function openModal(wrapper) {
-        const blockId = wrapper.closest('.e365-video').id;
-        const modal = document.getElementById(blockId + '-modal');
-        if (!modal) return;
+        createOverlay();
 
-        const iframe = modal.querySelector('iframe');
         const videoUrl = wrapper.dataset.videoUrl;
         if (!videoUrl) return;
 
@@ -40,35 +59,28 @@
         // Save scroll position for iOS
         scrollPosition = window.scrollY;
 
-        // Show modal using class toggle (iOS Safari compatible)
-        modal.classList.add('active');
+        // Show modal
+        overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
-
-        // Track current modal
-        currentModal = modal;
-        currentIframe = iframe;
     }
 
     /**
-     * Close the currently open modal
+     * Close the video modal
      */
     function closeModal() {
-        if (!currentModal) return;
+        if (!overlay) return;
 
-        // Hide modal using class toggle
-        currentModal.classList.remove('active');
+        // Hide modal
+        overlay.classList.remove('active');
 
         // Clear iframe
-        if (currentIframe) {
-            currentIframe.src = '';
+        if (iframe) {
+            iframe.src = '';
         }
 
         // Restore scroll
         document.body.style.overflow = '';
         window.scrollTo(0, scrollPosition);
-
-        currentModal = null;
-        currentIframe = null;
     }
 
     /**
@@ -91,8 +103,7 @@
         }
 
         // Click on modal backdrop (not content)
-        const modal = e.target.closest('.e365-video__modal');
-        if (modal && e.target === modal) {
+        if (overlay && e.target === overlay) {
             closeModal();
         }
     }
@@ -106,7 +117,7 @@
 
         // Escape key to close modal
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && currentModal) {
+            if (e.key === 'Escape' && overlay && overlay.classList.contains('active')) {
                 closeModal();
             }
         });

@@ -63,18 +63,7 @@ $has_content = $image_url && $video_url;
                 </div>
             </button>
         </div>
-
-        <!-- Video Modal - uses opacity/visibility for iOS Safari compatibility -->
-        <div class="e365-video__modal" id="<?php echo esc_attr($block_id); ?>-modal">
-            <div class="e365-video__modal-content">
-                <iframe class="e365-video__iframe" src="" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                <div class="e365-video__close-wrapper">
-                    <button class="e365-video__close" aria-label="Close video">Close Video</button>
-                </div>
-            </div>
-        </div>
+        <!-- Modal is created dynamically by e365-video-modal.js and appended to body -->
     <?php else: ?>
         <!-- Frontend: Show placeholder if no content -->
         <div class="<?php echo esc_attr($aspect_class); ?> bg-slate-100 rounded-xl flex items-center justify-center">
