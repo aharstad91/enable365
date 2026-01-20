@@ -202,6 +202,74 @@
     background-color: #900101;
   }
 
+  /* E365 Video Modal - iOS Safari compatible (uses opacity/visibility, not display) */
+  .e365-video__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 1);
+    z-index: 999999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .e365-video__modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .e365-video__modal-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+  }
+  @media (min-width: 768px) {
+    .e365-video__modal {
+      background: rgba(0, 0, 0, 0.95);
+    }
+  }
+  .e365-video__iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .e365-video__close-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+  }
+  @media (min-width: 768px) {
+    .e365-video__close-wrapper {
+      bottom: 40px;
+    }
+  }
+  .e365-video__close {
+    height: 32px;
+    color: #ebebeb;
+    font-size: 17px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffff;
+    background: black;
+    padding: 1.25rem 2rem;
+    border-radius: 30px;
+  }
+  .e365-video__close:hover {
+    background: #222;
+  }
+
   /* E365 Media + Content - InnerBlocks container handling */
   .e365-media-content__content > .acf-innerblocks-container {
     @apply contents;

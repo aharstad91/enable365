@@ -2,13 +2,14 @@
  * E365 Video Modal Handler
  *
  * Handles all e365-video blocks on the page with a single set of event listeners.
- * Uses event delegation for efficiency.
+ * Uses opacity/visibility for iOS Safari compatibility (not display: none).
  */
 (function() {
     'use strict';
 
     let currentModal = null;
     let currentIframe = null;
+    let scrollPosition = 0;
 
     /**
      * Open a video modal
@@ -22,21 +23,28 @@
         const videoUrl = wrapper.dataset.videoUrl;
         if (!videoUrl) return;
 
-        // Set iframe src with autoplay and playsinline for iOS
+        // Build video URL with parameters for better mobile experience
+        const params = new URLSearchParams({
+            showinfo: '0',
+            cc_load_policy: '1',
+            cc_lang_pref: 'en',
+            enablejsapi: '1',
+            origin: window.location.origin,
+            autoplay: '1',
+            playsinline: '1'
+        });
+
         const separator = videoUrl.includes('?') ? '&' : '?';
-        iframe.src = videoUrl + separator + 'autoplay=1&playsinline=1';
+        iframe.src = videoUrl + separator + params.toString();
 
-        // Show modal
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
+        // Save scroll position for iOS
+        scrollPosition = window.scrollY;
 
-        // iOS Safari fix: prevent body scroll
+        // Show modal using class toggle (iOS Safari compatible)
+        modal.classList.add('active');
         document.body.style.overflow = 'hidden';
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
-        document.body.style.top = `-${window.scrollY}px`;
 
-        // Track current modal for Escape key
+        // Track current modal
         currentModal = modal;
         currentIframe = iframe;
     }
@@ -47,20 +55,17 @@
     function closeModal() {
         if (!currentModal) return;
 
-        currentModal.classList.add('hidden');
-        currentModal.classList.remove('flex');
+        // Hide modal using class toggle
+        currentModal.classList.remove('active');
 
+        // Clear iframe
         if (currentIframe) {
             currentIframe.src = '';
         }
 
-        // iOS Safari fix: restore body scroll position
-        const scrollY = document.body.style.top;
+        // Restore scroll
         document.body.style.overflow = '';
-        document.body.style.position = '';
-        document.body.style.width = '';
-        document.body.style.top = '';
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        window.scrollTo(0, scrollPosition);
 
         currentModal = null;
         currentIframe = null;
@@ -70,6 +75,7 @@
      * Handle interaction (click or touch)
      */
     function handleInteraction(e) {
+        // Open modal when clicking video wrapper or play button
         const wrapper = e.target.closest('.e365-video__wrapper');
         if (wrapper) {
             e.preventDefault();
@@ -77,8 +83,8 @@
             return;
         }
 
-        // Close button click - check for close button in modal
-        const closeBtn = e.target.closest('.e365-video__modal button[aria-label]');
+        // Close button click
+        const closeBtn = e.target.closest('.e365-video__close');
         if (closeBtn) {
             closeModal();
             return;
@@ -95,7 +101,7 @@
      * Initialize event listeners using delegation
      */
     function init() {
-        // Use both click and touchend for better iOS support
+        // Click handler
         document.addEventListener('click', handleInteraction);
 
         // Escape key to close modal

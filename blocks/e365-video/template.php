@@ -64,18 +64,15 @@ $has_content = $image_url && $video_url;
             </button>
         </div>
 
-        <!-- Video Modal -->
-        <div class="e365-video__modal fixed inset-0 z-[9999] hidden items-center justify-center bg-black/90 p-4"
-             id="<?php echo esc_attr($block_id); ?>-modal">
-            <button class="absolute top-4 right-4 text-white hover:text-gray-300 z-10" aria-label="Close video">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
-            <div class="w-full max-w-5xl aspect-video">
-                <iframe class="w-full h-full" src="" frameborder="0"
+        <!-- Video Modal - uses opacity/visibility for iOS Safari compatibility -->
+        <div class="e365-video__modal" id="<?php echo esc_attr($block_id); ?>-modal">
+            <div class="e365-video__modal-content">
+                <iframe class="e365-video__iframe" src="" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
+                <div class="e365-video__close-wrapper">
+                    <button class="e365-video__close" aria-label="Close video">Close Video</button>
+                </div>
             </div>
         </div>
     <?php else: ?>
