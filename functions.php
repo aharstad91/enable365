@@ -222,7 +222,6 @@ add_action('init', function(){					//Kjør stuff når WP er startet opp
 
 
 
-		wp_enqueue_script( 'jquery', get_template_directory_uri() . '/wp-includes/js/jquery/jquery.js', array(), filemtime(get_template_directory() . '/wp-includes/js/jquery/jquery.js'), true );
 		wp_enqueue_script( 'scrollreveal.min.js', get_template_directory_uri() . '/assets/scripts/scrollreveal.min.js', array(), filemtime(get_template_directory() . '/assets/scripts/scrollreveal.min.js'), false);
 		wp_enqueue_script( 'scrollock', get_template_directory_uri() . '/assets/scripts/bodyScrollLock.js', array(), filemtime(get_template_directory() . '/assets/scripts/bodyScrollLock.js'), true );
 		wp_enqueue_script( 'headroom.js', get_template_directory_uri() . '/assets/scripts/headroom.js', array(), filemtime(get_template_directory() . '/assets/scripts/headroom.js'), true );
@@ -236,9 +235,10 @@ add_action('init', function(){					//Kjør stuff når WP er startet opp
 			wp_enqueue_script( 'gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js', array('gsap'), '3.12.5', true );
 			wp_enqueue_script( 'gsap-animations', get_template_directory_uri() . '/template-parts/gsap-animations.js', array('gsap', 'gsap-scrolltrigger'), filemtime(get_template_directory() . '/template-parts/gsap-animations.js'), true );
 		}
-		
-		
-		
+
+		// E365 Video Modal - register (enqueued by block when needed)
+		wp_register_script( 'e365-video-modal', get_template_directory_uri() . '/assets/scripts/e365-video-modal.js', array(), '1.0.0', true );
+
 	}
 	add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );
 
@@ -538,6 +538,7 @@ function register_acf_blocks() {
 			'e365-logo-grid' => '/blocks/e365-logo-grid/block.json',
 			'e365-testimonial' => '/blocks/e365-testimonial/block.json',
 			'e365-media-content' => '/blocks/e365-media-content/block.json',
+			'e365-buttons' => '/blocks/e365-buttons/block.json',
 		];
 		foreach ($e365_blocks as $block_name => $json_path) {
 			$block_path = __DIR__ . $json_path;

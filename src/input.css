@@ -164,16 +164,34 @@
 
   /* E365 Video - image establishes height, play button overlays */
   .e365-video__wrapper {
-    @apply relative;
+    position: relative;
     isolation: isolate;
   }
   .e365-video__wrapper > img {
-    @apply w-full h-auto block;
+    width: 100%;
+    height: auto;
+    display: block;
   }
   .e365-video__wrapper .e365-video__play {
-    @apply absolute inset-0;
+    position: absolute;
+    inset: 0;
     z-index: 10;
     background: transparent;
+  }
+  /* Play icon button styling */
+  .e365-video__play-icon {
+    width: 72px;
+    height: 72px;
+    background-color: #AA1010;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  .e365-video__wrapper:hover .e365-video__play-icon {
+    transform: scale(1.1);
+    background-color: #900101;
   }
 
   /* E365 Media + Content - InnerBlocks container handling */
@@ -224,4 +242,21 @@
 /* Add any custom utilities here */
 @layer utilities {
   /* Your custom utility classes go here */
+}
+
+/* E365 Video Block - outside @layer to ensure compilation */
+.e365-video__wrapper {
+  position: relative;
+  isolation: isolate;
+}
+.e365-video__wrapper > img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.e365-video__wrapper .e365-video__play {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: transparent;
 }

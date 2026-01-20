@@ -14,44 +14,43 @@
             "button_label": "Legg til knapp",
             "sub_fields": [
                 {
+                    "key": "field_e365_btn_link",
+                    "label": "Lenke",
+                    "name": "link",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 1,
+                    "placeholder": "https://",
+                    "wrapper": {
+                        "width": "100"
+                    }
+                },
+                {
                     "key": "field_e365_btn_text",
                     "label": "Tekst",
                     "name": "text",
                     "type": "text",
                     "instructions": "",
                     "placeholder": "F.eks. Les mer",
+                    "default_value": "Klikk her",
                     "wrapper": {
-                        "width": "50"
-                    }
-                },
-                {
-                    "key": "field_e365_btn_link",
-                    "label": "Lenke",
-                    "name": "link",
-                    "type": "url",
-                    "instructions": "",
-                    "placeholder": "https://",
-                    "wrapper": {
-                        "width": "50"
+                        "width": "100"
                     }
                 },
                 {
                     "key": "field_e365_btn_style",
                     "label": "Stil",
                     "name": "style",
-                    "type": "select",
+                    "type": "button_group",
                     "instructions": "",
                     "choices": {
-                        "primary": "Primary (rød)",
-                        "secondary": "Secondary (hvit med rød ramme)",
-                        "outline": "Outline (mørk)",
-                        "outline-light": "Outline Light (hvit - for mørk bakgrunn)",
-                        "ghost": "Ghost (kun tekst)",
-                        "dark": "Dark (mørk)"
+                        "primary": "Primary",
+                        "secondary": "Secondary",
+                        "outline-light": "Light (mørk bg)"
                     },
                     "default_value": "primary",
                     "wrapper": {
-                        "width": "33"
+                        "width": "100"
                     }
                 },
                 {
@@ -67,7 +66,7 @@
                     },
                     "default_value": "md",
                     "wrapper": {
-                        "width": "33"
+                        "width": "100"
                     }
                 },
                 {
@@ -79,7 +78,7 @@
                     "default_value": 0,
                     "ui": 1,
                     "wrapper": {
-                        "width": "34"
+                        "width": "100"
                     }
                 },
                 {
@@ -91,7 +90,7 @@
                     "default_value": 0,
                     "ui": 1,
                     "wrapper": {
-                        "width": "50"
+                        "width": "100"
                     }
                 },
                 {
@@ -102,7 +101,7 @@
                     "instructions": "SVG-kode eller emoji",
                     "placeholder": "→ eller SVG",
                     "wrapper": {
-                        "width": "25"
+                        "width": "100"
                     }
                 },
                 {
@@ -125,7 +124,7 @@
                         ]
                     ],
                     "wrapper": {
-                        "width": "25"
+                        "width": "100"
                     }
                 }
             ]
@@ -150,7 +149,7 @@
             },
             "default_value": "left",
             "wrapper": {
-                "width": "50"
+                "width": "100"
             }
         },
         {
@@ -166,7 +165,7 @@
             },
             "default_value": "md",
             "wrapper": {
-                "width": "50"
+                "width": "100"
             }
         },
         {
@@ -176,7 +175,10 @@
             "type": "true_false",
             "instructions": "Knappene vises under hverandre på små skjermer",
             "default_value": 1,
-            "ui": 1
+            "ui": 1,
+            "wrapper": {
+                "width": "100"
+            }
         }
     ],
     "location": [
@@ -197,5 +199,5 @@
     "active": true,
     "description": "Innstillinger for E365 Buttons-blokken",
     "show_in_rest": 0,
-    "modified": 1737388800
+    "modified": 1737388802
 }

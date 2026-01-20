@@ -25,8 +25,16 @@ $stack_on_mobile = get_field('stack_on_mobile') !== false; // Default true
 // Block ID
 $block_id = !empty($block['anchor']) ? $block['anchor'] : $block_class . '-' . $block['id'];
 
-// Check if we have any buttons
-$has_buttons = !empty($buttons) && is_array($buttons);
+// Check if we have any buttons with valid links
+$valid_buttons = [];
+if (!empty($buttons) && is_array($buttons)) {
+    foreach ($buttons as $button) {
+        if (!empty($button['link'])) {
+            $valid_buttons[] = $button;
+        }
+    }
+}
+$has_buttons = !empty($valid_buttons);
 
 // Build wrapper classes
 $wrapper_classes = [
@@ -68,7 +76,13 @@ if ($stack_on_mobile) {
 
 /**
  * Get button classes based on style and size
+ *
+ * Styles:
+ * - primary: Brand red filled button (default)
+ * - secondary: White with red border, inverts on hover
+ * - outline-light: For dark backgrounds - white border/text
  */
+if (!function_exists('e365_get_button_classes')) {
 function e365_get_button_classes($style, $size, $full_width_mobile) {
     $classes = [
         'e365-btn',
@@ -82,9 +96,13 @@ function e365_get_button_classes($style, $size, $full_width_mobile) {
         'no-underline',
         'cursor-pointer',
         'border-2',
+        // Focus state for accessibility
+        'focus:outline-none',
+        'focus:ring-2',
+        'focus:ring-offset-2',
     ];
 
-    // Size classes
+    // Size classes - responsive scaling
     $size_classes = [
         'sm' => 'text-sm px-4 py-2 lg:px-5 lg:py-2.5',
         'md' => 'text-sm lg:text-base px-5 py-2.5 lg:px-6 lg:py-3',
@@ -92,42 +110,43 @@ function e365_get_button_classes($style, $size, $full_width_mobile) {
     ];
     $classes[] = $size_classes[$size] ?? $size_classes['md'];
 
-    // Style classes
+    // Style classes - simplified to 3 core styles
     switch ($style) {
         case 'primary':
+        default:
             $classes[] = 'e365-btn--primary';
+            // Default state
             $classes[] = 'bg-[#AA1010] border-[#AA1010] text-white';
+            // Hover state
             $classes[] = 'hover:bg-[#8a0d0d] hover:border-[#8a0d0d]';
+            // Active/pressed state
+            $classes[] = 'active:bg-[#6d0a0a] active:border-[#6d0a0a]';
+            // Focus ring
+            $classes[] = 'focus:ring-[#AA1010]/50';
             break;
 
         case 'secondary':
             $classes[] = 'e365-btn--secondary';
+            // Default state
             $classes[] = 'bg-white border-[#AA1010] text-[#AA1010]';
+            // Hover state - fills with brand color
             $classes[] = 'hover:bg-[#AA1010] hover:text-white';
-            break;
-
-        case 'outline':
-            $classes[] = 'e365-btn--outline';
-            $classes[] = 'bg-transparent border-slate-800 text-slate-800';
-            $classes[] = 'hover:bg-slate-800 hover:text-white';
+            // Active/pressed state
+            $classes[] = 'active:bg-[#8a0d0d] active:border-[#8a0d0d]';
+            // Focus ring
+            $classes[] = 'focus:ring-[#AA1010]/50';
             break;
 
         case 'outline-light':
             $classes[] = 'e365-btn--outline-light';
+            // Default state - for dark backgrounds
             $classes[] = 'bg-transparent border-white text-white';
+            // Hover state - inverts
             $classes[] = 'hover:bg-white hover:text-slate-900';
-            break;
-
-        case 'ghost':
-            $classes[] = 'e365-btn--ghost';
-            $classes[] = 'bg-transparent border-transparent text-[#AA1010]';
-            $classes[] = 'hover:bg-slate-100';
-            break;
-
-        case 'dark':
-            $classes[] = 'e365-btn--dark';
-            $classes[] = 'bg-slate-900 border-slate-900 text-white';
-            $classes[] = 'hover:bg-slate-700 hover:border-slate-700';
+            // Active/pressed state
+            $classes[] = 'active:bg-slate-100';
+            // Focus ring - white for visibility on dark
+            $classes[] = 'focus:ring-white/50';
             break;
     }
 
@@ -138,6 +157,7 @@ function e365_get_button_classes($style, $size, $full_width_mobile) {
 
     return implode(' ', $classes);
 }
+} // end function_exists
 ?>
 
 <div id="<?php echo esc_attr($block_id); ?>"
@@ -145,17 +165,15 @@ function e365_get_button_classes($style, $size, $full_width_mobile) {
 
     <?php if ($has_buttons): ?>
         <div class="<?php echo esc_attr(implode(' ', $container_classes)); ?>">
-            <?php foreach (array_slice($buttons, 0, 2) as $index => $button):
-                $text = $button['text'] ?? '';
-                $link = $button['link'] ?? '';
+            <?php foreach (array_slice($valid_buttons, 0, 2) as $index => $button):
+                $text = $button['text'] ?? 'Klikk her';
+                $link = $button['link'];
                 $style = $button['style'] ?? 'primary';
                 $size = $button['size'] ?? 'md';
                 $icon = $button['icon'] ?? '';
                 $icon_position = $button['icon_position'] ?? 'right';
                 $new_tab = $button['new_tab'] ?? false;
                 $full_width_mobile = $button['full_width_mobile'] ?? false;
-
-                if (empty($text) || empty($link)) continue;
 
                 $btn_classes = e365_get_button_classes($style, $size, $full_width_mobile);
                 $target = $new_tab ? ' target="_blank" rel="noopener noreferrer"' : '';
@@ -178,7 +196,7 @@ function e365_get_button_classes($style, $size, $full_width_mobile) {
     <?php elseif ($is_preview): ?>
         <div class="e365-block-placeholder bg-slate-100 border-2 border-dashed border-slate-300 rounded-lg p-6 text-center text-slate-500">
             <p class="m-0 text-base font-medium">E365 Buttons</p>
-            <p class="m-0 mt-2 text-sm">Legg til opptil 2 knapper via sidefeltene til høyre.</p>
+            <p class="m-0 mt-2 text-sm">Legg til en lenke for å vise knappen.</p>
         </div>
     <?php endif; ?>
 </div>

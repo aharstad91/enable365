@@ -46,20 +46,17 @@ $has_content = $image_url && $video_url;
     <?php if ($is_preview && !$has_content): ?>
         <?php echo e365_block_placeholder('E365 Video', 'Legg til bilde og video-URL i sidefeltene.'); ?>
     <?php elseif ($has_content): ?>
-        <div class="<?php echo esc_attr($block_class); ?>__wrapper video-card relative rounded-xl overflow-hidden cursor-pointer group"
+        <div class="<?php echo esc_attr($block_class); ?>__wrapper relative rounded-xl overflow-hidden cursor-pointer group"
              data-video-url="<?php echo esc_attr($video_url); ?>">
 
             <!-- Thumbnail Image - relative positioned to establish container height -->
             <img src="<?php echo esc_url($image_url); ?>"
                  alt="<?php echo esc_attr($image_alt ?: 'Video thumbnail'); ?>"
-                 class="w-full h-auto block object-cover object-center transition-transform duration-300 group-hover:scale-105" />
-
-            <!-- Overlay (pointer-events-none so clicks go through) -->
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-opacity duration-300 pointer-events-none"></div>
+                 class="w-full h-auto block object-cover object-center" />
 
             <!-- Play Button -->
             <button class="<?php echo esc_attr($block_class); ?>__play absolute inset-0 flex items-center justify-center" aria-label="Spill av video">
-                <div class="play-button ani-clean">
+                <div class="e365-video__play-icon ani-clean">
                     <svg viewBox="0 0 24 24" width="48" height="48" fill="white" class="ani-clean">
                         <path d="M8 5v14l11-7z" class="ani-clean"></path>
                     </svg>
@@ -90,39 +87,10 @@ $has_content = $image_url && $video_url;
 </div>
 
 <?php if ($has_content && !$is_preview): ?>
-<script>
-(function() {
-    const wrapper = document.querySelector('#<?php echo esc_js($block_id); ?> .e365-video__wrapper');
-    const modal = document.querySelector('#<?php echo esc_js($block_id); ?>-modal');
-    if (!wrapper || !modal) return;
-
-    const iframe = modal.querySelector('iframe');
-    const closeBtn = modal.querySelector('button');
-    const videoUrl = wrapper.dataset.videoUrl;
-
-    // Open modal
-    wrapper.addEventListener('click', function() {
-        iframe.src = videoUrl + (videoUrl.includes('?') ? '&' : '?') + 'autoplay=1';
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-    });
-
-    // Close modal
-    function closeModal() {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        iframe.src = '';
-        document.body.style.overflow = '';
-    }
-
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
-    });
-})();
-</script>
+<?php
+// Enqueue the video modal script once
+if (!wp_script_is('e365-video-modal', 'enqueued')) {
+    wp_enqueue_script('e365-video-modal', get_template_directory_uri() . '/assets/scripts/e365-video-modal.js', [], '1.0.0', true);
+}
+?>
 <?php endif; ?>
