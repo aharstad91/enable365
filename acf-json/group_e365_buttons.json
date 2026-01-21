@@ -17,10 +17,10 @@
                     "key": "field_e365_btn_link",
                     "label": "Link",
                     "name": "link",
-                    "type": "url",
-                    "instructions": "",
+                    "type": "text",
+                    "instructions": "URL eller anchor link (f.eks. #section-id)",
                     "required": 1,
-                    "placeholder": "https://"
+                    "placeholder": "https:// eller #anchor"
                 },
                 {
                     "key": "field_e365_btn_text",

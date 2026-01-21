@@ -84,7 +84,23 @@
                         "to-tr": "Up-right",
                         "to-tl": "Up-left"
                     },
-                    "default_value": "to-b"
+                    "default_value": "to-b",
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_e365_section_gradient_custom",
+                                "operator": "==empty"
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "key": "field_e365_section_gradient_custom",
+                    "label": "Custom CSS gradient",
+                    "name": "gradient_custom",
+                    "type": "text",
+                    "instructions": "Lim inn en custom gradient fra en gradient generator (f.eks. cssgradient.io). Eksempel: linear-gradient(311deg, rgb(133,193,233) 0%, rgb(255,255,255) 38%). Hvis utfylt overstyres fargene og retningen ovenfor.",
+                    "placeholder": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
                 }
             ]
         },

@@ -235,6 +235,40 @@
     @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#AA1010];
   }
 
+  /* Primary button - ensure white text always */
+  .e365-btn--primary {
+    color: white !important;
+    background-color: #AA1010;
+    border-color: #AA1010;
+  }
+  .e365-btn--primary:hover {
+    background-color: #8a0d0d;
+    border-color: #8a0d0d;
+  }
+
+  /* Secondary button - red border on white, ensure visibility */
+  .e365-btn--secondary {
+    color: #AA1010 !important;
+    background-color: white;
+    border: 2px solid #AA1010 !important;
+  }
+  .e365-btn--secondary:hover {
+    color: white !important;
+    background-color: #AA1010;
+    border-color: #AA1010;
+  }
+
+  /* Outline light button - for dark backgrounds */
+  .e365-btn--outline-light {
+    color: white !important;
+    background-color: transparent;
+    border-color: white;
+  }
+  .e365-btn--outline-light:hover {
+    color: #1e293b !important;
+    background-color: white;
+  }
+
   /* Button icon spacing */
   .e365-btn__icon {
     @apply flex-shrink-0;

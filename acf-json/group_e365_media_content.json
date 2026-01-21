@@ -41,6 +41,122 @@
             ]
         },
         {
+            "key": "field_e365_mc_video_source",
+            "label": "Video source",
+            "name": "video_source",
+            "type": "button_group",
+            "choices": {
+                "upload": "Upload / Media Library",
+                "external": "YouTube / Vimeo"
+            },
+            "default_value": "upload",
+            "layout": "horizontal",
+            "return_format": "value",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_e365_mc_media_type",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_e365_mc_media_video_file",
+            "label": "Video file",
+            "name": "media_video_file",
+            "type": "file",
+            "return_format": "array",
+            "library": "all",
+            "mime_types": "mp4,webm,ogg,mov",
+            "instructions": "Upload MP4, WebM, or OGG video",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_e365_mc_media_type",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_e365_mc_video_source",
+                        "operator": "==",
+                        "value": "upload"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_e365_mc_video_poster",
+            "label": "Video poster image",
+            "name": "video_poster",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "instructions": "Optional: Thumbnail shown before video plays",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_e365_mc_media_type",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_e365_mc_video_source",
+                        "operator": "==",
+                        "value": "upload"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_e365_mc_video_autoplay",
+            "label": "Autoplay (muted)",
+            "name": "video_autoplay",
+            "type": "true_false",
+            "instructions": "Auto-play video on load (will be muted)",
+            "default_value": 0,
+            "ui": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_e365_mc_media_type",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_e365_mc_video_source",
+                        "operator": "==",
+                        "value": "upload"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_e365_mc_video_loop",
+            "label": "Loop video",
+            "name": "video_loop",
+            "type": "true_false",
+            "instructions": "Restart video when it ends",
+            "default_value": 0,
+            "ui": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_e365_mc_media_type",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_e365_mc_video_source",
+                        "operator": "==",
+                        "value": "upload"
+                    }
+                ]
+            ]
+        },
+        {
             "key": "field_e365_mc_media_video_url",
             "label": "Video URL",
             "name": "media_video_url",
@@ -52,6 +168,11 @@
                         "field": "field_e365_mc_media_type",
                         "operator": "==",
                         "value": "video"
+                    },
+                    {
+                        "field": "field_e365_mc_video_source",
+                        "operator": "==",
+                        "value": "external"
                     }
                 ]
             ]

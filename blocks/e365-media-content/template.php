@@ -17,6 +17,11 @@ $is_preview = e365_is_block_editor();
 // Get ACF field values
 $media_type = get_field('media_type') ?: 'image';
 $image = get_field('media_image');
+$video_source = get_field('video_source') ?: 'upload';
+$video_file = get_field('media_video_file');
+$video_poster = get_field('video_poster');
+$video_autoplay = get_field('video_autoplay') ?: false;
+$video_loop = get_field('video_loop') ?: false;
 $video_url = get_field('media_video_url');
 $media_position = get_field('media_position') ?: 'left';
 $mobile_order = get_field('mobile_order') ?: 'media-first';
@@ -87,7 +92,8 @@ if ($image_shadow) {
 }
 
 // Check if we have media
-$has_media = ($media_type === 'image' && !empty($image)) || ($media_type === 'video' && !empty($video_url));
+$has_video = ($video_source === 'upload' && !empty($video_file)) || ($video_source === 'external' && !empty($video_url));
+$has_media = ($media_type === 'image' && !empty($image)) || ($media_type === 'video' && $has_video);
 
 // Check if image is animated (GIF)
 $is_animated = false;
@@ -124,9 +130,31 @@ if ($media_type === 'image' && is_array($image) && !empty($image['mime_type'])) 
                     class="<?php echo esc_attr(implode(' ', $image_classes)); ?>"
                     <?php if (!$is_animated): ?>loading="lazy"<?php endif; ?>
                 />
-            <?php elseif ($media_type === 'video' && $video_url): ?>
+            <?php elseif ($media_type === 'video' && $video_source === 'upload' && !empty($video_file)): ?>
                 <?php
-                // Extract video ID for thumbnail
+                // Local video from media library
+                $video_src = is_array($video_file) ? $video_file['url'] : $video_file;
+                $poster_src = (!empty($video_poster) && is_array($video_poster)) ? $video_poster['url'] : '';
+                $video_wrapper_classes = [$block_class . '__video-wrapper', 'relative'];
+                if ($image_rounded) $video_wrapper_classes[] = 'rounded-xl overflow-hidden';
+                if ($image_shadow) $video_wrapper_classes[] = 'shadow-lg';
+                ?>
+                <div class="<?php echo esc_attr(implode(' ', $video_wrapper_classes)); ?>">
+                    <video
+                        class="w-full h-auto block"
+                        <?php if ($poster_src): ?>poster="<?php echo esc_url($poster_src); ?>"<?php endif; ?>
+                        <?php if ($video_autoplay): ?>autoplay muted playsinline<?php endif; ?>
+                        <?php if ($video_loop): ?>loop<?php endif; ?>
+                        <?php if (!$video_autoplay): ?>controls<?php endif; ?>
+                        preload="metadata"
+                    >
+                        <source src="<?php echo esc_url($video_src); ?>" type="<?php echo esc_attr($video_file['mime_type'] ?? 'video/mp4'); ?>">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            <?php elseif ($media_type === 'video' && $video_source === 'external' && $video_url): ?>
+                <?php
+                // External video (YouTube/Vimeo)
                 $video_id = '';
                 $thumbnail_url = '';
 

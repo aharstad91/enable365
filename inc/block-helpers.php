@@ -244,10 +244,21 @@ function e365_get_background_style($bg_type) {
         case 'gradient':
             $gradient = get_field('background_gradient');
             if ($gradient) {
-                $start = $gradient['gradient_start'] ?? '#ffffff';
-                $end = $gradient['gradient_end'] ?? '#f9fafb';
-                $direction = e365_gradient_direction($gradient['gradient_direction'] ?? 'to-b');
-                $styles[] = 'background: linear-gradient(' . $direction . ', ' . esc_attr($start) . ', ' . esc_attr($end) . ')';
+                // Check for custom CSS gradient first
+                $custom = $gradient['gradient_custom'] ?? '';
+                if ($custom) {
+                    // Sanitize: only allow gradient-related CSS
+                    $custom = trim($custom);
+                    if (preg_match('/^(linear|radial|conic)-gradient\s*\(/i', $custom)) {
+                        $styles[] = 'background: ' . $custom;
+                    }
+                } else {
+                    // Use simple gradient settings
+                    $start = $gradient['gradient_start'] ?? '#ffffff';
+                    $end = $gradient['gradient_end'] ?? '#f9fafb';
+                    $direction = e365_gradient_direction($gradient['gradient_direction'] ?? 'to-b');
+                    $styles[] = 'background: linear-gradient(' . $direction . ', ' . esc_attr($start) . ', ' . esc_attr($end) . ')';
+                }
             }
             break;
 
