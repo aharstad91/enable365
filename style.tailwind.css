@@ -496,9 +496,7 @@ h1, h2, h3, h4, h5, h6 {
   visibility: visible !important;
 }
 
-/* Video content container - use viewport units for reliable sizing */
-
-/* Desktop: constrained max-width */
+/* Video content container - fullscreen approach that works */
 
 /* E365 Media + Content - InnerBlocks container handling */
 
