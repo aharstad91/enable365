@@ -1,16 +1,8 @@
 <?php
 /**
- * Handle in-app context cookie early (before headers sent)
- * Sets cookie when ?inapp=1 is present - survives WPML/Cloudflare redirects
+ * Note: In-app cookie handling moved to mu-plugins/e365-inapp-cookie.php
+ * to run before WPML/other plugins can redirect
  */
-add_action('init', function() {
-    if (isset($_GET['inapp']) && $_GET['inapp'] === '1') {
-        if (!headers_sent()) {
-            setcookie('e365_inapp', '1', 0, '/', '', is_ssl(), true);
-        }
-        $_COOKIE['e365_inapp'] = '1'; // Make available immediately
-    }
-}, 1); // Priority 1 = run early
 
 	add_theme_support('title-tag');
 	add_theme_support('post-thumbnails');
