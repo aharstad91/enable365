@@ -1,4 +1,17 @@
 <?php
+/**
+ * Handle in-app context cookie early (before headers sent)
+ * Sets cookie when ?inapp=1 is present - survives WPML/Cloudflare redirects
+ */
+add_action('init', function() {
+    if (isset($_GET['inapp']) && $_GET['inapp'] === '1') {
+        if (!headers_sent()) {
+            setcookie('e365_inapp', '1', 0, '/', '', is_ssl(), true);
+        }
+        $_COOKIE['e365_inapp'] = '1'; // Make available immediately
+    }
+}, 1); // Priority 1 = run early
+
 	add_theme_support('title-tag');
 	add_theme_support('post-thumbnails');
 	add_image_size( 'ansatte-thumb', 25, 25, array( 'left', 'top' ) );

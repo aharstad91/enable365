@@ -1,19 +1,9 @@
 <?php
 /**
  * GTM & LinkedIn Pixel - Skip loading in app context
- * When ?inapp=1 is present, don't load any tracking scripts (including CookieScript banner via GTM)
- * Used for in-app views like "What's New" dialogs and onboarding guides
- *
- * Uses cookie to persist across WPML/Cloudflare redirects that strip query params
+ * When ?inapp=1 is present (or e365_inapp cookie set), skip all tracking
+ * Cookie is set early in functions.php to survive WPML/Cloudflare redirects
  */
-
-// Set cookie if ?inapp=1 is present (survives redirects)
-if (isset($_GET['inapp']) && $_GET['inapp'] === '1') {
-    setcookie('e365_inapp', '1', 0, '/', '', true, true); // Session cookie, secure, httponly
-    $_COOKIE['e365_inapp'] = '1'; // Make available immediately
-}
-
-// Check both query param and cookie
 $is_inapp = (isset($_GET['inapp']) && $_GET['inapp'] === '1') ||
             (isset($_COOKIE['e365_inapp']) && $_COOKIE['e365_inapp'] === '1');
 
