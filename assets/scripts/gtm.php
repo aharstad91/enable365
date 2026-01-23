@@ -1,3 +1,13 @@
+<?php
+/**
+ * GTM & LinkedIn Pixel - Skip loading in app context
+ * When ?inapp=1 is present, don't load any tracking scripts (including CookieScript banner via GTM)
+ * Used for in-app views like "What's New" dialogs and onboarding guides
+ */
+if (isset($_GET['inapp']) && $_GET['inapp'] === '1') {
+    return; // Exit early - no tracking in app context
+}
+?>
 <!-- Google Tag Manager & LinkedIn Pixel (Optimized User Interaction Loading with Bot Detection) -->
 <script>
 // Bot detection function

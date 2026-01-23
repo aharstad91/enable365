@@ -297,19 +297,31 @@ class Enable365_Videos_CPT {
             return;
         }
 
+        // Format uploadDate as ISO 8601 with timezone (required by Google)
         if (empty($video_upload_date)) {
-            $video_upload_date = get_the_date('Y-m-d', $post);
+            // Use post publish date with time
+            $upload_datetime = get_the_date('c', $post); // 'c' = ISO 8601 format
+        } else {
+            // Convert stored date (Y-m-d) to ISO 8601 with timezone
+            $date_obj = DateTime::createFromFormat('Y-m-d', $video_upload_date, wp_timezone());
+            if ($date_obj) {
+                $date_obj->setTime(12, 0, 0); // Set noon to avoid timezone edge cases
+                $upload_datetime = $date_obj->format('c');
+            } else {
+                // Fallback to post date if parsing fails
+                $upload_datetime = get_the_date('c', $post);
+            }
         }
 
         $video_id = $this->get_youtube_id($youtube_url);
-        
+
         $schema = array(
             '@context' => 'https://schema.org',
             '@type' => 'VideoObject',
             'name' => $video_name,
             'description' => $video_description,
             'thumbnailUrl' => $video_thumbnail_url,
-            'uploadDate' => $video_upload_date,
+            'uploadDate' => $upload_datetime,
         );
 
         if ($video_id) {
