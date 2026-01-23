@@ -1,18 +1,32 @@
-<?php
-/**
- * GTM & LinkedIn Pixel - Skip loading in app context
- * When ?inapp=1 is present (or e365_inapp cookie set), skip all tracking
- * Cookie is set early in functions.php to survive WPML/Cloudflare redirects
- */
-$is_inapp = (isset($_GET['inapp']) && $_GET['inapp'] === '1') ||
-            (isset($_COOKIE['e365_inapp']) && $_COOKIE['e365_inapp'] === '1');
-
-if ($is_inapp) {
-    return; // Exit early - no tracking in app context
-}
-?>
 <!-- Google Tag Manager & LinkedIn Pixel (Optimized User Interaction Loading with Bot Detection) -->
 <script>
+// In-app detection - check URL param or cookie
+// Cloudflare redirects before PHP runs, so we must check in JavaScript
+function isInAppContext() {
+  // Check URL parameter (works if app passes ?inapp=1)
+  var urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('inapp') === '1') {
+    // Set cookie for future page loads (session cookie)
+    document.cookie = 'e365_inapp=1;path=/;SameSite=Lax';
+    console.log('📱 In-app context detected via URL, cookie set');
+    return true;
+  }
+  // Check cookie (set by previous page load or app)
+  if (document.cookie.split(';').some(function(c) {
+    return c.trim().startsWith('e365_inapp=1');
+  })) {
+    console.log('📱 In-app context detected via cookie');
+    return true;
+  }
+  return false;
+}
+
+// Skip ALL tracking if in app context
+if (isInAppContext()) {
+  console.log('⛔ In-app context - skipping GTM & tracking');
+  // Stop script execution here - don't initialize anything
+} else {
+
 // Bot detection function
 function isBot() {
   // Check user agent for common bot patterns
@@ -89,6 +103,8 @@ if (!isBot()) {
 } else {
   console.log('⛔ Bot detected on pageload, tracking disabled');
 }
+
+} // End of else block for in-app context check
 </script>
 
 <!-- LinkedIn noscript fallback -->
