@@ -1,8 +1,9 @@
-<?php 
-	get_header(); 
+<?php
+	get_header();
+	if ( have_posts() ) :
 	the_post();
 ?>
-<?php   
+<?php
 // Get CPT name
 $post_type = get_post_type( $post->ID );
 
@@ -62,7 +63,8 @@ $postTermsSlug = get_queried_object()->slug;
 	</div>
 </main>
 
+<?php endif; ?>
 
-<?php 
+<?php
 	get_footer();
 ?>

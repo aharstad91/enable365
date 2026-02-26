@@ -13,7 +13,7 @@ $author_name = trim( ($first_name || $last_name) ? "$first_name $last_name" : $a
 $author_bio = get_the_author_meta('description', $author->ID);
 $author_avatar = get_avatar($author->ID, 160, '', '', ['class' => 'h-36 w-36 rounded-full']);
 
-$author_website = get_the_author_meta('user_url', $author_id);
+$author_website = get_the_author_meta('user_url', $author->ID);
 
 ?>
 

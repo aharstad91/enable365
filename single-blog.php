@@ -6,6 +6,7 @@
 
 get_header();
 
+if ( have_posts() ) :
 the_post();
 
 // Helpers
@@ -138,5 +139,6 @@ if ( ! empty( $remaining_blocks ) && function_exists('serialize_blocks') ) {
 	</section>
   </article>
 </main>
+<?php endif; ?>
 
 <?php get_footer(); ?>
