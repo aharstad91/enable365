@@ -121,21 +121,48 @@ function enable365_block_editor_styles() {
 add_action('enqueue_block_editor_assets', 'enable365_block_editor_styles');
 
 /**
- * Enqueue scoped Tailwind CSS for block editor previews
- * This CSS is scoped to .acf-block-preview to avoid conflicts with WordPress admin UI
+ * Widen the editor sidebar for better E365 block field UX.
  */
-function enable365_enqueue_editor_tailwind() {
-	$editor_css_path = get_template_directory() . '/style.editor.css';
-	if (file_exists($editor_css_path)) {
+function enable365_wider_sidebar() {
+	$css = '
+		.interface-complementary-area { width: 400px !important; }
+		.interface-interface-skeleton__sidebar { width: 400px !important; max-width: 400px !important; }
+	';
+	echo '<style>' . $css . '</style>';
+}
+add_action('admin_head', 'enable365_wider_sidebar');
+
+/**
+ * Load block styles inside the editor iframe using enqueue_block_assets.
+ * This hook runs in both frontend AND editor iframe (unlike enqueue_block_editor_assets
+ * which only loads in the admin wrapper frame, not the iframe).
+ */
+function enable365_editor_iframe_styles() {
+	if (!is_admin()) {
+		return; // Frontend styles are handled by enable365_enqueue_tailwind()
+	}
+
+	// Load frontend Tailwind in editor iframe so block previews match frontend
+	if (file_exists(get_template_directory() . '/style.tailwind.css')) {
+		wp_enqueue_style(
+			'enable365-tailwind-editor',
+			get_template_directory_uri() . '/style.tailwind.css',
+			array(),
+			filemtime(get_template_directory() . '/style.tailwind.css')
+		);
+	}
+
+	// Load editor-specific overrides (no breakpoints, editor-only adjustments)
+	if (file_exists(get_template_directory() . '/style.editor.css')) {
 		wp_enqueue_style(
 			'enable365-editor-tailwind',
 			get_template_directory_uri() . '/style.editor.css',
-			array(),
-			filemtime($editor_css_path)
+			array('enable365-tailwind-editor'),
+			filemtime(get_template_directory() . '/style.editor.css')
 		);
 	}
 }
-add_action('enqueue_block_editor_assets', 'enable365_enqueue_editor_tailwind');
+add_action('enqueue_block_assets', 'enable365_editor_iframe_styles');
 
 
 	//Resize av bilder som har for lav størrelse

@@ -6,27 +6,35 @@
 ---
 
 ## Last Updated
-- **When:** 2026-01-20
+- **When:** 2026-01-23
 - **By:** Claude Code
-- **What:** Debugging Logo Grid hover effects - ikke fungerende ennå
+- **What:** In-app cookie consent fix - venter på Cloudflare Worker oppdatering
 
 ---
 
 ## Active Context
 
 ### Current Focus
-- E365 Logo Grid - Feilsøking av hover-effekter (grayscale, scale, lift)
+- In-app cookie consent disable (`?inapp=1` parameter)
 
 ### Latest Changes
-- Undersøkte Logo Grid template - hover-klasser genereres korrekt i PHP
-- Problem: Hover-effektene vises ikke på frontend
-- Mulig årsak: Tailwind-klasser ikke kompilert, eller CSS-spesifisitet-problemer
+- Implementert JavaScript-basert in-app deteksjon i `gtm.php`
+- Fant at Cloudflare Worker stripper query parameters ved redirect
+- Løsning identifisert: Oppdater Cloudflare Worker til å bevare query string
 
 ### Open Questions / Blockers
-- **Logo Grid hover ikke fungerer** - trenger å verifisere:
-  1. Er hover-klassene i kompilert CSS (`style.tailwind.css`)?
-  2. Er det CSS-konflikter som overstyrer?
-  3. Fungerer grayscale-filteret i det hele tatt?
+- **Cloudflare Worker må oppdateres** for å bevare `?inapp=1`:
+  ```javascript
+  // Endre fra:
+  return Response.redirect('https://enable365.ai/no/', 302);
+  // Til:
+  return Response.redirect('https://enable365.ai/no/' + url.search, 302);
+  ```
+- Workeren heter `wandering-sun-da36` i Cloudflare dashboard
+- Alle 4 redirect-linjer (NO, DK, SE, ES) må oppdateres
+
+### Also pending
+- **Logo Grid hover fix** - trenger videre debugging
 
 ### Important to Remember
 - Enable365 is a WordPress theme for Microsoft 365 productivity apps
@@ -38,6 +46,31 @@
 ---
 
 ## Changelog
+
+### 2026-01-23
+
+#### [Code] In-app cookie consent disable
+- **Mål:** Skjule cookie-banner når apps åpner www-innhold (What's New, onboarding)
+- **Løsning:** Sjekk `?inapp=1` i URL og skip GTM/tracking
+- **Implementert i:** `assets/scripts/gtm.php` - IIFE med tidlig return
+- **Problem funnet:** Cloudflare Worker stripper query params ved geo-redirect
+- **Fiks kreves i Cloudflare:** Oppdater `wandering-sun-da36` worker:
+  ```javascript
+  return Response.redirect('https://enable365.ai/no/' + url.search, 302);
+  ```
+- **Status:** Venter på Cloudflare Worker oppdatering
+- **Files modified:**
+  - `assets/scripts/gtm.php` - Added IIFE with in-app detection
+  - `functions.php` - Removed obsolete cookie handling (moved to JS)
+
+#### [Code] Video schema uploadDate fix
+- **Problem:** Google Search Console feil: "Invalid datetime value for 'uploadDate'"
+- **Årsak:** Dato ble formatert som `Y-m-d` uten tidssone
+- **Løsning:** Bruk ISO 8601 format med tidssone (`DateTime::format('c')`)
+- **Files modified:**
+  - `inc/videos-cpt.php` - Fixed uploadDate formatting in schema output
+
+---
 
 ### 2026-01-20
 
@@ -156,12 +189,15 @@
 
 ## Next Steps (Prioritized)
 
-1. [ ] **Logo Grid hover fix** - Feilsøk hvorfor hover-effekter ikke fungerer
+1. [ ] **Cloudflare Worker oppdatering** - Bevare query params gjennom redirect
+   - Worker: `wandering-sun-da36`
+   - Endre alle `Response.redirect()` til å inkludere `+ url.search`
+   - Test: `https://enable365.ai/?inapp=1` → skal redirecte til `/no/?inapp=1`
+2. [ ] **Logo Grid hover fix** - Feilsøk hvorfor hover-effekter ikke fungerer
    - Sjekk kompilert CSS for hover-klasser
    - Kjør `npm run build`
    - Test i DevTools
-2. [ ] Debug E365 Section background color issue (reported earlier)
-3. [ ] Review uncommitted changes and consider committing
+3. [ ] Debug E365 Section background color issue (reported earlier)
 4. [ ] Test alle nye blokker grundig i browser
 
 ---

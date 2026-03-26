@@ -7,7 +7,7 @@
   "category": "e365-layout",
   "icon": "align-wide",
   "acf": {
-    "mode": "preview",
+    "mode": "auto",
     "renderTemplate": "template.php"
   },
   "supports": {

@@ -22,8 +22,14 @@ $block_id = !empty($block['anchor']) ? $block['anchor'] : $block_class . '-' . $
 
 // Allowed inner blocks
 $allowed_blocks = [
+    // E365 custom blocks
     'acf/e365-video',
-    'acf/e365-grid', // Allow nested grids
+    'acf/e365-grid',            // Nested grids
+    'acf/e365-buttons',
+    'acf/e365-media-content',
+    'acf/e365-testimonial',
+    'acf/e365-logo-grid',
+    // Core blocks
     'core/paragraph',
     'core/heading',
     'core/image',
@@ -33,6 +39,9 @@ $allowed_blocks = [
     'core/cover',
     'core/spacer',
     'core/separator',
+    'core/columns',
+    'core/embed',
+    // Legacy ACF blocks
     'acf/bulletlist-checkmark',
     'acf/testimonial-block',
     'acf/staff-card',

@@ -6,6 +6,11 @@
  *
  * Only utilities are included to minimize CSS size and avoid conflicts
  * with WordPress admin UI styles.
+ *
+ * IMPORTANT: In the editor, each column block is wrapped in a WordPress
+ * .block-editor-block-list__block div, so the flex items of
+ * .acf-innerblocks-container are these wrappers, NOT .e365-column directly.
+ * We target `> *` to style the actual flex items.
  */
 
 .container {
@@ -92,92 +97,103 @@
   align-items: stretch;
 }
 
-/* E365 Column - remove ACF wrapper from layout */
+/* E365 Column - must fill its parent wrapper and remove inner ACF wrapper from layout */
+
+.e365-column {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: none !important;
+}
 
 .e365-column > .acf-innerblocks-container {
   display: contents;
 }
 
-/* 2-column layouts - use flex-1 for equal widths (50/50) */
+/*
+   * Column flex items — target `> *` because in the editor, each column is
+   * wrapped in .block-editor-block-list__block, making those wrappers the
+   * actual flex items (not .e365-column directly).
+   */
 
-.e365-grid[data-columns="2"] > .acf-innerblocks-container > .e365-column {
+/* 2-column layouts - flex-1 for equal widths */
+
+.e365-grid[data-columns="2"] > .acf-innerblocks-container > * {
   flex: 1 1 0%;
   min-width: 0;
-  /* Allow flex items to shrink below content size */
 }
 
-/* 2-column ratio variations */
+/* 2-column ratio variations — flex-grow ratios handle gap automatically */
 
-.e365-grid[data-columns="2"][data-ratio="60-40"] > .acf-innerblocks-container > .e365-column:first-child {
-  width: 60%;
-  flex: none;
+/* 60-40 */
+
+.e365-grid[data-columns="2"][data-ratio="60-40"] > .acf-innerblocks-container > *:first-child {
+  flex: 3 1 0%;
 }
 
-.e365-grid[data-columns="2"][data-ratio="60-40"] > .acf-innerblocks-container > .e365-column:last-child {
-  width: 40%;
-  flex: none;
+.e365-grid[data-columns="2"][data-ratio="60-40"] > .acf-innerblocks-container > *:last-child {
+  flex: 2 1 0%;
 }
 
-.e365-grid[data-columns="2"][data-ratio="40-60"] > .acf-innerblocks-container > .e365-column:first-child {
-  width: 40%;
-  flex: none;
+/* 40-60 */
+
+.e365-grid[data-columns="2"][data-ratio="40-60"] > .acf-innerblocks-container > *:first-child {
+  flex: 2 1 0%;
 }
 
-.e365-grid[data-columns="2"][data-ratio="40-60"] > .acf-innerblocks-container > .e365-column:last-child {
-  width: 60%;
-  flex: none;
+.e365-grid[data-columns="2"][data-ratio="40-60"] > .acf-innerblocks-container > *:last-child {
+  flex: 3 1 0%;
 }
 
-.e365-grid[data-columns="2"][data-ratio="66-33"] > .acf-innerblocks-container > .e365-column:first-child {
-  width: 66.666667%;
-  flex: none;
+/* 66-33 */
+
+.e365-grid[data-columns="2"][data-ratio="66-33"] > .acf-innerblocks-container > *:first-child {
+  flex: 2 1 0%;
 }
 
-.e365-grid[data-columns="2"][data-ratio="66-33"] > .acf-innerblocks-container > .e365-column:last-child {
-  width: 33.333333%;
-  flex: none;
+.e365-grid[data-columns="2"][data-ratio="66-33"] > .acf-innerblocks-container > *:last-child {
+  flex: 1 1 0%;
 }
 
-.e365-grid[data-columns="2"][data-ratio="33-66"] > .acf-innerblocks-container > .e365-column:first-child {
-  width: 33.333333%;
-  flex: none;
+/* 33-66 */
+
+.e365-grid[data-columns="2"][data-ratio="33-66"] > .acf-innerblocks-container > *:first-child {
+  flex: 1 1 0%;
 }
 
-.e365-grid[data-columns="2"][data-ratio="33-66"] > .acf-innerblocks-container > .e365-column:last-child {
-  width: 66.666667%;
-  flex: none;
+.e365-grid[data-columns="2"][data-ratio="33-66"] > .acf-innerblocks-container > *:last-child {
+  flex: 2 1 0%;
 }
 
-/* 70-30 ratio */
+/* 70-30 */
 
-.e365-grid[data-columns="2"][data-ratio="70-30"] > .acf-innerblocks-container > .e365-column:first-child {
-  flex: 7 0 0%;
+.e365-grid[data-columns="2"][data-ratio="70-30"] > .acf-innerblocks-container > *:first-child {
+  flex: 7 1 0%;
 }
 
-.e365-grid[data-columns="2"][data-ratio="70-30"] > .acf-innerblocks-container > .e365-column:last-child {
-  flex: 3 0 0%;
+.e365-grid[data-columns="2"][data-ratio="70-30"] > .acf-innerblocks-container > *:last-child {
+  flex: 3 1 0%;
 }
 
-/* 30-70 ratio */
+/* 30-70 */
 
-.e365-grid[data-columns="2"][data-ratio="30-70"] > .acf-innerblocks-container > .e365-column:first-child {
-  flex: 3 0 0%;
+.e365-grid[data-columns="2"][data-ratio="30-70"] > .acf-innerblocks-container > *:first-child {
+  flex: 3 1 0%;
 }
 
-.e365-grid[data-columns="2"][data-ratio="30-70"] > .acf-innerblocks-container > .e365-column:last-child {
-  flex: 7 0 0%;
+.e365-grid[data-columns="2"][data-ratio="30-70"] > .acf-innerblocks-container > *:last-child {
+  flex: 7 1 0%;
 }
 
 /* 3-column layouts */
 
-.e365-grid[data-columns="3"] > .acf-innerblocks-container > .e365-column {
+.e365-grid[data-columns="3"] > .acf-innerblocks-container > * {
   flex: 1 1 0%;
   min-width: 0;
 }
 
 /* 4-column layouts */
 
-.e365-grid[data-columns="4"] > .acf-innerblocks-container > .e365-column {
+.e365-grid[data-columns="4"] > .acf-innerblocks-container > * {
   flex: 1 1 0%;
   min-width: 0;
 }
@@ -207,8 +223,6 @@
     line-height: 1;
   }
 }
-
-/* Removed ::after - single opening quote mark is cleaner design */
 
 /* Dark/brand backgrounds get lighter quote marks */
 
@@ -2001,7 +2015,7 @@
 
 /* E365 Block components for editor preview */
 
-/* Note: Editor always shows horizontal layout (no breakpoints) since editor area is narrow */
+/* Note: Editor always shows horizontal layout (no breakpoints) */
 
 .hover\:bg-\[\#AA1010\]:hover
   .e365-testimonial .e365-testimonial__quote-text::before {
@@ -2720,14 +2734,6 @@
     width: 70%;
   }
 
-  .acf-block-preview .lg\:w-\[calc\(30\%-1rem\)\] {
-    width: calc(30% - 1rem);
-  }
-
-  .acf-block-preview .lg\:w-\[calc\(70\%-1rem\)\] {
-    width: calc(70% - 1rem);
-  }
-
   .acf-block-preview .lg\:max-w-\[120px\] {
     max-width: 120px;
   }
@@ -2754,10 +2760,6 @@
 
   .acf-block-preview .lg\:max-w-none {
     max-width: none;
-  }
-
-  .acf-block-preview .lg\:flex-1 {
-    flex: 1 1 0%;
   }
 
   .acf-block-preview .lg\:grid-cols-1 {

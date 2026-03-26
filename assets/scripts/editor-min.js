@@ -1,4 +1,3 @@
-<?php
 wp.domReady( () => {
 
 	 wp.blocks.registerBlockStyle(

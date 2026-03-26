@@ -8,7 +8,7 @@
   "icon": "columns",
   "parent": ["acf/e365-grid"],
   "acf": {
-    "mode": "preview",
+    "mode": "auto",
     "renderTemplate": "template.php"
   },
   "supports": {

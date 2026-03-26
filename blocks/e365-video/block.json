@@ -7,7 +7,7 @@
   "category": "e365-components",
   "icon": "video-alt3",
   "acf": {
-    "mode": "preview",
+    "mode": "auto",
     "renderTemplate": "template.php"
   },
   "supports": {

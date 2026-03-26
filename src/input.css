@@ -55,69 +55,70 @@
   .e365-grid[data-valign="bottom"] > .acf-innerblocks-container { @apply items-end; }
   .e365-grid[data-valign="stretch"] > .acf-innerblocks-container { @apply items-stretch; }
 
+  /* E365 Column - must fill its parent, override any stale inline width classes */
+  .e365-grid .e365-column {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
   /* E365 Column - remove ACF wrapper from layout */
   .e365-column > .acf-innerblocks-container {
     @apply contents;
   }
 
-  /* E365 Column widths - based on parent grid's data attributes */
-  /* All columns are full width on mobile */
-  .e365-grid > .acf-innerblocks-container > .e365-column {
-    @apply w-full;
-  }
-
-  /* 2-column layouts - use flex-1 for equal widths with gap support */
+  /* 2-column layouts - flex-1 for equal widths, min-width:0 prevents content overflow */
   .e365-grid[data-columns="2"] > .acf-innerblocks-container > .e365-column {
     @apply lg:flex-1;
+    min-width: 0;
   }
 
-  /* 2-column ratio variations */
+  /* 2-column ratio variations — flex-grow ratios handle gap automatically */
+  /* 60-40 */
   .e365-grid[data-columns="2"][data-ratio="60-40"] > .acf-innerblocks-container > .e365-column:first-child {
-    @apply lg:w-3/5 lg:flex-none;
+    @apply lg:flex-[3];
   }
   .e365-grid[data-columns="2"][data-ratio="60-40"] > .acf-innerblocks-container > .e365-column:last-child {
-    @apply lg:w-2/5 lg:flex-none;
+    @apply lg:flex-[2];
   }
 
+  /* 40-60 */
   .e365-grid[data-columns="2"][data-ratio="40-60"] > .acf-innerblocks-container > .e365-column:first-child {
-    @apply lg:w-2/5 lg:flex-none;
+    @apply lg:flex-[2];
   }
   .e365-grid[data-columns="2"][data-ratio="40-60"] > .acf-innerblocks-container > .e365-column:last-child {
-    @apply lg:w-3/5 lg:flex-none;
+    @apply lg:flex-[3];
   }
 
+  /* 66-33 */
   .e365-grid[data-columns="2"][data-ratio="66-33"] > .acf-innerblocks-container > .e365-column:first-child {
-    @apply lg:w-2/3 lg:flex-none;
+    @apply lg:flex-[2];
   }
   .e365-grid[data-columns="2"][data-ratio="66-33"] > .acf-innerblocks-container > .e365-column:last-child {
-    @apply lg:w-1/3 lg:flex-none;
+    @apply lg:flex-[1];
   }
 
+  /* 33-66 */
   .e365-grid[data-columns="2"][data-ratio="33-66"] > .acf-innerblocks-container > .e365-column:first-child {
-    @apply lg:w-1/3 lg:flex-none;
+    @apply lg:flex-[1];
   }
   .e365-grid[data-columns="2"][data-ratio="33-66"] > .acf-innerblocks-container > .e365-column:last-child {
-    @apply lg:w-2/3 lg:flex-none;
+    @apply lg:flex-[2];
   }
 
-  /* 70-30 ratio */
+  /* 70-30 */
   .e365-grid[data-columns="2"][data-ratio="70-30"] > .acf-innerblocks-container > .e365-column:first-child {
-    @apply lg:flex-[7] lg:flex-grow-0 lg:flex-shrink-0;
-    flex-basis: 70%;
+    @apply lg:flex-[7];
   }
   .e365-grid[data-columns="2"][data-ratio="70-30"] > .acf-innerblocks-container > .e365-column:last-child {
-    @apply lg:flex-[3] lg:flex-grow-0 lg:flex-shrink-0;
-    flex-basis: 30%;
+    @apply lg:flex-[3];
   }
 
-  /* 30-70 ratio */
+  /* 30-70 */
   .e365-grid[data-columns="2"][data-ratio="30-70"] > .acf-innerblocks-container > .e365-column:first-child {
-    @apply lg:flex-[3] lg:flex-grow-0 lg:flex-shrink-0;
-    flex-basis: 30%;
+    @apply lg:flex-[3];
   }
   .e365-grid[data-columns="2"][data-ratio="30-70"] > .acf-innerblocks-container > .e365-column:last-child {
-    @apply lg:flex-[7] lg:flex-grow-0 lg:flex-shrink-0;
-    flex-basis: 70%;
+    @apply lg:flex-[7];
   }
 
   /* 3-column layouts - use flex-1 for equal widths with gap support */

@@ -1,0 +1,9 @@
+/* Editor block styles */
+
+/* Widen the block inspector sidebar for E365 blocks */
+.interface-interface-skeleton__sidebar .block-editor-block-inspector {
+    min-width: 380px;
+}
+.interface-interface-skeleton__sidebar {
+    max-width: 420px;
+}

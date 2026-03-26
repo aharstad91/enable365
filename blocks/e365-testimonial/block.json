@@ -6,7 +6,7 @@
     "icon": "format-quote",
     "keywords": ["testimonial", "quote", "review", "customer", "sitat"],
     "acf": {
-        "mode": "preview",
+        "mode": "auto",
         "renderTemplate": "blocks/e365-testimonial/template.php"
     },
     "supports": {

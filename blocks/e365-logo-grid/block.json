@@ -6,7 +6,7 @@
     "icon": "grid-view",
     "keywords": ["logo", "client", "partner", "sponsor", "grid", "carousel"],
     "acf": {
-        "mode": "preview",
+        "mode": "auto",
         "renderTemplate": "blocks/e365-logo-grid/template.php"
     },
     "supports": {

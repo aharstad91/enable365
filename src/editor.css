@@ -6,13 +6,18 @@
  *
  * Only utilities are included to minimize CSS size and avoid conflicts
  * with WordPress admin UI styles.
+ *
+ * IMPORTANT: In the editor, each column block is wrapped in a WordPress
+ * .block-editor-block-list__block div, so the flex items of
+ * .acf-innerblocks-container are these wrappers, NOT .e365-column directly.
+ * We target `> *` to style the actual flex items.
  */
 
 @tailwind components;
 @tailwind utilities;
 
 /* E365 Block components for editor preview */
-/* Note: Editor always shows horizontal layout (no breakpoints) since editor area is narrow */
+/* Note: Editor always shows horizontal layout (no breakpoints) */
 @layer components {
   /* E365 Grid - flex layout on the ACF innerblocks container */
   .e365-grid > .acf-innerblocks-container {
@@ -32,71 +37,62 @@
   .e365-grid[data-valign="bottom"] > .acf-innerblocks-container { @apply items-end; }
   .e365-grid[data-valign="stretch"] > .acf-innerblocks-container { @apply items-stretch; }
 
-  /* E365 Column - remove ACF wrapper from layout */
+  /* E365 Column - must fill its parent wrapper and remove inner ACF wrapper from layout */
+  .e365-column {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+  }
   .e365-column > .acf-innerblocks-container {
     @apply contents;
   }
 
-  /* 2-column layouts - use flex-1 for equal widths (50/50) */
-  .e365-grid[data-columns="2"] > .acf-innerblocks-container > .e365-column {
-    @apply flex-1;
-    min-width: 0; /* Allow flex items to shrink below content size */
+  /*
+   * Column flex items — target `> *` because in the editor, each column is
+   * wrapped in .block-editor-block-list__block, making those wrappers the
+   * actual flex items (not .e365-column directly).
+   */
+
+  /* 2-column layouts - flex-1 for equal widths */
+  .e365-grid[data-columns="2"] > .acf-innerblocks-container > * {
+    flex: 1 1 0%;
+    min-width: 0;
   }
 
-  /* 2-column ratio variations */
-  .e365-grid[data-columns="2"][data-ratio="60-40"] > .acf-innerblocks-container > .e365-column:first-child {
-    @apply w-3/5 flex-none;
-  }
-  .e365-grid[data-columns="2"][data-ratio="60-40"] > .acf-innerblocks-container > .e365-column:last-child {
-    @apply w-2/5 flex-none;
-  }
+  /* 2-column ratio variations — flex-grow ratios handle gap automatically */
+  /* 60-40 */
+  .e365-grid[data-columns="2"][data-ratio="60-40"] > .acf-innerblocks-container > *:first-child { flex: 3 1 0%; }
+  .e365-grid[data-columns="2"][data-ratio="60-40"] > .acf-innerblocks-container > *:last-child { flex: 2 1 0%; }
 
-  .e365-grid[data-columns="2"][data-ratio="40-60"] > .acf-innerblocks-container > .e365-column:first-child {
-    @apply w-2/5 flex-none;
-  }
-  .e365-grid[data-columns="2"][data-ratio="40-60"] > .acf-innerblocks-container > .e365-column:last-child {
-    @apply w-3/5 flex-none;
-  }
+  /* 40-60 */
+  .e365-grid[data-columns="2"][data-ratio="40-60"] > .acf-innerblocks-container > *:first-child { flex: 2 1 0%; }
+  .e365-grid[data-columns="2"][data-ratio="40-60"] > .acf-innerblocks-container > *:last-child { flex: 3 1 0%; }
 
-  .e365-grid[data-columns="2"][data-ratio="66-33"] > .acf-innerblocks-container > .e365-column:first-child {
-    @apply w-2/3 flex-none;
-  }
-  .e365-grid[data-columns="2"][data-ratio="66-33"] > .acf-innerblocks-container > .e365-column:last-child {
-    @apply w-1/3 flex-none;
-  }
+  /* 66-33 */
+  .e365-grid[data-columns="2"][data-ratio="66-33"] > .acf-innerblocks-container > *:first-child { flex: 2 1 0%; }
+  .e365-grid[data-columns="2"][data-ratio="66-33"] > .acf-innerblocks-container > *:last-child { flex: 1 1 0%; }
 
-  .e365-grid[data-columns="2"][data-ratio="33-66"] > .acf-innerblocks-container > .e365-column:first-child {
-    @apply w-1/3 flex-none;
-  }
-  .e365-grid[data-columns="2"][data-ratio="33-66"] > .acf-innerblocks-container > .e365-column:last-child {
-    @apply w-2/3 flex-none;
-  }
+  /* 33-66 */
+  .e365-grid[data-columns="2"][data-ratio="33-66"] > .acf-innerblocks-container > *:first-child { flex: 1 1 0%; }
+  .e365-grid[data-columns="2"][data-ratio="33-66"] > .acf-innerblocks-container > *:last-child { flex: 2 1 0%; }
 
-  /* 70-30 ratio */
-  .e365-grid[data-columns="2"][data-ratio="70-30"] > .acf-innerblocks-container > .e365-column:first-child {
-    flex: 7 0 0%;
-  }
-  .e365-grid[data-columns="2"][data-ratio="70-30"] > .acf-innerblocks-container > .e365-column:last-child {
-    flex: 3 0 0%;
-  }
+  /* 70-30 */
+  .e365-grid[data-columns="2"][data-ratio="70-30"] > .acf-innerblocks-container > *:first-child { flex: 7 1 0%; }
+  .e365-grid[data-columns="2"][data-ratio="70-30"] > .acf-innerblocks-container > *:last-child { flex: 3 1 0%; }
 
-  /* 30-70 ratio */
-  .e365-grid[data-columns="2"][data-ratio="30-70"] > .acf-innerblocks-container > .e365-column:first-child {
-    flex: 3 0 0%;
-  }
-  .e365-grid[data-columns="2"][data-ratio="30-70"] > .acf-innerblocks-container > .e365-column:last-child {
-    flex: 7 0 0%;
-  }
+  /* 30-70 */
+  .e365-grid[data-columns="2"][data-ratio="30-70"] > .acf-innerblocks-container > *:first-child { flex: 3 1 0%; }
+  .e365-grid[data-columns="2"][data-ratio="30-70"] > .acf-innerblocks-container > *:last-child { flex: 7 1 0%; }
 
   /* 3-column layouts */
-  .e365-grid[data-columns="3"] > .acf-innerblocks-container > .e365-column {
-    @apply flex-1;
+  .e365-grid[data-columns="3"] > .acf-innerblocks-container > * {
+    flex: 1 1 0%;
     min-width: 0;
   }
 
   /* 4-column layouts */
-  .e365-grid[data-columns="4"] > .acf-innerblocks-container > .e365-column {
-    @apply flex-1;
+  .e365-grid[data-columns="4"] > .acf-innerblocks-container > * {
+    flex: 1 1 0%;
     min-width: 0;
   }
 
@@ -108,7 +104,6 @@
     content: '\201C';
     @apply absolute -left-2 -top-2 text-4xl lg:text-5xl text-slate-300 font-serif leading-none;
   }
-  /* Removed ::after - single opening quote mark is cleaner design */
 
   /* Dark/brand backgrounds get lighter quote marks */
   .e365-testimonial.bg-slate-900 .e365-testimonial__quote-text::before,

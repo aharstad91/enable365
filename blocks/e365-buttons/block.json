@@ -6,7 +6,7 @@
     "icon": "button",
     "keywords": ["button", "buttons", "cta", "link", "knapp"],
     "acf": {
-        "mode": "preview",
+        "mode": "edit",
         "renderTemplate": "blocks/e365-buttons/template.php"
     },
     "supports": {

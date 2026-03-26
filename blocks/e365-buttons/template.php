@@ -94,9 +94,13 @@ if ($stack_on_mobile) {
                 $btn_classes = e365_get_button_classes($style, $size, $full_width_mobile);
                 $target = $new_tab ? ' target="_blank" rel="noopener noreferrer"' : '';
             ?>
+                <?php if ($is_preview): ?>
+                <span class="<?php echo esc_attr($btn_classes); ?>" style="cursor: default;">
+                <?php else: ?>
                 <a href="<?php echo esc_url($link); ?>"
                    class="<?php echo esc_attr($btn_classes); ?>"
                    <?php echo $target; ?>>
+                <?php endif; ?>
                     <?php if ($icon && $icon_position === 'left'): ?>
                         <span class="e365-btn__icon mr-2"><?php echo $icon; ?></span>
                     <?php endif; ?>
@@ -106,7 +110,7 @@ if ($stack_on_mobile) {
                     <?php if ($icon && $icon_position === 'right'): ?>
                         <span class="e365-btn__icon ml-2"><?php echo $icon; ?></span>
                     <?php endif; ?>
-                </a>
+                <?php echo $is_preview ? '</span>' : '</a>'; ?>
             <?php endforeach; ?>
         </div>
     <?php elseif ($is_preview): ?>

@@ -8,7 +8,7 @@
   "icon": "columns",
   "keywords": ["media", "image", "video", "columns", "split", "layout"],
   "acf": {
-    "mode": "preview",
+    "mode": "auto",
     "renderTemplate": "template.php"
   },
   "supports": {

@@ -76,38 +76,10 @@ function e365_grid_classes($columns = 2, $gap = 'md', $valign = 'top', $stack = 
  * @return string Tailwind CSS classes
  */
 function e365_column_width_class($column_index, $total_cols, $ratio = '50-50') {
-    // Base class for mobile (full width)
-    $base = 'w-full';
-
-    // For single column, just return full width
-    if ($total_cols === 1) {
-        return $base;
-    }
-
-    // For 3+ columns, equal distribution
-    if ($total_cols >= 3) {
-        $width_map = [
-            3 => 'lg:w-1/3',
-            4 => 'lg:w-1/4',
-        ];
-        return $base . ' ' . ($width_map[$total_cols] ?? 'lg:w-1/4');
-    }
-
-    // Ratio mapping for 2-column layouts (need to account for gap)
-    // Using flex-1 with basis for better gap handling
-    $ratio_map = [
-        '50-50' => ['lg:flex-1', 'lg:flex-1'],
-        '60-40' => ['lg:w-3/5', 'lg:w-2/5'],
-        '40-60' => ['lg:w-2/5', 'lg:w-3/5'],
-        '70-30' => ['lg:w-[calc(70%-1rem)]', 'lg:w-[calc(30%-1rem)]'],
-        '30-70' => ['lg:w-[calc(30%-1rem)]', 'lg:w-[calc(70%-1rem)]'],
-        '66-33' => ['lg:w-2/3', 'lg:w-1/3'],
-        '33-66' => ['lg:w-1/3', 'lg:w-2/3'],
-    ];
-
-    $widths = $ratio_map[$ratio] ?? $ratio_map['50-50'];
-
-    return $base . ' ' . ($widths[$column_index - 1] ?? 'lg:flex-1');
+    // Base class for mobile (full width, stacks vertically).
+    // Desktop layout is controlled by CSS data-attribute selectors on parent .e365-grid
+    // (see src/input.css ratio rules using flex-grow ratios).
+    return 'w-full';
 }
 
 /**
