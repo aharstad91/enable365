@@ -1,0 +1,58 @@
+{
+    "key": "group_e365_spacer",
+    "title": "E365 Spacer Settings",
+    "fields": [
+        {
+            "key": "field_e365_spacer_desktop",
+            "label": "Desktop",
+            "name": "desktop_height",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "choices": {
+                "24": "24",
+                "48": "48",
+                "64": "64",
+                "96": "96",
+                "128": "128"
+            },
+            "default_value": "48",
+            "layout": "horizontal",
+            "return_format": "value"
+        },
+        {
+            "key": "field_e365_spacer_mobile",
+            "label": "Mobil",
+            "name": "mobile_height",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "choices": {
+                "16": "16",
+                "24": "24",
+                "32": "32",
+                "48": "48",
+                "64": "64"
+            },
+            "default_value": "24",
+            "layout": "horizontal",
+            "return_format": "value"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/e365-spacer"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "show_in_rest": 0
+}

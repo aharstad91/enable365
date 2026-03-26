@@ -277,6 +277,16 @@
   .e365-btn__icon svg {
     @apply w-4 h-4;
   }
+
+  /* E365 Spacer - responsive height via custom properties */
+  .e365-spacer {
+    height: var(--spacer-mobile, 48px);
+  }
+  @media (min-width: 1024px) {
+    .e365-spacer {
+      height: var(--spacer-desktop, 48px);
+    }
+  }
 }
 
 /* Add any custom utilities here */

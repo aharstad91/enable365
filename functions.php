@@ -571,6 +571,7 @@ function register_acf_blocks() {
 			'e365-testimonial' => '/blocks/e365-testimonial/block.json',
 			'e365-media-content' => '/blocks/e365-media-content/block.json',
 			'e365-buttons' => '/blocks/e365-buttons/block.json',
+			'e365-spacer'  => '/blocks/e365-spacer/block.json',
 		];
 		foreach ($e365_blocks as $block_name => $json_path) {
 			$block_path = __DIR__ . $json_path;

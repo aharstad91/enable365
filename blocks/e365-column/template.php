@@ -29,6 +29,7 @@ $allowed_blocks = [
     'acf/e365-media-content',
     'acf/e365-testimonial',
     'acf/e365-logo-grid',
+    'acf/e365-spacer',
     // Core blocks
     'core/paragraph',
     'core/heading',

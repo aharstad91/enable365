@@ -132,4 +132,29 @@
     z-index: 10;
     background: transparent;
   }
+
+  /* E365 Media + Content - force horizontal layout in editor */
+  .e365-media-content__inner {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+  }
+  .e365-media-content__media,
+  .e365-media-content__content {
+    width: 50% !important;
+    max-width: 50% !important;
+    flex: none !important;
+  }
+  /* Ratio overrides */
+  .e365-media-content[data-ratio="60-40"] .e365-media-content__media { width: 60% !important; max-width: 60% !important; }
+  .e365-media-content[data-ratio="60-40"] .e365-media-content__content { width: 40% !important; max-width: 40% !important; }
+  .e365-media-content[data-ratio="40-60"] .e365-media-content__media { width: 40% !important; max-width: 40% !important; }
+  .e365-media-content[data-ratio="40-60"] .e365-media-content__content { width: 60% !important; max-width: 60% !important; }
+  .e365-media-content[data-ratio="55-45"] .e365-media-content__media { width: 55% !important; max-width: 55% !important; }
+  .e365-media-content[data-ratio="55-45"] .e365-media-content__content { width: 45% !important; max-width: 45% !important; }
+  .e365-media-content[data-ratio="45-55"] .e365-media-content__media { width: 45% !important; max-width: 45% !important; }
+  .e365-media-content[data-ratio="45-55"] .e365-media-content__content { width: 55% !important; max-width: 55% !important; }
+  /* Inner blocks content should fill column */
+  .e365-media-content__content > .acf-innerblocks-container {
+    @apply contents;
+  }
 }
