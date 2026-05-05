@@ -15,6 +15,9 @@
 	require_once get_template_directory() . '/inc/block-helpers.php';
 	require_once get_template_directory() . '/inc/responsive-helpers.php';
 
+	// Notification bar (PlanIt AI launch announcement bar)
+	require_once get_template_directory() . '/inc/notification-bar.php';
+
 	function gutenbergtheme_editor_styles() { wp_enqueue_style( 'gutenbergthemeblocks-style', get_template_directory_uri() . '/blocks.css'); }
 	
 	add_action( 'enqueue_block_editor_assets', 'gutenbergtheme_editor_styles' );
@@ -428,8 +431,37 @@ function enable365_acf_add_options_page() {
 		'redirect'		=> false
 	));
 }
-add_action('acf/init', 'enable365_acf_add_options_page');	
+add_action('acf/init', 'enable365_acf_add_options_page');
 
+
+/**
+ * Notification bar — register a restricted WYSIWYG toolbar (bold, italic, link, unlink only).
+ * Used by notification_bar_text_no and notification_bar_text_en in group_notification_bar.json.
+ */
+add_filter( 'acf/fields/wysiwyg/toolbars', 'enable365_register_notification_bar_toolbar' );
+function enable365_register_notification_bar_toolbar( $toolbars ) {
+	$toolbars['Notification Bar'] = array(
+		1 => array( 'bold', 'italic', 'link', 'unlink' ),
+	);
+	return $toolbars;
+}
+
+/**
+ * Notification bar — bump bar_id (UUID v4) on every options-page save.
+ * Toggle-reset dismissal: any save re-shows the bar to previously-dismissed visitors.
+ * Always-bump (no change detection) is intentional — see plan §"Key Technical Decisions".
+ * Priority 20 runs after ACF's own save at priority 10.
+ */
+add_action( 'acf/save_post', 'enable365_bump_notification_bar_id', 20 );
+function enable365_bump_notification_bar_id( $post_id ) {
+	if ( $post_id !== 'options' ) {
+		return;
+	}
+	if ( ! function_exists( 'wp_generate_uuid4' ) || ! function_exists( 'update_field' ) ) {
+		return;
+	}
+	update_field( 'notification_bar_id', wp_generate_uuid4(), 'option' );
+}
 
 
 /**
