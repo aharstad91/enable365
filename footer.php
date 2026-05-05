@@ -90,11 +90,6 @@
 
 
 <script>
-		ScrollReveal({ duration: 1000, distance: '5px', delay: 30})
-		ScrollReveal().reveal('.ani-container *', { interval: 0 });
-		ScrollReveal().clean('.ani-clean, .wp-block-embed__wrapper, iframe');
-	
-	
 	const clickx= document.getElementById('mm-toggle');
 	  const mm_menu= document.getElementById('mm-menu');
 	  
