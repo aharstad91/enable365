@@ -254,19 +254,84 @@ add_action('init', function(){					//Kjør stuff når WP er startet opp
 
 
 
-		wp_enqueue_script( 'scrollreveal.min.js', get_template_directory_uri() . '/assets/scripts/scrollreveal.min.js', array(), filemtime(get_template_directory() . '/assets/scripts/scrollreveal.min.js'), false);
 		wp_enqueue_script( 'scrollock', get_template_directory_uri() . '/assets/scripts/bodyScrollLock.js', array(), filemtime(get_template_directory() . '/assets/scripts/bodyScrollLock.js'), true );
 		wp_enqueue_script( 'headroom.js', get_template_directory_uri() . '/assets/scripts/headroom.js', array(), filemtime(get_template_directory() . '/assets/scripts/headroom.js'), true );
 		wp_enqueue_script( 'headroom-init.js', get_template_directory_uri() . '/assets/scripts/headroom-init.js', array('headroom.js'), filemtime(get_template_directory() . '/assets/scripts/headroom-init.js'), true );
 		// wp_enqueue_script( 'megamenu.js', get_template_directory_uri() . '/assets/scripts/megamenu.js', array(), '1.0.0', true ); // Original megamenu script
 		wp_enqueue_script( 'megamenu-viewport.js', get_template_directory_uri() . '/assets/scripts/megamenu-viewport.js', array(), filemtime(get_template_directory() . '/assets/scripts/megamenu-viewport.js'), true ); // Enhanced megamenu with viewport centering
 		
-		// GSAP scripts - only load on front page
+		// GSAP — global enqueue (page-transition needs it everywhere). ScrollTrigger + front-page animations remain gated.
+		wp_enqueue_script( 'gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', array(), '3.12.5', true );
 		if ( is_front_page() ) {
-			wp_enqueue_script( 'gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', array(), '3.12.5', true );
 			wp_enqueue_script( 'gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js', array('gsap'), '3.12.5', true );
 			wp_enqueue_script( 'gsap-animations', get_template_directory_uri() . '/template-parts/gsap-animations.js', array('gsap', 'gsap-scrolltrigger'), filemtime(get_template_directory() . '/template-parts/gsap-animations.js'), true );
 		}
+
+		// Page-transition styles: hide main+footer until GSAP fades them in. Failure override and print fallback ensure no permanent blank state.
+		wp_register_style( 'enable365-page-transition', false );
+		wp_enqueue_style( 'enable365-page-transition' );
+		wp_add_inline_style(
+			'enable365-page-transition',
+			'main,footer{opacity:0}html.gsap-failed main,html.gsap-failed footer{opacity:1 !important}@media print{main,footer{opacity:1 !important}}'
+		);
+
+		// Page-transition IIFE — attached BEFORE the gsap script tag so listeners install regardless of fade execution.
+		$pt_js = <<<'JS'
+(function(){
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function safe(fn){ try{ fn(); }catch(e){} }
+  function shouldSkipLink(link, e){
+    if(!link) return true;
+    var href = link.getAttribute('href');
+    if(!href) return true;
+    if(link.target === '_blank' || link.hasAttribute('download')) return true;
+    if(e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button === 1) return true;
+    if(href.charAt(0) === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return true;
+    if(href.indexOf('wp-admin') !== -1 || href.indexOf('wp-login') !== -1) return true;
+    try{
+      var url = new URL(href, window.location.origin);
+      if(url.origin !== window.location.origin) return true;
+      if(url.pathname === window.location.pathname && url.hash) return true;
+    }catch(err){ return true; }
+    return false;
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    safe(function(){
+      if(!window.gsap) return;
+      window.gsap.fromTo('main, footer',
+        { opacity: 0, y: reduced ? 0 : 5 },
+        { opacity: 1, y: 0, duration: 0.2, ease: 'power2.out',
+          onStart: function(){ clearTimeout(window.__e365_failTimer); },
+          onComplete: function(){ if(window.ScrollTrigger) safe(function(){ window.ScrollTrigger.refresh(); }); } }
+      );
+    });
+  });
+  window.addEventListener('pageshow', function(e){
+    safe(function(){
+      if(!e.persisted) return;
+      clearTimeout(window.__e365_failTimer);
+      if(window.gsap) window.gsap.set('main, footer', { opacity: 1, y: 0 });
+      else document.documentElement.classList.add('gsap-failed');
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(e.defaultPrevented) return;
+    safe(function(){
+      var link = e.target && e.target.closest ? e.target.closest('a') : null;
+      if(shouldSkipLink(link, e)) return;
+      if(reduced) return;
+      if(!window.gsap || document.documentElement.classList.contains('gsap-failed')) return;
+      e.preventDefault();
+      var href = link.href;
+      window.gsap.to('main, footer', {
+        opacity: 0, y: -3, duration: 0.12, ease: 'power2.in',
+        onComplete: function(){ window.location.href = href; }
+      });
+    });
+  }, false);
+})();
+JS;
+		wp_add_inline_script( 'gsap', $pt_js, 'before' );
 
 		// E365 Video Modal - register (enqueued by block when needed)
 		wp_register_script( 'e365-video-modal', get_template_directory_uri() . '/assets/scripts/e365-video-modal.js', array(), '1.0.0', true );
@@ -274,10 +339,16 @@ add_action('init', function(){					//Kjør stuff når WP er startet opp
 	}
 	add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );
 
-	
-	
-	
-	
+	// Page-transition head safety-net: arms a 2s timer that adds .gsap-failed if the
+	// IIFE (or GSAP itself) never runs. Independent of the gsap handle so a missing
+	// enqueue can never strand main/footer at opacity 0. Priority 1 fires before any
+	// enqueued scripts/styles in <head>.
+	function enable365_page_transition_head_safety() {
+		echo "<script>window.__e365_failTimer=setTimeout(function(){document.documentElement.classList.add('gsap-failed');},2000);</script>\n";
+		echo "<noscript><style>main,footer{opacity:1 !important;}</style></noscript>\n";
+	}
+	add_action( 'wp_head', 'enable365_page_transition_head_safety', 1 );
+
 	function load_custom_wp_admin_style() {
         wp_register_style( 'custom_wp_admin_css', get_template_directory_uri() . '/template-parts/block/block-styles.css', false, '1.0.0' );
         wp_enqueue_style( 'custom_wp_admin_css' );
