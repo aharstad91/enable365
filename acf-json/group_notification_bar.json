@@ -1,0 +1,94 @@
+{
+    "key": "group_notification_bar",
+    "title": "Varslingsbar",
+    "fields": [
+        {
+            "key": "field_notification_bar_enabled",
+            "label": "Vis varslingsbar",
+            "name": "notification_bar_enabled",
+            "type": "true_false",
+            "instructions": "Skru på for å vise varslingsbaren øverst på alle sider.",
+            "required": 0,
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_notification_bar_text_no",
+            "label": "Tekst (NO)",
+            "name": "notification_bar_text_no",
+            "type": "wysiwyg",
+            "instructions": "Norsk tekst. Tom = baren vises ikke på norske sider.",
+            "required": 0,
+            "default_value": "",
+            "tabs": "visual",
+            "toolbar": "notification_bar",
+            "media_upload": 0,
+            "delay": 0,
+            "wpml_cf_preferences": 0
+        },
+        {
+            "key": "field_notification_bar_text_en",
+            "label": "Text (EN)",
+            "name": "notification_bar_text_en",
+            "type": "wysiwyg",
+            "instructions": "English text. Empty = bar is not rendered on English pages.",
+            "required": 0,
+            "default_value": "",
+            "tabs": "visual",
+            "toolbar": "notification_bar",
+            "media_upload": 0,
+            "delay": 0,
+            "wpml_cf_preferences": 0
+        },
+        {
+            "key": "field_notification_bar_theme",
+            "label": "Fargetema",
+            "name": "notification_bar_theme",
+            "type": "radio",
+            "instructions": "Velg fargetema for baren.",
+            "required": 0,
+            "choices": {
+                "brand": "Brand (rød)",
+                "dark": "Mørk (mørkeblå)"
+            },
+            "default_value": "brand",
+            "layout": "horizontal",
+            "return_format": "value"
+        },
+        {
+            "key": "field_notification_bar_id",
+            "label": "Bar ID (auto)",
+            "name": "notification_bar_id",
+            "type": "text",
+            "instructions": "Auto-generert ved lagring. Ikke endre manuelt.",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "acf-hidden",
+                "id": ""
+            },
+            "default_value": "",
+            "readonly": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-general-settings"
+            }
+        ]
+    ],
+    "menu_order": 5,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Selvbetjent varslingsbar på toppen av alle sider.",
+    "show_in_rest": 0
+}

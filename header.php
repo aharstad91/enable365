@@ -31,6 +31,7 @@
 	</style>
 </head>
 <body <?php body_class(); ?>>
+<?php if ( function_exists( 'enable365_render_notification_bar' ) ) { enable365_render_notification_bar(); } ?>
 
 <?php
 // ACF navigation labels will be set via wp_head hook in functions.php
