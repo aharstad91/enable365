@@ -1,11 +1,11 @@
 /**
  * Editor-only Tailwind CSS
  *
- * This file is compiled separately with a scoped config (tailwind.config.editor.js)
- * that adds `.acf-block-preview` as the `important` selector.
- *
- * Only utilities are included to minimize CSS size and avoid conflicts
- * with WordPress admin UI styles.
+ * This file is compiled separately with tailwind.config.editor.js and loaded ONLY into
+ * the block-editor iframe (enqueue_block_assets gated by is_admin() in
+ * enable365_editor_iframe_styles), so its utilities are scoped to the canvas without a
+ * wrapper-class prefix. (It previously used important:'.acf-block-preview', but ACF
+ * mode:auto blocks never render that wrapper, so every utility was inert — removed.)
  *
  * IMPORTANT: In the editor, each column block is wrapped in a WordPress
  * .block-editor-block-list__block div, so the flex items of
@@ -157,4 +157,21 @@
   .e365-media-content__content > .acf-innerblocks-container {
     @apply contents;
   }
+}
+
+/*
+ * Core Columns block (NOT the E365 blocks above). Placed OUTSIDE @layer so Tailwind emits
+ * it verbatim — `wp-block-columns`/`wp-block-column` are WordPress core classes that don't
+ * appear in the theme's content globs, so inside @layer they'd be purged.
+ *
+ * In the narrow editor canvas the flex columns get stretched to a mis-computed cross-size
+ * when a column contains an object-fit image, so the column text overflows downward onto the
+ * next block (the "overlapping text" bug). The front end is unaffected — its wider viewport
+ * sizes the columns correctly. Let editor columns take their natural content height instead
+ * of stretching. Editor-only (this sheet loads only in the iframe), so the front-end's
+ * equal-height columns are untouched.
+ */
+.wp-block-columns.is-layout-flex > .wp-block-column {
+  align-self: flex-start !important;
+  height: auto !important;
 }
