@@ -50,11 +50,15 @@ if ( ! empty( $enable365_nav_labels_from_acf ) ) {
 ?>
 	
 	
-	<!--<div class="globalMessageContainer">
+	<div class="globalMessageContainer" id="planit-banner">
 		<div class="globalMessage container-xl">
-			<p>The New Microsoft Teams (currently in Preview) does not yet support all programming frameworks affecting our apps ability to assign Planner tasks and app administrators in settings. Switch back to old Teams or to Teams in web browser to work around the issue. Sorry for the inconvenience, and we expect Microsoft to resolve the issue soon.</p>
+			<p><strong> A new version of PlanIt is out now ⚡ </strong>
+ A modern experience with a refreshed interface and smarter planning tools. Try free! <button class="bannerClose" type="button" aria-label="Lukk melding">
+      x
+    </button> </p>
+
 		</div>
-	</div>-->
+	</div>
 	
 	<!-- Hello World via git!-->
 	

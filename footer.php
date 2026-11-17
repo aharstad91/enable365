@@ -15,7 +15,7 @@
 		<div class="flex flex-col lg:col-span-1 order-2 lg:order-1">
 			<img class="w-48 mb-4" alt="" src="<?php bloginfo('template_directory'); ?>/assets/gfx/enable-logo-light.svg">
 			<div class="space-y-4 mb-10">
-				<p class="text-sm text-white/80">Our native apps are designed to work seamlessly with Microsoft Teams and Microsoft 365, so you can access your data securely and efficiently. Boost productivity, enhance collaboration, and streamline workflows from anywhere!</p>
+				<p class="text-sm text-white/80">Our native Microsoft Teams apps are designed to work seamlessly with Microsoft 365, so you can access your data securely and efficiently. Boost productivity, enhance collaboration, and streamline workflows from anywhere!</p>
 				<p class="text-sm text-white/80">Copyright 2025 - Enable 365</p>
 				
 				<!-- Social Links -->
@@ -90,6 +90,11 @@
 
 
 <script>
+		ScrollReveal({ duration: 1000, distance: '5px', delay: 30})
+		ScrollReveal().reveal('.ani-container *', { interval: 0 });
+		ScrollReveal().clean('.ani-clean, .wp-block-embed__wrapper, iframe');
+	
+	
 	const clickx= document.getElementById('mm-toggle');
 	  const mm_menu= document.getElementById('mm-menu');
 	  
@@ -122,6 +127,36 @@
 <!-- Google Tag Manager & LinkedIn Pixel Integration -->
 <?php get_template_part( '/assets/scripts/gtm' ); ?>
 
+
+
+<!-- Globalmessage -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const banner = document.getElementById("planit-banner");
+  if (!banner) return;
+
+  const closeBtn = banner.querySelector(".bannerClose");
+  const key = "planitBannerDismissedSession";
+
+  // Skjul hvis brukeren allerede har lukket banneret i denne økten
+  if (sessionStorage.getItem(key) === "1") {
+    banner.style.display = "none";
+    return;
+  }
+
+  // Lukk + husk kun for denne økten
+  if (closeBtn) {
+    closeBtn.addEventListener("click", function () {
+      sessionStorage.setItem(key, "1");
+      banner.style.display = "none";
+    });
+  }
+});
+</script>
+
+
 	
+
 </body>
 </html>
