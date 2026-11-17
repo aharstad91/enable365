@@ -57,7 +57,7 @@ get_header();
       <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         <?php while (have_posts()): the_post(); ?>
           
-          <article class="group overflow-hidden rounded-2xl border border-slate-200 bg-white hover:shadow-lg transition-all duration-300">
+          <article class="group overflow-hidden rounded-2xl border border-solid border-slate-200 bg-white hover:shadow-lg transition-all duration-300">
             <a href="<?php the_permalink(); ?>" class="block">
               
               <!-- Featured Image -->
