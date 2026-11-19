@@ -698,6 +698,11 @@ a{
 		height: 100vh;
 		padding-top: 4rem;
 	}
+	/* Iframen fyller boksen i stedet for hele skjermhøyden, så den ikke stikker ned under footeren */
+	.single-demo .iframe-container iframe{
+		display: block;
+		height: 100%;
+	}
 	
 	.try-now-container{
 		background: #f4f4f4;
