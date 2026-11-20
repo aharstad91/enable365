@@ -697,6 +697,12 @@ a{
 	.single-demo .iframe-container{
 		height: 100vh;
 		padding-top: 4rem;
+		margin-bottom: 3rem; /* luft mellom Bookings-feltet og footeren */
+	}
+	/* Iframen fyller boksen i stedet for hele skjermhøyden, så den ikke stikker ned under footeren */
+	.single-demo .iframe-container iframe{
+		display: block;
+		height: 100%;
 	}
 	
 	.try-now-container{
